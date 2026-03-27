@@ -1,0 +1,99 @@
+# Normas del Portal de Pacientes
+
+> Reglas para crear y mantener contenido en `jmacot.github.io/pacientes/`
+
+---
+
+## 1. Identidad del portal
+
+- **Autor:** Dr. Javier Martín Antúnez — Cirujano Ortopédico, Especialista en Rodilla
+- **Hospital:** Vithas Sevilla
+- **Público objetivo:** Pacientes (no profesionales médicos). Lenguaje claro, cercano, sin tecnicismos innecesarios
+- **Propósito:** Elemento diferenciador — ofrecer información personalizada que otros cirujanos no proporcionan
+- **Sistema de diseño:** Sistema A (Editorial) del CLAUDE.md principal de COT
+
+---
+
+## 2. Estructura del portal
+
+```
+index.html          ← Landing page: cards por patología + "Quién soy"
+ptr-info.html       ← Guía PTR: información y expectativas
+img/                ← Imágenes de las guías
+```
+
+### Landing page (`index.html`)
+
+- Título: "Información para Pacientes / Dr Martín Antúnez"
+- Cada patología tiene **2 cards**: Información + Rehabilitación Postoperatoria
+- Sección "Sobre el cirujano" con perfil, formación y enlaces
+- Filtros por zona anatómica (rodilla, etc.)
+
+### Páginas de información (`{patologia}-info.html`)
+
+- Una página por patología siguiendo el patrón de `ptr-info.html`
+- Acordeones `<details>/<summary>` nativos
+- Navegación sticky por pills con scroll spy
+- Primera sección abierta por defecto, resto cerradas
+
+---
+
+## 3. Coherencia entre patologías — REGLA CRÍTICA
+
+**Todas las guías de información deben seguir la misma estructura de secciones.** Cuando se cree una nueva guía (ej. artroscopia, LCA, osteotomías), debe contener las mismas secciones que PTR, adaptadas al contenido específico:
+
+### Secciones obligatorias (en este orden):
+
+| # | Sección | Contenido |
+|---|---------|-----------|
+| 1 | **Introducción** | Qué es la cirugía, indicaciones, tipos/variantes, actividades recomendadas vs evitar (si aplica), complicaciones posibles |
+| 2 | **Estancia hospitalaria** | Timeline: día cirugía → días postoperatorios → alta. Tratamiento al alta, calendario de revisiones |
+| 3 | **Administración de heparina** | Pasos de inyección subcutánea, duración (30 días salvo indicación diferente), señales de alerta |
+| 4 | **Recuperación mes a mes** | 4 milestones temporales con hitos de dolor, movilidad, actividad. Adaptar tiempos a la patología |
+| 5 | **Expectativas vs. Realidad** | Tabla comparativa con mitos frecuentes del paciente vs realidad clínica |
+| 6 | **Cosas que debes saber** | Lista numerada con mensajes clave (adaptar número según patología) |
+| 7 | **Signos de alarma** | Callout rojo con señales que requieren urgencias |
+| 8 | **Preguntas frecuentes** | FAQ en mini-acordeones, mínimo 5 preguntas |
+
+### Secciones opcionales (añadir si aplica):
+
+- **Preparación preoperatoria** — qué hacer antes de la cirugía
+- **Consejos para el domicilio** — adaptaciones en casa, ayudas técnicas
+- **Ejercicios básicos** — con imágenes o vídeos
+
+### Reglas de coherencia:
+
+1. **Misma estructura visual:** Todas las guías usan los mismos componentes CSS (acordeones, timelines, callouts, milestone cards, tablas comparativas, FAQ)
+2. **Mismos iconos por sección:** Introducción = 🧩, Hospital = 🏥, Heparina = 💉, Recuperación = 📈, Expectativas = 📊, Claves = 💬, Alarma = ⚠️, FAQ = ❓
+3. **Misma navegación:** Pills sticky con los mismos nombres de sección
+4. **Datos médicos concordantes:** Si una guía de información menciona un plazo (ej. "conducir a las 6 semanas"), la guía de rehabilitación correspondiente debe decir lo mismo. **Nunca publicar datos contradictorios entre la página de información y la de rehabilitación**
+5. **Tono consistente:** Tutear al paciente, frases cortas, bullet points, negrita para lo importante
+6. **Imágenes:** Todas las guías deben tener al menos 1-2 imágenes ilustrativas. Formato `.jpg`, guardadas en `img/` con nombre descriptivo (`{patologia}-{descripcion}.jpg`)
+7. **Durabilidad/pronóstico:** Siempre usar un tono realista pero positivo. No dar por hecho resultados negativos. Ejemplo: "La mayoría duran más de 20 años" en vez de "Duran 15-20 años"
+
+---
+
+## 4. Datos médicos — reglas de redacción
+
+- **No contradecir** datos entre la guía de información y la de rehabilitación postoperatoria
+- **Especificar contexto** cuando un dato depende del caso (ej. conducir: diferenciar rodilla izquierda vs derecha)
+- **Tono positivo realista:** Los pacientes leen esto antes o después de operarse. No minimizar riesgos pero no generar ansiedad innecesaria
+- **No usar "siempre" ni "nunca"** en contextos médicos — usar "habitualmente", "en la mayoría de los casos", "puede variar"
+- **Complicaciones:** Mencionar las principales pero en contexto ("si bien la tasa de éxito es alta...")
+- **Recambio protésico:** No dar por hecho. Mensaje: la mayoría duran décadas, el recambio no es lo habitual
+
+---
+
+## 5. Checklist para nueva patología
+
+Al crear una nueva guía (ej. `lca-info.html`):
+
+- [ ] Crear archivo `{patologia}-info.html` copiando estructura de `ptr-info.html`
+- [ ] Adaptar contenido de las 8 secciones obligatorias
+- [ ] Verificar coherencia con la guía de rehabilitación correspondiente
+- [ ] Añadir imágenes en `img/` (mínimo 1)
+- [ ] Añadir 2 cards en `index.html` (Información + Rehabilitación)
+- [ ] Verificar filtro por zona anatómica
+- [ ] Verificar dark mode y responsive
+- [ ] Verificar navegación pills y scroll spy
+- [ ] Comprobar que no hay datos contradictorios con otras guías
