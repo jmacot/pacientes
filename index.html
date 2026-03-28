@@ -36,23 +36,7 @@
       --c-general: #64748b;       --c-general-light: #f1f5f9;
     }
 
-    [data-theme="dark"] {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --ink: #f1f5f9;
-      --ink-muted: #94a3b8;
-      --border: #334155;
-      --shadow: 0 2px 20px rgba(0,0,0,0.2);
-      --shadow-hover: 0 8px 40px rgba(0,0,0,0.3);
-
-      --c-rodilla-light: #0c4a6e;
-      --c-cadera-light: #3b0764;
-      --c-hombro-light: #134e4a;
-      --c-columna-light: #78350f;
-      --c-general-light: #334155;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -91,12 +75,7 @@
       filter: blur(40px);
     }
 
-    [data-theme="dark"] header {
-      background: linear-gradient(135deg, #152238 0%, #1c2f4a 50%, #213656 100%);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .header-label {
+.header-label {
       font-family: 'DM Mono', monospace;
       font-size: 11px;
       letter-spacing: 0.15em;
@@ -150,16 +129,7 @@
       50% { opacity: 0.4; }
     }
 
-    .theme-toggle {
-      position: absolute; top: 16px; right: 16px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, background 0.2s; z-index: 1; color: white;
-    }
-    .theme-toggle:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.12); }
-
-    /* ── MAIN ── */
+/* ── MAIN ── */
     main {
       max-width: 900px;
       margin: 0 auto;
@@ -489,6 +459,139 @@
     }
     .about-link svg { width: 16px; height: 16px; fill: currentColor; }
 
+    /* ── PEDIR CITA ── */
+    .appt-section { margin-top: 40px; }
+
+    .appt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .appt-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .appt-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--appt-accent, var(--c-rodilla));
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .appt-card:not(.appt-disabled):hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .appt-card.appt-disabled {
+      opacity: 0.55;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .appt-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--appt-accent, var(--c-rodilla));
+    }
+    .appt-logo-wrap {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .appt-logo-img {
+      height: 28px;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+      display: block;
+    }
+    .appt-logo-img[src*="osten"] { height: 52px; }
+    .appt-logo-img[src*="vithas"] { height: 52px; }
+    .appt-contact {
+      font-size: 12px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: -4px;
+    }
+    .appt-contact span {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .appt-contact svg {
+      width: 13px; height: 13px;
+      stroke: var(--appt-accent, var(--c-rodilla));
+      fill: none; stroke-width: 2;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .appt-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .appt-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .appt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--appt-accent, var(--c-rodilla));
+      border: 1.5px solid var(--appt-accent, var(--c-rodilla));
+      border-radius: 999px;
+      padding: 6px 14px;
+      align-self: flex-start;
+      transition: background 0.2s, color 0.2s;
+    }
+    .appt-card:not(.appt-disabled):hover .appt-btn {
+      background: var(--appt-accent, var(--c-rodilla));
+      color: white;
+    }
+    .appt-soon {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 10px;
+      align-self: flex-start;
+    }
+
+    @media (max-width: 600px) {
+      .appt-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── FOOTER ── */
     footer {
       text-align: center;
@@ -507,8 +610,7 @@
     @media (max-width: 600px) {
       header { padding: 40px 24px 36px; }
       header::before, header::after { display: none; }
-      .theme-toggle { width: 36px; height: 36px; font-size: 1.1rem; top: 10px; right: 10px; }
-      main { padding: 40px 20px 60px; }
+main { padding: 40px 20px 60px; }
       .grid { grid-template-columns: 1fr; }
       .filters { gap: 6px; }
       .filter-btn { font-size: 10px; padding: 6px 12px; }
@@ -531,7 +633,6 @@
 <body>
 
   <header>
-    <button class="theme-toggle" id="btn-theme" title="Cambiar tema" aria-label="Cambiar a modo oscuro"></button>
     <div class="header-label">Portal del paciente</div>
     <h1>Informaci&oacute;n para Pacientes<br><em>Dr Mart&iacute;n Ant&uacute;nez</em></h1>
     <p>Gu&iacute;as personalizadas de rehabilitaci&oacute;n, ejercicios y cuidados postoperatorios. Selecciona tu cirug&iacute;a para ver la gu&iacute;a completa.</p>
@@ -551,38 +652,21 @@
 
     <div class="grid">
 
-      <!-- PTR — Información -->
-      <a class="card" data-tag="rodilla" href="ptr-info.html">
+      <!-- Prótesis de Rodilla -->
+      <a class="card" data-tag="rodilla" href="ptr.html">
         <div class="card-meta">
-          <div class="card-icon">&#128214;</div>
+          <div class="card-icon">&#129461;</div>
           <div class="card-arrow">&rarr;</div>
         </div>
         <div>
-          <h2>Informaci&oacute;n y Expectativas</h2>
-          <p>Todo lo que necesitas saber sobre tu pr&oacute;tesis de rodilla. Recuperaci&oacute;n mes a mes, ingreso hospitalario, signos de alarma y preguntas frecuentes.</p>
+          <h2>Pr&oacute;tesis de Rodilla</h2>
+          <p>Informaci&oacute;n completa sobre la intervenci&oacute;n, recuperaci&oacute;n y rehabilitaci&oacute;n postoperatoria con ejercicios y v&iacute;deos.</p>
         </div>
         <div class="card-detail">
-          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          8 secciones &bull; Gu&iacute;a completa
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          2 gu&iacute;as disponibles
         </div>
-        <div class="card-tag">Informaci&oacute;n</div>
-      </a>
-
-      <!-- PTR — Rehabilitación Postoperatoria -->
-      <a class="card" data-tag="rodilla" href="https://jmacot.github.io/rehabilitacion-cot/Postoperatorio/web/" target="_blank">
-        <div class="card-meta">
-          <div class="card-icon">&#127939;</div>
-          <div class="card-arrow">&rarr;</div>
-        </div>
-        <div>
-          <h2>Rehabilitaci&oacute;n Postoperatoria</h2>
-          <p>Protocolo de rehabilitaci&oacute;n tras cirug&iacute;a. Ejercicios semana a semana con v&iacute;deos demostrativos.</p>
-        </div>
-        <div class="card-detail">
-          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          V&iacute;deos &bull; 20 ejercicios &bull; 6 semanas
-        </div>
-        <div class="card-tag">Postoperatorio</div>
+        <div class="card-tag">Rodilla</div>
       </a>
 
       <!-- PLACEHOLDER -->
@@ -623,8 +707,57 @@
             <a class="about-link" href="https://www.linkedin.com/in/javier-mart%C3%ADn-ant%C3%BAnez-245b83234/" target="_blank" rel="noopener" title="LinkedIn" aria-label="Perfil de LinkedIn">
               <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
+            <span class="about-link" style="opacity:0.4; cursor:default; pointer-events:none;" title="Top Doctors — próximamente" aria-label="Top Doctors (próximamente)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 11v2m0 0v2m0-2h2m-2 0H10"/></svg>
+            </span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- PEDIR CITA -->
+    <section class="appt-section">
+      <div class="section-label">Pedir cita</div>
+      <div class="appt-grid">
+
+        <!-- Vithas Sevilla -->
+        <a class="appt-card" href="https://vithas.es/medico/martin-antunez-javier/" target="_blank" rel="noopener" style="--appt-accent: #0ea5e9;">
+          <div class="appt-logo-wrap">
+            <img class="appt-logo-img" src="img/vithas-logo.jpg" alt="Vithas">
+          </div>
+          <div class="appt-name">Hospital Vithas Sevilla</div>
+          <div class="appt-contact">
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Glorieta &Aacute;ngel Dom&iacute;nguez Jim&eacute;nez, Pediatra 2, Sevilla
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+              954 464 000
+            </span>
+          </div>
+          <span class="appt-btn">Pedir cita &rarr;</span>
+        </a>
+
+        <!-- Osten -->
+        <div class="appt-card appt-disabled" style="--appt-accent: #0d9488;">
+          <div class="appt-logo-wrap">
+            <img class="appt-logo-img" src="img/osten-logo.png" alt="Osten Clínic">
+          </div>
+          <div class="appt-name">Osten Cl&iacute;nic &middot; Rodilla</div>
+          <div class="appt-contact">
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Glorieta Plus Ultra 2, 41013 Sevilla
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+              +34 639 649 288
+            </span>
+          </div>
+          <span class="appt-soon">Pr&oacute;ximamente</span>
+        </div>
+
       </div>
     </section>
 
@@ -652,52 +785,6 @@
         }
       });
     }
-
-    // ─────────────────────────────────────────────
-    //  THEME
-    // ─────────────────────────────────────────────
-    var btnTheme = document.getElementById('btn-theme');
-
-    function applyTheme(dark) {
-      var mt = document.getElementById('meta-theme');
-      if (dark) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        btnTheme.textContent = '\u2600\uFE0F';
-        btnTheme.setAttribute('aria-label', 'Cambiar a modo claro');
-        if (mt) mt.setAttribute('content', '#152238');
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        btnTheme.textContent = '\uD83C\uDF19';
-        btnTheme.setAttribute('aria-label', 'Cambiar a modo oscuro');
-        if (mt) mt.setAttribute('content', '#0f172a');
-      }
-    }
-
-    function getAutoTheme() {
-      var h = new Date().getHours();
-      return (h >= 21 || h < 7 || window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-    }
-
-    function initTheme() {
-      var s = localStorage.getItem('pacientes-theme');
-      var d = localStorage.getItem('pacientes-theme-date');
-      var today = new Date().toDateString();
-      if (s && d === today) { applyTheme(s === 'dark'); }
-      else { localStorage.removeItem('pacientes-theme'); applyTheme(getAutoTheme() === 'dark'); }
-    }
-
-    btnTheme.addEventListener('click', function() {
-      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      applyTheme(!isDark);
-      localStorage.setItem('pacientes-theme', isDark ? 'light' : 'dark');
-      localStorage.setItem('pacientes-theme-date', new Date().toDateString());
-    });
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-      if (!localStorage.getItem('pacientes-theme')) applyTheme(getAutoTheme() === 'dark');
-    });
-
-    initTheme();
 
     // ─────────────────────────────────────────────
     //  LOCALHOST DETECTION

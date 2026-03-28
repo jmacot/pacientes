@@ -39,21 +39,7 @@
       --amber-light: #fef3c7;
     }
 
-    [data-theme="dark"] {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --ink: #f1f5f9;
-      --ink-muted: #94a3b8;
-      --border: #334155;
-      --shadow: 0 2px 20px rgba(0,0,0,0.2);
-      --shadow-hover: 0 8px 40px rgba(0,0,0,0.3);
-      --c-rodilla-light: #0c4a6e;
-      --green-light: #14352a;
-      --red-light: #3b1010;
-      --amber-light: #3b2a10;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -89,12 +75,7 @@
       background: radial-gradient(circle, rgba(139, 92, 246, 0.10) 0%, transparent 70%);
       filter: blur(40px);
     }
-    [data-theme="dark"] header {
-      background: linear-gradient(135deg, #152238 0%, #1c2f4a 50%, #213656 100%);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .back-home {
+.back-home {
       position: absolute; top: 16px; left: 16px;
       display: inline-flex; align-items: center; gap: 4px;
       font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em;
@@ -130,16 +111,7 @@
       position: relative;
     }
 
-    .theme-toggle {
-      position: absolute; top: 16px; right: 16px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, background 0.2s; z-index: 1; color: white;
-    }
-    .theme-toggle:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.12); }
-
-    /* ── SECTION NAV ── */
+/* ── SECTION NAV ── */
     .section-nav {
       position: sticky; top: 0; z-index: 50;
       background: var(--bg);
@@ -148,9 +120,8 @@
       transition: box-shadow 0.3s;
     }
     .section-nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-    [data-theme="dark"] .section-nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
 
-    .nav-pills {
+.nav-pills {
       display: flex;
       gap: 6px;
       overflow-x: auto;
@@ -210,9 +181,8 @@
     }
     .info-section summary::-webkit-details-marker { display: none; }
     .info-section summary:hover { background: rgba(14, 165, 233, 0.04); }
-    [data-theme="dark"] .info-section summary:hover { background: rgba(14, 165, 233, 0.06); }
 
-    .info-icon {
+.info-icon {
       font-size: 22px;
       width: 40px; height: 40px;
       border-radius: 10px;
@@ -441,9 +411,8 @@
     }
     .compare-table td:last-child { color: var(--ink); }
     .compare-table tr:nth-child(even) td { background: rgba(14,165,233,0.02); }
-    [data-theme="dark"] .compare-table tr:nth-child(even) td { background: rgba(14,165,233,0.04); }
 
-    /* Mobile: table as stacked cards */
+/* Mobile: table as stacked cards */
     .compare-mobile { display: none; margin: 20px 0; }
     .compare-item {
       background: var(--bg);
@@ -646,8 +615,7 @@
       header { padding: 40px 24px 36px; }
       header::before, header::after { display: none; }
       .back-home { padding: 4px 8px; font-size: 10px; top: 10px; left: 10px; }
-      .theme-toggle { width: 36px; height: 36px; font-size: 1.1rem; top: 10px; right: 10px; }
-      .section-nav { padding: 10px 16px; }
+.section-nav { padding: 10px 16px; }
       main { padding: 24px 16px 60px; }
       .info-section summary { padding: 16px 18px; gap: 10px; }
       .info-icon { width: 34px; height: 34px; font-size: 18px; border-radius: 8px; }
@@ -672,7 +640,6 @@
 <body>
 
   <header>
-    <button class="theme-toggle" id="btn-theme" title="Cambiar tema" aria-label="Cambiar a modo oscuro"></button>
     <a class="back-home" href="index.html" title="Volver al portal">&larr; Portal</a>
     <div class="header-label">Gu&iacute;a del paciente</div>
     <h1>Pr&oacute;tesis Total<br><em>de Rodilla</em></h1>
@@ -1095,52 +1062,6 @@
   </footer>
 
   <script>
-    // ─────────────────────────────────────────────
-    //  THEME
-    // ─────────────────────────────────────────────
-    var btnTheme = document.getElementById('btn-theme');
-
-    function applyTheme(dark) {
-      var mt = document.getElementById('meta-theme');
-      if (dark) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        btnTheme.textContent = '\u2600\uFE0F';
-        btnTheme.setAttribute('aria-label', 'Cambiar a modo claro');
-        if (mt) mt.setAttribute('content', '#152238');
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        btnTheme.textContent = '\uD83C\uDF19';
-        btnTheme.setAttribute('aria-label', 'Cambiar a modo oscuro');
-        if (mt) mt.setAttribute('content', '#0f172a');
-      }
-    }
-
-    function getAutoTheme() {
-      var h = new Date().getHours();
-      return (h >= 21 || h < 7 || window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-    }
-
-    function initTheme() {
-      var s = localStorage.getItem('pacientes-theme');
-      var d = localStorage.getItem('pacientes-theme-date');
-      var today = new Date().toDateString();
-      if (s && d === today) { applyTheme(s === 'dark'); }
-      else { localStorage.removeItem('pacientes-theme'); applyTheme(getAutoTheme() === 'dark'); }
-    }
-
-    btnTheme.addEventListener('click', function() {
-      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      applyTheme(!isDark);
-      localStorage.setItem('pacientes-theme', isDark ? 'light' : 'dark');
-      localStorage.setItem('pacientes-theme-date', new Date().toDateString());
-    });
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-      if (!localStorage.getItem('pacientes-theme')) applyTheme(getAutoTheme() === 'dark');
-    });
-
-    initTheme();
-
     // ─────────────────────────────────────────────
     //  SECTION NAV — scroll to + open
     // ─────────────────────────────────────────────
