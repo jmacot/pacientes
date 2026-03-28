@@ -17,17 +17,39 @@
 ## 2. Estructura del portal
 
 ```
-index.html          ← Landing page: cards por patología + "Quién soy"
+index.html          ← Landing page: 1 card por patología + "Quién soy"
+ptr.html            ← Hub PTR: 2 subcards (info + rehab)
 ptr-info.html       ← Guía PTR: información y expectativas
+meniscos.html       ← Hub Meniscos: 2 subcards (info + rehab)
+meniscos-info.html  ← Guía Meniscos: información y expectativas
+meniscos-rehab.html ← Guía Meniscos: rehabilitación postoperatoria
 img/                ← Imágenes de las guías
 ```
+
+### Arquitectura de navegación — REGLA CRÍTICA
+
+Cada patología sigue una estructura de **3 niveles**:
+
+1. **`index.html`** — 1 sola card por patología (ej. "Lesiones Meniscales") que enlaza al hub
+2. **`{patologia}.html`** (hub) — Página intermedia con subcards: Información + Rehabilitación. Sigue la estructura exacta de `ptr.html`
+3. **`{patologia}-info.html`** y **`{patologia}-rehab.html`** — Páginas de contenido
+
+**Nunca** poner cards de info y rehab directamente en index.html. Siempre usar el hub intermedio.
 
 ### Landing page (`index.html`)
 
 - Título: "Información para Pacientes / Dr Martín Antúnez"
-- Cada patología tiene **2 cards**: Información + Rehabilitación Postoperatoria
+- **1 card por patología** que enlaza al hub (`{patologia}.html`), con detalle "2 guías disponibles"
 - Sección "Sobre el cirujano" con perfil, formación y enlaces
 - Filtros por zona anatómica (rodilla, etc.)
+
+### Páginas hub (`{patologia}.html`)
+
+- Estructura idéntica a `ptr.html`: header con título de patología + grid de 2 cards
+- Card 1: Información y Expectativas → `{patologia}-info.html`
+- Card 2: Rehabilitación Postoperatoria → `{patologia}-rehab.html`
+- Back link: `index.html`
+- Localhost detection JS
 
 ### Páginas de información (`{patologia}-info.html`)
 

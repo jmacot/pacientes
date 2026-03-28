@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesiones Meniscales &middot; Informaci&oacute;n para Pacientes</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <meta name="description" content="Guía completa para pacientes sobre los meniscos: anatomía, tipos de lesiones, opciones de tratamiento y expectativas de recuperación." />
+  <meta name="theme-color" id="meta-theme" content="#0f172a" />
+  <meta property="og:title" content="Lesiones Meniscales · Dr Martín Antúnez" />
+  <meta property="og:description" content="Guía completa para pacientes sobre los meniscos: anatomía, tipos de lesiones, opciones de tratamiento y expectativas de recuperación." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jmacot.github.io/pacientes/meniscos-info.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #e8edf4;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --ink-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 20px rgba(26,26,26,0.08);
+      --shadow-hover: 0 8px 40px rgba(26,26,26,0.14);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --c-rodilla: #0ea5e9;
+      --c-rodilla-light: #e0f2fe;
+      --c-rodilla-dark: #0369a1;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --amber: #d97706;
+      --amber-light: #fef3c7;
+    }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 56px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -50px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
+      filter: blur(40px);
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: 20%;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.10) 0%, transparent 70%);
+      filter: blur(40px);
+    }
+.back-home {
+      position: absolute; top: 16px; left: 16px;
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      padding: 6px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+      transition: border-color 0.2s, color 0.2s, background 0.2s; z-index: 1;
+    }
+    .back-home:hover { border-color: rgba(255,255,255,0.5); color: white; background: rgba(255,255,255,0.12); }
+
+    .header-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    header p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      max-width: 520px;
+      position: relative;
+    }
+
+/* ── SECTION NAV ── */
+    .section-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg);
+      padding: 12px 32px;
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .section-nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+
+.nav-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .nav-pills::-webkit-scrollbar { display: none; }
+
+    .nav-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-pill:hover { border-color: var(--c-rodilla); color: var(--c-rodilla); }
+    .nav-pill.active { background: var(--c-rodilla); border-color: var(--c-rodilla); color: white; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 32px 80px;
+    }
+
+    /* ── ACCORDION SECTIONS ── */
+    .info-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .info-section:hover { box-shadow: var(--shadow-hover); }
+
+    .info-section summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      list-style: none;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .info-section summary::-webkit-details-marker { display: none; }
+    .info-section summary:hover { background: rgba(14, 165, 233, 0.04); }
+
+.info-icon {
+      font-size: 22px;
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--c-rodilla-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ink);
+      flex: 1;
+    }
+
+    .info-chevron {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      color: var(--ink-muted);
+    }
+    .info-section[open] .info-chevron { transform: rotate(180deg); }
+
+    .info-body {
+      padding: 0 24px 28px;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--ink-muted);
+    }
+    .info-body p { margin-bottom: 14px; }
+    .info-body strong { color: var(--ink); }
+    .info-body ul, .info-body ol { margin: 12px 0; padding-left: 20px; }
+    .info-body li { margin-bottom: 8px; }
+    .info-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 24px 0 12px;
+    }
+    .info-body h3:first-child { margin-top: 0; }
+
+    /* ── SECTION IMAGES ── */
+    .info-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      margin: 20px auto;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .info-img.small { max-width: 280px; }
+    .info-img.medium { max-width: 420px; }
+    .info-img-caption {
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: -12px;
+      margin-bottom: 16px;
+    }
+
+    /* ── IMAGE LEGEND ── */
+    .img-legend {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin: -4px auto 20px;
+      max-width: 420px;
+    }
+    .img-legend-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 10px;
+    }
+    .img-legend-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 12px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .img-legend-key {
+      font-family: 'DM Mono', monospace;
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 12px;
+    }
+    .img-legend-val {
+      color: var(--ink-muted);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 36px;
+      margin: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 13px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: var(--border);
+      border-radius: 1px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -36px; top: 3px;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--c-rodilla);
+      border: 3px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--c-rodilla);
+    }
+    .timeline-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 4px;
+    }
+    .timeline-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+    }
+
+    /* ── STEPS (heparina) ── */
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: step;
+      margin: 16px 0;
+    }
+    .steps-list li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 44px;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .steps-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 0;
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: var(--c-rodilla-light);
+      color: var(--c-rodilla);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── MILESTONE CARDS ── */
+    .milestones {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .milestone {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      border-left: 4px solid var(--c-rodilla);
+    }
+    .milestone:nth-child(2) { border-left-color: #38bdf8; }
+    .milestone:nth-child(3) { border-left-color: #7dd3fc; }
+    .milestone:nth-child(4) { border-left-color: #bae6fd; }
+    .milestone-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 8px;
+    }
+    .milestone ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .milestone li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+    .milestone li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--c-rodilla);
+      opacity: 0.5;
+    }
+
+    /* ── COMPARE TABLE ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+    }
+    .compare-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .compare-table th:first-child { background: var(--c-rodilla-light); color: var(--c-rodilla); }
+    .compare-table th:last-child { background: var(--green-light); color: var(--green); }
+    .compare-table td {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      border-top: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .compare-table td:first-child {
+      color: var(--ink-muted);
+      font-style: italic;
+      width: 40%;
+    }
+    .compare-table td:last-child { color: var(--ink); }
+    .compare-table tr:nth-child(even) td { background: rgba(14,165,233,0.02); }
+
+/* Mobile: table as stacked cards */
+    .compare-mobile { display: none; margin: 20px 0; }
+    .compare-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 10px;
+    }
+    .compare-expect {
+      font-size: 13px;
+      color: var(--ink-muted);
+      font-style: italic;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-reality {
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* ── NUMBERED LIST ── */
+    .numbered-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: item;
+      margin: 16px 0;
+    }
+    .numbered-list li {
+      counter-increment: item;
+      position: relative;
+      padding: 14px 16px 14px 52px;
+      margin-bottom: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .numbered-list li::before {
+      content: counter(item);
+      position: absolute;
+      left: 14px; top: 14px;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: var(--c-rodilla);
+      color: white;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 20px 0;
+      border-left: 4px solid;
+    }
+    .callout-danger {
+      background: var(--red-light);
+      border-left-color: var(--red);
+    }
+    .callout-danger .callout-title { color: var(--red); }
+    .callout-info {
+      background: var(--c-rodilla-light);
+      border-left-color: var(--c-rodilla);
+    }
+    .callout-info .callout-title { color: var(--c-rodilla); }
+    .callout-amber {
+      background: var(--amber-light);
+      border-left-color: var(--amber);
+    }
+    .callout-amber .callout-title { color: var(--amber); }
+    .callout-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .callout p { font-size: 14px; line-height: 1.65; color: var(--ink); }
+    .callout ul { margin: 8px 0 0; padding-left: 18px; }
+    .callout li { font-size: 14px; line-height: 1.65; color: var(--ink); margin-bottom: 4px; }
+
+    /* ── ACTIVITIES (recommended vs avoid) ── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .activities-col {
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+    .activities-col.do { background: var(--green-light); border-color: rgba(22,163,74,0.2); }
+    .activities-col.avoid { background: var(--red-light); border-color: rgba(220,38,38,0.2); }
+    .activities-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .activities-col.do .activities-label { color: var(--green); }
+    .activities-col.avoid .activities-label { color: var(--red); }
+    .activities-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .activities-col li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink);
+      padding: 3px 0 3px 18px;
+      position: relative;
+    }
+    .activities-col.do li::before { content: '\2713'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .activities-col.avoid li::before { content: '\2717'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+
+    /* ── TREATMENT COMPARISON ── */
+    .treatment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .treatment-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      border-top: 4px solid var(--c-rodilla);
+    }
+    .treatment-card:nth-child(2) { border-top-color: #38bdf8; }
+    .treatment-card:nth-child(3) { border-top-color: #7dd3fc; }
+    .treatment-card-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 10px;
+    }
+    .treatment-card p {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+    }
+    .treatment-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .treatment-card li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      padding: 3px 0 3px 14px;
+      position: relative;
+    }
+    .treatment-card li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--c-rodilla);
+      opacity: 0.5;
+    }
+
+    /* ── FAQ ── */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      transition: background 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: rgba(14,165,233,0.04); }
+    .faq-item summary .faq-q { flex: 1; }
+    .faq-item summary .faq-chevron {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      color: var(--ink-muted);
+    }
+    .faq-item[open] summary .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      padding: 0 18px 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--ink-muted);
+    }
+
+    /* ── FINAL CALLOUT ── */
+    .final-callout {
+      background: linear-gradient(135deg, var(--c-rodilla-light) 0%, rgba(14,165,233,0.08) 100%);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 32px 0 0;
+      text-align: center;
+    }
+    .final-callout h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .final-callout p {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border);
+    }
+    footer .sig { font-weight: 600; color: var(--ink); margin-top: 4px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      header { padding: 40px 24px 36px; }
+      header::before, header::after { display: none; }
+      .back-home { padding: 4px 8px; font-size: 10px; top: 10px; left: 10px; }
+.section-nav { padding: 10px 16px; }
+      main { padding: 24px 16px 60px; }
+      .info-section summary { padding: 16px 18px; gap: 10px; }
+      .info-icon { width: 34px; height: 34px; font-size: 18px; border-radius: 8px; }
+      .info-title { font-size: 1rem; }
+      .info-body { padding: 0 18px 22px; font-size: 14px; }
+      .milestones { grid-template-columns: 1fr; }
+      .compare-table { display: none; }
+      .compare-mobile { display: block; }
+      .activities-grid { grid-template-columns: 1fr; }
+      .treatment-grid { grid-template-columns: 1fr; }
+      .numbered-list li { padding-left: 46px; }
+      .final-callout { padding: 22px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="back-home" href="meniscos.html" title="Volver a Meniscos">&larr; Volver</a>
+    <div class="header-label">Gu&iacute;a del paciente</div>
+    <h1>Lesiones<br><em>Meniscales</em></h1>
+    <p>Anatom&iacute;a, tipos de lesiones y opciones de tratamiento: todo lo que necesitas saber sobre los meniscos de tu rodilla.</p>
+  </header>
+
+  <!-- SECTION NAV -->
+  <nav class="section-nav" id="section-nav" aria-label="Secciones de la gu&iacute;a">
+    <div class="nav-pills">
+      <button class="nav-pill active" data-target="sec-intro">Introducci&oacute;n</button>
+      <button class="nav-pill" data-target="sec-hospital">Hospital</button>
+      <button class="nav-pill" data-target="sec-heparina">Heparina</button>
+      <button class="nav-pill" data-target="sec-recuperacion">Recuperaci&oacute;n</button>
+      <button class="nav-pill" data-target="sec-expectativas">Expectativas</button>
+      <button class="nav-pill" data-target="sec-claves">8 claves</button>
+      <button class="nav-pill" data-target="sec-alarma">Alarma</button>
+      <button class="nav-pill" data-target="sec-faq">FAQ</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- 1. INTRODUCCIÓN -->
+    <details class="info-section" id="sec-intro" open>
+      <summary>
+        <span class="info-icon">&#129513;</span>
+        <span class="info-title">Introducci&oacute;n</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>Los <strong>meniscos</strong> son dos estructuras de fibrocart&iacute;lago con forma de media luna que se encuentran dentro de la rodilla, uno en la parte interna (menisco medial) y otro en la externa (menisco lateral). Act&uacute;an como &laquo;amortiguadores&raquo; naturales de la articulaci&oacute;n y son fundamentales para su correcto funcionamiento.</p>
+
+        <h3>&iquest;Para qu&eacute; sirven los meniscos?</h3>
+        <p>Cada vez que caminas, subes escaleras o practicas deporte, tus meniscos trabajan. Sus funciones principales son:</p>
+        <ul>
+          <li><strong>Distribuir la carga:</strong> Reparten las fuerzas que recibe la rodilla. En extensi&oacute;n, absorben alrededor del 50% de la carga; al flexionar 90&deg;, hasta el 85%.</li>
+          <li><strong>Amortiguar impactos:</strong> Protegen el cart&iacute;lago articular de los golpes repetitivos.</li>
+          <li><strong>Dar estabilidad:</strong> Contribuyen a mantener la rodilla centrada y estable.</li>
+          <li><strong>Lubricar la articulaci&oacute;n:</strong> Ayudan a que el l&iacute;quido sinovial se distribuya correctamente.</li>
+          <li><strong>Propiocepci&oacute;n:</strong> Env&iacute;an informaci&oacute;n al cerebro sobre la posici&oacute;n de la rodilla.</li>
+        </ul>
+
+        <img class="info-img medium" src="img/vascularizacion-menisco.png" alt="Vascularizaci&oacute;n del menisco: zona roja-roja (perif&eacute;rica, bien vascularizada), zona roja-blanca (intermedia) y zona blanca-blanca (central, sin riego)" />
+        <p class="info-img-caption">Vascularizaci&oacute;n del menisco</p>
+        <div class="img-legend">
+          <div class="img-legend-title">Leyenda</div>
+          <div class="img-legend-grid">
+            <span class="img-legend-key">Red-red zone</span>
+            <span class="img-legend-val">Zona roja-roja (perif&eacute;rica) &mdash; buena vascularizaci&oacute;n, mejor capacidad de cicatrizaci&oacute;n</span>
+            <span class="img-legend-key">Red-white zone</span>
+            <span class="img-legend-val">Zona roja-blanca (intermedia) &mdash; vascularizaci&oacute;n parcial</span>
+            <span class="img-legend-key">White-white zone</span>
+            <span class="img-legend-val">Zona blanca-blanca (central) &mdash; sin riego sangu&iacute;neo, dif&iacute;cil cicatrizaci&oacute;n</span>
+          </div>
+        </div>
+
+        <h3>Zonas del menisco y vascularizaci&oacute;n</h3>
+        <p>El menisco no recibe la misma cantidad de sangre en toda su extensi&oacute;n. Esto es importante porque la <strong>capacidad de cicatrizaci&oacute;n</strong> depende directamente del aporte sangu&iacute;neo:</p>
+        <ul>
+          <li><strong>Zona roja-roja (perif&eacute;rica):</strong> Bien vascularizada. Las lesiones en esta zona tienen <strong>buena capacidad de curaci&oacute;n</strong> y son las mejores candidatas para una reparaci&oacute;n (sutura).</li>
+          <li><strong>Zona roja-blanca (intermedia):</strong> Vascularizaci&oacute;n parcial. La cicatrizaci&oacute;n es posible, aunque menos predecible.</li>
+          <li><strong>Zona blanca-blanca (central):</strong> Pr&aacute;cticamente sin aporte sangu&iacute;neo. Las roturas aqu&iacute; tienen dif&iacute;cil curaci&oacute;n y habitualmente requieren resecci&oacute;n parcial.</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Preservar el menisco</div>
+          <p>Hoy en d&iacute;a, la tendencia cient&iacute;fica es <strong>conservar todo el menisco posible</strong>. Extirpar tejido meniscal altera la biomec&aacute;nica de la rodilla y puede acelerar el desgaste del cart&iacute;lago. Por eso, siempre que la lesi&oacute;n y su localizaci&oacute;n lo permitan, la primera opci&oacute;n es reparar (suturar) el menisco.</p>
+        </div>
+
+        <h3>Tipos de lesiones meniscales</h3>
+        <p>Las roturas de menisco se clasifican seg&uacute;n su origen y su forma:</p>
+        <p><strong>Seg&uacute;n su origen:</strong></p>
+        <ul>
+          <li><strong>Traum&aacute;ticas:</strong> Asociadas a un mecanismo claro de lesi&oacute;n (giro brusco, ca&iacute;da, torcedura). Frecuentes en personas j&oacute;venes y deportistas.</li>
+          <li><strong>Degenerativas:</strong> Se producen por desgaste progresivo del tejido meniscal, sin un traumatismo claro. M&aacute;s habituales a partir de los 40&ndash;50 a&ntilde;os.</li>
+        </ul>
+        <p><strong>Seg&uacute;n el patr&oacute;n de rotura:</strong></p>
+        <ul>
+          <li><strong>Longitudinales / verticales:</strong> Siguen la direcci&oacute;n de las fibras del menisco. Son las m&aacute;s habituales en lesiones traum&aacute;ticas y las que mejor se suturan.</li>
+          <li><strong>En asa de cubo:</strong> Un tipo especial de rotura longitudinal en la que un fragmento se desplaza hacia el centro de la rodilla, pudiendo provocar un <strong>bloqueo articular</strong>.</li>
+          <li><strong>Radiales:</strong> Van desde el borde libre hacia la periferia, cortando las fibras de forma perpendicular.</li>
+          <li><strong>Horizontales:</strong> Dividen el menisco en una capa superior y otra inferior. M&aacute;s t&iacute;picas de lesiones degenerativas.</li>
+          <li><strong>Complejas:</strong> Combinan varios patrones. Habituales en meniscos degenerativos.</li>
+          <li><strong>Lesiones de ra&iacute;z meniscal:</strong> Afectan a la inserci&oacute;n del menisco en el hueso. Funcionalmente equivalen a perder el menisco, por lo que su reparaci&oacute;n es importante.</li>
+        </ul>
+
+        <img class="info-img medium" src="img/lesionesmeniscales.png" alt="Tipos de roturas meniscales vistas desde arriba de la tibia: asa de cubo, pico de loro, flap, degenerativa, horizontal, compleja, longitudinal y radial" />
+        <p class="info-img-caption">Tipos de roturas meniscales</p>
+        <div class="img-legend">
+          <div class="img-legend-title">Leyenda</div>
+          <div class="img-legend-grid">
+            <span class="img-legend-key">A</span>
+            <span class="img-legend-val">Asa de cubo</span>
+            <span class="img-legend-key">B</span>
+            <span class="img-legend-val">Pico de loro</span>
+            <span class="img-legend-key">C</span>
+            <span class="img-legend-val">Rotura en flap / solapa</span>
+            <span class="img-legend-key">D</span>
+            <span class="img-legend-val">Rotura degenerativa</span>
+            <span class="img-legend-key">E</span>
+            <span class="img-legend-val">Rotura horizontal</span>
+            <span class="img-legend-key">F</span>
+            <span class="img-legend-val">Rotura compleja</span>
+            <span class="img-legend-key">G</span>
+            <span class="img-legend-val">Rotura longitudinal</span>
+            <span class="img-legend-key">H</span>
+            <span class="img-legend-val">Rotura radial</span>
+          </div>
+        </div>
+
+        <h3>Lesiones de ra&iacute;z meniscal</h3>
+        <p>Las <strong>ra&iacute;ces del menisco</strong> son los puntos donde este se ancla al hueso (tibia). Una rotura en la ra&iacute;z impide que el menisco distribuya las cargas correctamente, lo que equivale funcionalmente a no tener menisco.</p>
+        <p>Estas lesiones son especialmente relevantes porque:</p>
+        <ul>
+          <li>Si no se tratan, pueden <strong>acelerar el desgaste del cart&iacute;lago</strong> y favorecer la artrosis.</li>
+          <li>La reparaci&oacute;n quir&uacute;rgica (reinserci&oacute;n de la ra&iacute;z con t&uacute;nel &oacute;seo) ofrece buenos resultados cuando se realiza en pacientes seleccionados y sin artrosis avanzada.</li>
+          <li>La ra&iacute;z posterior del menisco medial es la localizaci&oacute;n m&aacute;s frecuente. Son lesiones m&aacute;s habituales a partir de los 50 a&ntilde;os.</li>
+        </ul>
+
+        <img class="info-img medium" src="img/raiz-reinsercion.png" alt="Reinserci&oacute;n de ra&iacute;z meniscal posterior mediante t&uacute;nel &oacute;seo en la tibia" />
+        <p class="info-img-caption">Reinserci&oacute;n de ra&iacute;z meniscal con t&uacute;nel &oacute;seo tibial</p>
+
+        <h3>Opciones de tratamiento quir&uacute;rgico</h3>
+        <p>Cuando una lesi&oacute;n meniscal requiere cirug&iacute;a, esta se realiza habitualmente mediante <strong>artroscopia</strong> (c&aacute;mara y peque&ntilde;os instrumentos a trav&eacute;s de dos peque&ntilde;as incisiones). Las principales opciones son:</p>
+        <div class="treatment-grid">
+          <div class="treatment-card">
+            <div class="treatment-card-title">Meniscectom&iacute;a parcial</div>
+            <p>Se retira &uacute;nicamente la parte rota e inestable del menisco, conservando la mayor cantidad de tejido sano posible.</p>
+            <ul>
+              <li>Indicada en roturas degenerativas o en zonas sin riego sangu&iacute;neo</li>
+              <li>Recuperaci&oacute;n m&aacute;s r&aacute;pida (semanas)</li>
+              <li>Apoyo inmediato tras la cirug&iacute;a</li>
+            </ul>
+          </div>
+          <div class="treatment-card">
+            <div class="treatment-card-title">Sutura meniscal</div>
+            <p>Se repara la rotura mediante suturas, preservando el menisco completo. Es la opci&oacute;n preferida siempre que sea t&eacute;cnicamente posible.</p>
+            <ul>
+              <li>Indicada en roturas traum&aacute;ticas en zona vascular</li>
+              <li>Recuperaci&oacute;n m&aacute;s lenta (meses)</li>
+              <li>Restricci&oacute;n de carga y flexi&oacute;n las primeras semanas</li>
+            </ul>
+          </div>
+          <div class="treatment-card">
+            <div class="treatment-card-title">Reinserci&oacute;n de ra&iacute;z</div>
+            <p>Se vuelve a fijar la ra&iacute;z del menisco al hueso mediante un t&uacute;nel &oacute;seo y suturas. Restaura la funci&oacute;n biomec&aacute;nica del menisco.</p>
+            <ul>
+              <li>Indicada en roturas de ra&iacute;z sin artrosis avanzada</li>
+              <li>Recuperaci&oacute;n similar a la sutura meniscal</li>
+              <li>Evita la p&eacute;rdida funcional del menisco</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-amber">
+          <div class="callout-title">Importante</div>
+          <p>No todas las lesiones meniscales necesitan cirug&iacute;a. Muchas lesiones degenerativas responden bien al <strong>tratamiento conservador</strong> (rehabilitaci&oacute;n, antiinflamatorios, fortalecimiento muscular). El consenso ESSKA recomienda un periodo de tratamiento conservador de 3 a 6 meses antes de considerar la cirug&iacute;a en lesiones degenerativas.</p>
+        </div>
+
+        <h3>Posibles complicaciones</h3>
+        <p>La artroscopia de rodilla es una cirug&iacute;a segura con una tasa de complicaciones baja. No obstante, como en cualquier intervenci&oacute;n, pueden presentarse:</p>
+        <ul>
+          <li><strong>Infecci&oacute;n:</strong> Rara (menos del 1%). Se previene con antibi&oacute;ticos y t&eacute;cnica est&eacute;ril.</li>
+          <li><strong>Trombosis venosa profunda (TVP):</strong> Poco frecuente en artroscopia aislada. Se puede prevenir con movilizaci&oacute;n precoz y, en algunos casos, heparina.</li>
+          <li><strong>Derrame articular persistente:</strong> Hinchaz&oacute;n que puede durar semanas, especialmente tras sutura meniscal.</li>
+          <li><strong>Rigidez articular:</strong> Se previene con rehabilitaci&oacute;n adecuada.</li>
+          <li><strong>Re-rotura de la sutura:</strong> Puede ocurrir en un 10&ndash;20% de las reparaciones meniscales, dependiendo del tipo y localizaci&oacute;n de la lesi&oacute;n.</li>
+          <li><strong>Lesi&oacute;n neurovascular:</strong> Excepcional.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- 2. ESTANCIA HOSPITALARIA -->
+    <details class="info-section" id="sec-hospital">
+      <summary>
+        <span class="info-icon">&#127973;</span>
+        <span class="info-title">Estancia hospitalaria</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>La cirug&iacute;a artrosc&oacute;pica de menisco es habitualmente un procedimiento <strong>ambulatorio</strong> o con una estancia hospitalaria muy corta (24 horas como m&aacute;ximo).</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">D&iacute;a de la intervenci&oacute;n</div>
+            <div class="timeline-text">Ingresar&aacute;s en ayunas. La cirug&iacute;a suele durar entre 30 y 60 minutos, dependiendo de si se realiza una meniscectom&iacute;a o una sutura. Se realiza con anestesia raquianestesia o general, seg&uacute;n el caso. Tras la intervenci&oacute;n pasar&aacute;s a la sala de recuperaci&oacute;n.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Tras la cirug&iacute;a</div>
+            <div class="timeline-text"><strong>Meniscectom&iacute;a:</strong> Podr&aacute;s apoyar la pierna desde el primer momento con ayuda de muletas. Habitualmente alta el mismo d&iacute;a o al d&iacute;a siguiente.<br>
+            <strong>Sutura meniscal / reinserci&oacute;n de ra&iacute;z:</strong> Saldr&aacute;s con una rodillera bloqueada en extensi&oacute;n y muletas. El apoyo ser&aacute; parcial o nulo seg&uacute;n la indicaci&oacute;n de tu cirujano. Alta habitualmente al d&iacute;a siguiente.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Al alta</div>
+            <div class="timeline-text">Recibir&aacute;s instrucciones espec&iacute;ficas seg&uacute;n el tipo de cirug&iacute;a realizada, incluyendo medicaci&oacute;n analg&eacute;sica, antiinflamatoria y, en algunos casos, tratamiento anticoagulante.</div>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <h3>Tratamiento al alta</h3>
+        <p>Se te pautar&aacute; medicaci&oacute;n analg&eacute;sica y antiinflamatoria. En el caso de la sutura meniscal, es habitual prescribir <strong>tratamiento anticoagulante</strong> (heparina) durante el periodo de restricci&oacute;n de carga.</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Calendario de revisiones</div>
+          <p>Habitualmente: a la semana (revisi&oacute;n de heridas), al mes, a los 3 meses y a los 6 meses. En suturas meniscales, el seguimiento suele ser m&aacute;s estrecho.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- 3. HEPARINA -->
+    <details class="info-section" id="sec-heparina">
+      <summary>
+        <span class="info-icon">&#128137;</span>
+        <span class="info-title">Administraci&oacute;n de heparina</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>En algunos casos, especialmente tras sutura meniscal o reinserci&oacute;n de ra&iacute;z (donde la carga est&aacute; limitada), se prescribe heparina de bajo peso molecular para prevenir trombosis. La duraci&oacute;n habitual es de <strong>15 a 30 d&iacute;as</strong>, dependiendo del tiempo que se mantenga la restricci&oacute;n de carga, salvo indicaci&oacute;n diferente de tu cirujano.</p>
+        <p>Tras una meniscectom&iacute;a parcial simple, con apoyo inmediato, habitualmente <strong>no es necesaria</strong> la heparina.</p>
+        <p>La heparina se aplica por v&iacute;a subcut&aacute;nea, preferentemente en el abdomen o la parte externa del muslo:</p>
+
+        <!-- Imagen compartida con PTR -->
+        <img class="info-img small" src="img/heparina-inyeccion.jpg" alt="Paciente administr&aacute;ndose una inyecci&oacute;n subcut&aacute;nea de heparina en el abdomen" />
+        <p class="info-img-caption">Administraci&oacute;n subcut&aacute;nea de heparina</p>
+        <ol class="steps-list">
+          <li>L&aacute;vate las manos antes y despu&eacute;s de la inyecci&oacute;n.</li>
+          <li>Limpia la piel con una gasa con alcohol.</li>
+          <li>Pellizca la piel e introduce la aguja en &aacute;ngulo recto (90&deg;).</li>
+          <li>Inyecta lentamente y <strong>no masajees</strong> tras la aplicaci&oacute;n.</li>
+          <li>Alterna los lados cada d&iacute;a.</li>
+        </ol>
+
+        <div class="callout callout-amber">
+          <div class="callout-title">Atenci&oacute;n</div>
+          <p>Si aparecen hematomas grandes, sangrado inusual o dolor persistente en la zona de punci&oacute;n, contacta con tu m&eacute;dico.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- 4. RECUPERACIÓN MES A MES -->
+    <details class="info-section" id="sec-recuperacion">
+      <summary>
+        <span class="info-icon">&#128200;</span>
+        <span class="info-title">Recuperaci&oacute;n seg&uacute;n el tipo de cirug&iacute;a</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>La recuperaci&oacute;n var&iacute;a significativamente seg&uacute;n el procedimiento realizado. A continuaci&oacute;n se muestran los hitos principales de cada uno:</p>
+
+        <h3>Meniscectom&iacute;a parcial</h3>
+        <div class="milestones">
+          <div class="milestone">
+            <div class="milestone-label">0 &ndash; 1 semana</div>
+            <ul>
+              <li>Apoyo tolerado con muletas desde el primer d&iacute;a</li>
+              <li>Hinchaz&oacute;n y molestias moderadas</li>
+              <li>Hielo, elevaci&oacute;n y ejercicios suaves de movilidad</li>
+              <li>Objetivo: flexi&oacute;n progresiva hasta 90&deg;</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">1 &ndash; 2 semanas</div>
+            <ul>
+              <li>Retiro de muletas seg&uacute;n tolerancia</li>
+              <li>Marcha sin cojera como objetivo</li>
+              <li>Inicio de fortalecimiento de cu&aacute;driceps</li>
+              <li>Movilidad completa sin dolor</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">2 &ndash; 8 semanas</div>
+            <ul>
+              <li>Progresi&oacute;n de ejercicios de fuerza y equilibrio</li>
+              <li>Bicicleta est&aacute;tica, el&iacute;ptica, nataci&oacute;n</li>
+              <li>Actividades cotidianas normales</li>
+              <li>Inicio de carrera suave (semana 4&ndash;6)</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">2 &ndash; 3 meses</div>
+            <ul>
+              <li>Retorno deportivo progresivo</li>
+              <li>Ejercicios de agilidad y pliometr&iacute;a</li>
+              <li>Vuelta al deporte completo si se cumplen criterios funcionales</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <h3>Sutura meniscal / Reinserci&oacute;n de ra&iacute;z</h3>
+        <div class="milestones">
+          <div class="milestone">
+            <div class="milestone-label">0 &ndash; 3 semanas</div>
+            <ul>
+              <li>Rodillera bloqueada y muletas</li>
+              <li>Carga parcial o nula seg&uacute;n indicaci&oacute;n</li>
+              <li>Flexi&oacute;n limitada hasta 90&deg;</li>
+              <li>Ejercicios de cu&aacute;driceps en extensi&oacute;n</li>
+              <li>Hielo, compresi&oacute;n y elevaci&oacute;n</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">3 &ndash; 6 semanas</div>
+            <ul>
+              <li>Progresi&oacute;n de la flexi&oacute;n (objetivo: 120&deg;)</li>
+              <li>Carga parcial progresiva</li>
+              <li>Bicicleta est&aacute;tica suave</li>
+              <li>Fortalecimiento muscular progresivo</li>
+              <li>Valorar retirada de rodillera (semana 6)</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">6 semanas &ndash; 3 meses</div>
+            <ul>
+              <li>Movilidad completa</li>
+              <li>Carga total sin muletas</li>
+              <li>Marcha normalizada</li>
+              <li>Ejercicios de propiocepci&oacute;n y equilibrio</li>
+              <li>Bicicleta, el&iacute;ptica, nataci&oacute;n</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">3 &ndash; 6 meses</div>
+            <ul>
+              <li>Inicio de carrera progresiva (3&ndash;4 meses)</li>
+              <li>Ejercicios de agilidad y pliometr&iacute;a</li>
+              <li>Retorno al deporte (5&ndash;6 meses)</li>
+              <li>Criterios funcionales para el alta deportiva</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Cada caso es diferente</div>
+          <p>Los plazos indicados son orientativos. Tu cirujano adaptar&aacute; el protocolo a tu situaci&oacute;n concreta, teniendo en cuenta el tipo de lesi&oacute;n, la calidad de la reparaci&oacute;n, la presencia de lesiones asociadas y tu nivel de actividad.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- 5. EXPECTATIVAS VS REALIDAD -->
+    <details class="info-section" id="sec-expectativas">
+      <summary>
+        <span class="info-icon">&#128202;</span>
+        <span class="info-title">Expectativas vs. Realidad</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <!-- Desktop table -->
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Lo que muchos esperan</th>
+              <th>La realidad cl&iacute;nica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&laquo;Me opero y en una semana estoy haciendo deporte.&raquo;</td>
+              <td>La meniscectom&iacute;a permite una vuelta r&aacute;pida (6&ndash;8 semanas), pero la sutura requiere 4&ndash;6 meses para volver al deporte de forma segura.</td>
+            </tr>
+            <tr>
+              <td>&laquo;Si me quitan el menisco no pasa nada.&raquo;</td>
+              <td>Perder tejido meniscal aumenta la presi&oacute;n sobre el cart&iacute;lago. Por eso hoy se busca conservar el m&aacute;ximo tejido posible.</td>
+            </tr>
+            <tr>
+              <td>&laquo;La sutura siempre cicatriza.&raquo;</td>
+              <td>La mayor&iacute;a de las suturas evolucionan bien, pero existe un 10&ndash;20% de casos en los que la reparaci&oacute;n puede fallar.</td>
+            </tr>
+            <tr>
+              <td>&laquo;Si tengo una rotura de menisco en la resonancia, necesito cirug&iacute;a seguro.&raquo;</td>
+              <td>No siempre. Muchas lesiones degenerativas responden bien al tratamiento conservador. La cirug&iacute;a se reserva para s&iacute;ntomas mec&aacute;nicos persistentes.</td>
+            </tr>
+            <tr>
+              <td>&laquo;Despu&eacute;s de operarme la rodilla quedar&aacute; como nueva.&raquo;</td>
+              <td>El objetivo es reducir los s&iacute;ntomas y proteger la articulaci&oacute;n a largo plazo. El resultado final depende del tipo de lesi&oacute;n y del estado previo del cart&iacute;lago.</td>
+            </tr>
+            <tr>
+              <td>&laquo;Tras una sutura, la recuperaci&oacute;n es igual que tras una meniscectom&iacute;a.&raquo;</td>
+              <td>No. La sutura necesita protegerse para que cicatrice: muletas, rodillera y restricci&oacute;n de carga durante semanas. La meniscectom&iacute;a permite apoyo inmediato.</td>
+            </tr>
+            <tr>
+              <td>&laquo;A mi edad ya no merece la pena reparar el menisco.&raquo;</td>
+              <td>La edad por s&iacute; sola no es contraindicaci&oacute;n. Lo que importa es el estado del cart&iacute;lago, la localizaci&oacute;n de la lesi&oacute;n y tu nivel de actividad.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Mobile cards -->
+        <div class="compare-mobile">
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;Me opero y en una semana estoy haciendo deporte.&raquo;</div>
+            <div class="compare-reality">La meniscectom&iacute;a permite una vuelta r&aacute;pida (6&ndash;8 semanas), pero la sutura requiere 4&ndash;6 meses para volver al deporte de forma segura.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;Si me quitan el menisco no pasa nada.&raquo;</div>
+            <div class="compare-reality">Perder tejido meniscal aumenta la presi&oacute;n sobre el cart&iacute;lago. Por eso hoy se busca conservar el m&aacute;ximo tejido posible.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;La sutura siempre cicatriza.&raquo;</div>
+            <div class="compare-reality">La mayor&iacute;a de las suturas evolucionan bien, pero existe un 10&ndash;20% de casos en los que la reparaci&oacute;n puede fallar.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;Si tengo una rotura de menisco en la resonancia, necesito cirug&iacute;a seguro.&raquo;</div>
+            <div class="compare-reality">No siempre. Muchas lesiones degenerativas responden bien al tratamiento conservador. La cirug&iacute;a se reserva para s&iacute;ntomas mec&aacute;nicos persistentes.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;Despu&eacute;s de operarme la rodilla quedar&aacute; como nueva.&raquo;</div>
+            <div class="compare-reality">El objetivo es reducir los s&iacute;ntomas y proteger la articulaci&oacute;n a largo plazo. El resultado final depende del tipo de lesi&oacute;n y del estado previo del cart&iacute;lago.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;Tras una sutura, la recuperaci&oacute;n es igual que tras una meniscectom&iacute;a.&raquo;</div>
+            <div class="compare-reality">No. La sutura necesita protegerse para que cicatrice: muletas, rodillera y restricci&oacute;n de carga durante semanas. La meniscectom&iacute;a permite apoyo inmediato.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;A mi edad ya no merece la pena reparar el menisco.&raquo;</div>
+            <div class="compare-reality">La edad por s&iacute; sola no es contraindicaci&oacute;n. Lo que importa es el estado del cart&iacute;lago, la localizaci&oacute;n de la lesi&oacute;n y tu nivel de actividad.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 6. 8 COSAS QUE DEBES SABER -->
+    <details class="info-section" id="sec-claves">
+      <summary>
+        <span class="info-icon">&#128172;</span>
+        <span class="info-title">8 cosas que debes saber</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <ol class="numbered-list">
+          <li>El menisco es <strong>fundamental para la salud de tu rodilla</strong>. Perder tejido meniscal aumenta el riesgo de artrosis a largo plazo, por eso siempre intentamos conservar el m&aacute;ximo posible.</li>
+          <li>No todas las roturas de menisco necesitan cirug&iacute;a. Las <strong>lesiones degenerativas</strong> a menudo mejoran con rehabilitaci&oacute;n, fortalecimiento muscular y modificaci&oacute;n de actividades.</li>
+          <li>La recuperaci&oacute;n tras una meniscectom&iacute;a es mucho m&aacute;s r&aacute;pida que tras una sutura, pero <strong>la sutura protege tu rodilla a largo plazo</strong>.</li>
+          <li>Si te han realizado una sutura, <strong>respetar los plazos de carga y flexi&oacute;n</strong> es esencial para que el menisco cicatrice correctamente. No te precipites.</li>
+          <li>Las lesiones de ra&iacute;z meniscal son especialmente importantes. Funcionalmente, equivalen a no tener menisco, por lo que <strong>repararlas puede prevenir la artrosis precoz</strong>.</li>
+          <li>El <strong>fortalecimiento del cu&aacute;driceps y los isquiotibiales</strong> es clave en la recuperaci&oacute;n. Una musculatura fuerte protege la rodilla y compensa parcialmente la funci&oacute;n del menisco.</li>
+          <li>Los deportes con giros, pivotaje y cambios de direcci&oacute;n son los de mayor riesgo para el menisco. Un buen <strong>programa de prevenci&oacute;n</strong> (calentamiento neuromuscular) puede reducir el riesgo de lesi&oacute;n.</li>
+          <li>Mantener un <strong>peso saludable</strong> es una de las mejores cosas que puedes hacer por tus meniscos y por tu rodilla en general. Cada kilo de m&aacute;s multiplica la carga sobre la articulaci&oacute;n.</li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- 7. SIGNOS DE ALARMA -->
+    <details class="info-section" id="sec-alarma">
+      <summary>
+        <span class="info-icon">&#9888;&#65039;</span>
+        <span class="info-title">Signos de alarma</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>Durante tu recuperaci&oacute;n, contacta con tu cirujano o <strong>acude a urgencias</strong> si aparecen:</p>
+        <div class="callout callout-danger">
+          <div class="callout-title">Acude a urgencias</div>
+          <ul>
+            <li>Fiebre superior a 38 &deg;C, especialmente si persiste varios d&iacute;as.</li>
+            <li>Herida con enrojecimiento progresivo, secreci&oacute;n o mal olor.</li>
+            <li>Hinchaz&oacute;n brusca y dolor en el gemelo (signo de posible trombosis).</li>
+            <li>Dolor intenso que no cede con la medicaci&oacute;n pautada.</li>
+            <li>Bloqueo de la rodilla (no puedes extenderla o flexionarla).</li>
+            <li>Dolor tor&aacute;cico, palpitaciones o dificultad para respirar.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <!-- 8. FAQ -->
+    <details class="info-section" id="sec-faq">
+      <summary>
+        <span class="info-icon">&#10067;</span>
+        <span class="info-title">Preguntas frecuentes</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Cu&aacute;nto tiempo estar&eacute; con muletas?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Depende del procedimiento. Tras una meniscectom&iacute;a, las muletas se usan unos d&iacute;as por comodidad. Tras una sutura meniscal, habitualmente entre 3 y 6 semanas seg&uacute;n la indicaci&oacute;n de tu cirujano.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Puedo conducir despu&eacute;s de la cirug&iacute;a?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Tras meniscectom&iacute;a de rodilla izquierda con coche autom&aacute;tico, a partir de la semana 1&ndash;2. Si es rodilla derecha o llevas rodillera, espera a que tu cirujano te autorice. Tras sutura meniscal, generalmente a las 4&ndash;6 semanas.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Podr&eacute; volver a hacer deporte?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">En la mayor&iacute;a de los casos, s&iacute;. Tras meniscectom&iacute;a, la vuelta al deporte suele ser a las 6&ndash;12 semanas. Tras sutura, a los 4&ndash;6 meses. Tu cirujano te guiar&aacute; con criterios funcionales espec&iacute;ficos antes de darte el alta deportiva.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;La resonancia dice que tengo rotura de menisco, &iquest;me tengo que operar?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">No necesariamente. La resonancia muestra la imagen, pero lo que determina el tratamiento es tu <strong>cl&iacute;nica</strong>: dolor, bloqueos, derrame, limitaci&oacute;n funcional. Muchas lesiones degenerativas se manejan inicialmente con rehabilitaci&oacute;n. La cirug&iacute;a se plantea si los s&iacute;ntomas persisten tras un periodo de tratamiento conservador.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Qu&eacute; pasa si la sutura falla?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Si la sutura no cicatriza y los s&iacute;ntomas reaparecen, puede ser necesaria una segunda artroscopia. Dependiendo de la situaci&oacute;n, se puede intentar una nueva reparaci&oacute;n o realizar una meniscectom&iacute;a parcial de la zona afectada.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Necesitar&eacute; rodillera?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Tras meniscectom&iacute;a, habitualmente no es necesaria. Tras sutura meniscal o reinserci&oacute;n de ra&iacute;z, se utiliza una rodillera bloqueada en extensi&oacute;n durante las primeras 3&ndash;6 semanas para proteger la reparaci&oacute;n.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;El menisco se regenera?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">El menisco tiene capacidad de cicatrizaci&oacute;n limitada, principalmente en la zona perif&eacute;rica (con mayor riego sangu&iacute;neo). No se &laquo;regenera&raquo; como tal: lo que se extirpa no vuelve a crecer. Por eso es tan importante conservar el m&aacute;ximo tejido posible.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Qu&eacute; es una reinserci&oacute;n de ra&iacute;z meniscal?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Es una t&eacute;cnica quir&uacute;rgica que consiste en volver a fijar la ra&iacute;z del menisco al hueso. Se realiza mediante un peque&ntilde;o t&uacute;nel en la tibia por el que se pasan las suturas que anclan el menisco. El objetivo es restaurar la funci&oacute;n de amortiguaci&oacute;n y distribuci&oacute;n de cargas del menisco.</div>
+        </details>
+      </div>
+    </details>
+
+    <!-- FINAL CALLOUT -->
+    <div class="final-callout">
+      <h3>Recuerda</h3>
+      <p>Cada lesi&oacute;n meniscal es diferente. La clave es un diagn&oacute;stico adecuado, un tratamiento personalizado y, si hay cirug&iacute;a, una <strong>rehabilitaci&oacute;n constante y paciente</strong>. Conf&iacute;a en el proceso y en las indicaciones de tu cirujano.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Esta informaci&oacute;n es orientativa. Sigue siempre las indicaciones de tu cirujano.</p>
+    <p class="sig">Dr. Mart&iacute;n Ant&uacute;nez &middot; Cirug&iacute;a Ortop&eacute;dica y Traumatolog&iacute;a &middot; Especialista en Rodilla</p>
+  </footer>
+
+  <script>
+    // ─────────────────────────────────────────────
+    //  SECTION NAV — scroll to + open
+    // ─────────────────────────────────────────────
+    document.querySelectorAll('.nav-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var targetId = this.dataset.target;
+        var section = document.getElementById(targetId);
+        if (!section) return;
+
+        // Open the details element
+        section.open = true;
+
+        // Scroll into view
+        var navHeight = document.getElementById('section-nav').offsetHeight;
+        var top = section.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+
+        // Update active pill
+        document.querySelectorAll('.nav-pill').forEach(function(p) { p.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+
+    // ─────────────────────────────────────────────
+    //  SCROLL SPY — highlight active pill
+    // ─────────────────────────────────────────────
+    var sections = document.querySelectorAll('.info-section');
+    var pills = document.querySelectorAll('.nav-pill');
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          pills.forEach(function(p) {
+            p.classList.toggle('active', p.dataset.target === id);
+          });
+          // Auto-scroll the pill into view
+          var activePill = document.querySelector('.nav-pill[data-target="' + id + '"]');
+          if (activePill) {
+            activePill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function(s) { observer.observe(s); });
+
+    // ─────────────────────────────────────────────
+    //  NAV SHADOW on scroll
+    // ─────────────────────────────────────────────
+    var navEl = document.getElementById('section-nav');
+    window.addEventListener('scroll', function() {
+      navEl.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // ─────────────────────────────────────────────
+    //  LOCALHOST DETECTION
+    // ─────────────────────────────────────────────
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+      document.querySelectorAll('a[href^="https://jmacot.github.io"]').forEach(function(a) {
+        a.removeAttribute('href');
+        a.style.opacity = '0.4';
+        a.style.pointerEvents = 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
