@@ -90,7 +90,8 @@ Cada patología sigue una estructura de **3 niveles**:
 3. **Misma navegación:** Pills sticky con los mismos nombres de sección
 4. **Datos médicos concordantes:** Si una guía de información menciona un plazo (ej. "conducir a las 6 semanas"), la guía de rehabilitación correspondiente debe decir lo mismo. **Nunca publicar datos contradictorios entre la página de información y la de rehabilitación**
 5. **Tono consistente:** Tutear al paciente, frases cortas, bullet points, negrita para lo importante
-6. **Imágenes:** Todas las guías deben tener al menos 1-2 imágenes ilustrativas. Formato `.jpg`, guardadas en `img/` con nombre descriptivo (`{patologia}-{descripcion}.jpg`)
+6. **Imágenes:** Todas las guías deben tener al menos 1-2 imágenes ilustrativas. Formato `.jpg` o `.png`, guardadas en `img/` con nombre descriptivo (`{patologia}-{descripcion}.jpg`)
+8. **Imágenes en milestone cards (Recuperación):** Cuando una milestone card incluye una imagen ilustrativa, usar layout `milestone-content` (flex horizontal) con la imagen en un `milestone-aside` a la derecha del texto (width: 300px, max-width: 300px). En móvil (`max-width: 600px`) se apilan verticalmente. **Nunca** apilar la imagen debajo del texto en desktop — queda demasiado espacio en blanco y alarga innecesariamente la card
 7. **Durabilidad/pronóstico:** Siempre usar un tono realista pero positivo. No dar por hecho resultados negativos. Ejemplo: "La mayoría duran más de 20 años" en vez de "Duran 15-20 años"
 
 ---

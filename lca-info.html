@@ -374,6 +374,32 @@
       color: var(--c-rodilla);
       margin-bottom: 8px;
     }
+    .milestone-content {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .milestone-content ul { flex: 1; min-width: 0; }
+    .milestone-aside {
+      flex-shrink: 0;
+      width: 300px;
+      text-align: center;
+    }
+    .milestone-aside .info-img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      margin: 0;
+    }
+    .milestone-aside .info-img-caption {
+      font-size: 10px;
+      margin-top: 4px;
+    }
+    @media (max-width: 600px) {
+      .milestone-content { flex-direction: column; }
+      .milestone-aside { width: 100%; }
+      .milestone-aside .info-img { max-width: 200px; margin: 0 auto; }
+    }
     .milestone ul {
       list-style: none;
       padding: 0;
@@ -634,6 +660,7 @@
     @media (max-width: 600px) {
       header { padding: 40px 24px 36px; }
       header::before, header::after { display: none; }
+      .info-img.medium, .info-img.small { max-width: 100%; }
       .img-row { flex-direction: column; align-items: center; }
       .img-row .img-col { max-width: 100%; }
       .back-home { padding: 4px 8px; font-size: 10px; top: 10px; left: 10px; }
@@ -697,16 +724,33 @@
         <h3>&iquest;C&oacute;mo se lesiona?</h3>
         <p>La rotura del LCA se produce habitualmente durante movimientos de <strong>pivotaje o torsi&oacute;n</strong> de la rodilla, frecuentes en deportes como f&uacute;tbol, baloncesto o esqu&iacute;. Puede ocurrir por contacto (una entrada o choque) o sin contacto (un giro brusco con el pie fijo en el suelo). En el momento de la lesi&oacute;n, muchos pacientes refieren un &laquo;chasquido&raquo; y una hinchaz&oacute;n inmediata de la rodilla.</p>
 
+        <img class="info-img medium" src="img/mecanismo-lesion.png" alt="Mecanismo de lesi&oacute;n del LCA: valgo de rodilla con rotaci&oacute;n tibial interna y flexi&oacute;n superficial" />
+        <p class="info-img-caption">Mecanismo t&iacute;pico de lesi&oacute;n del LCA: valgo, rotaci&oacute;n tibial interna y flexi&oacute;n de rodilla</p>
+
         <h3>La cirug&iacute;a</h3>
         <p>La reconstrucci&oacute;n del LCA es una intervenci&oacute;n <strong>artrosc&oacute;pica</strong> que consiste en sustituir el ligamento roto por un injerto (tejido que act&uacute;a como nuevo ligamento). La cirug&iacute;a dura aproximadamente <strong>1 hora</strong> y se realiza habitualmente de forma ambulatoria o con una noche de ingreso.</p>
 
+        <div class="img-row">
+          <div class="img-col">
+            <img class="info-img" src="img/artroscopiaknee.png" alt="Cirug&iacute;a artrosc&oacute;pica de rodilla: instrumentos insertados a trav&eacute;s de peque&ntilde;as incisiones" />
+            <p class="info-img-caption">Cirug&iacute;a artrosc&oacute;pica de rodilla</p>
+          </div>
+          <div class="img-col">
+            <img class="info-img" src="img/plastia-lca.png" alt="Plastia del LCA: injerto colocado a trav&eacute;s de t&uacute;neles &oacute;seos en f&eacute;mur y tibia" />
+            <p class="info-img-caption">Plastia del LCA con t&uacute;neles &oacute;seos</p>
+          </div>
+        </div>
+
         <h3>Tipos de injerto</h3>
         <ul>
-          <li><strong>Tend&oacute;n rotuliano (hueso-tend&oacute;n-hueso / HTH):</strong> Considerado el est&aacute;ndar de referencia. Utiliza el tercio central del tend&oacute;n rotuliano con bloques &oacute;seos en cada extremo. Ofrece una fijaci&oacute;n muy s&oacute;lida. Puede causar dolor anterior de rodilla en algunos casos.</li>
+          <li><strong>Tend&oacute;n rotuliano (hueso-tend&oacute;n-hueso / HTH):</strong> Utiliza el tercio central del tend&oacute;n rotuliano con bloques &oacute;seos en cada extremo. Ofrece una fijaci&oacute;n muy s&oacute;lida. Puede causar dolor anterior de rodilla en algunos casos.</li>
           <li><strong>Isquiotibiales (semitendinoso &plusmn; gr&aacute;cilis):</strong> Menor dolor anterior de rodilla que el HTH. Incisi&oacute;n m&aacute;s peque&ntilde;a. Es una de las opciones m&aacute;s utilizadas en la actualidad.</li>
           <li><strong>Tend&oacute;n cuadricipital:</strong> Tendencia creciente en los &uacute;ltimos a&ntilde;os. Injerto resistente con menor dolor en la zona donante que el HTH.</li>
           <li><strong>Aloinjerto (donante):</strong> No genera molestias en la zona donante. Se utiliza principalmente en cirug&iacute;as de revisi&oacute;n o lesiones multiligamentarias. Su integraci&oacute;n biol&oacute;gica es algo m&aacute;s lenta.</li>
         </ul>
+
+        <img class="info-img" src="img/injertos.png" alt="Tipos de injerto para reconstrucci&oacute;n del LCA: tend&oacute;n rotuliano (HTH), isquiotibiales, tend&oacute;n cuadricipital y aloinjerto" />
+        <p class="info-img-caption">Tipos de injerto: tend&oacute;n rotuliano (HTH), isquiotibiales, tend&oacute;n cuadricipital y aloinjerto</p>
 
         <div class="activities-grid">
           <div class="activities-col do">
@@ -763,6 +807,10 @@
             <div class="timeline-label">D&iacute;a de la intervenci&oacute;n</div>
             <div class="timeline-text">Ingresar&aacute;s en ayunas. La cirug&iacute;a artrosc&oacute;pica dura aproximadamente 1 hora. Se realiza con anestesia raqu&iacute;dea o general. Tras la intervenci&oacute;n, pasar&aacute;s a la sala de recuperaci&oacute;n. Se te colocar&aacute; una ortesis de rodilla.</div>
           </div>
+
+          <img class="info-img small" src="img/rodillera.png" alt="Ortesis de rodilla articulada con control de rango de movimiento, utilizada tras la reconstrucci&oacute;n del LCA" />
+          <p class="info-img-caption">Ortesis articulada postoperatoria</p>
+
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-label">1er d&iacute;a postoperatorio</div>
@@ -827,24 +875,36 @@
         <div class="milestones">
           <div class="milestone">
             <div class="milestone-label">0 &ndash; 6 semanas</div>
-            <ul>
-              <li>Control de inflamaci&oacute;n y dolor</li>
-              <li>Recuperar la extensi&oacute;n completa de la rodilla</li>
-              <li>Flexi&oacute;n progresiva hasta 90&deg;</li>
-              <li>Marcha con muletas y ortesis</li>
-              <li>Ejercicios isom&eacute;tricos de cu&aacute;driceps</li>
-              <li>Carga parcial progresiva</li>
-            </ul>
+            <div class="milestone-content">
+              <ul>
+                <li>Control de inflamaci&oacute;n y dolor</li>
+                <li>Recuperar la extensi&oacute;n completa de la rodilla</li>
+                <li>Flexi&oacute;n progresiva hasta 90&deg;</li>
+                <li>Marcha con muletas y ortesis</li>
+                <li>Ejercicios isom&eacute;tricos de cu&aacute;driceps</li>
+                <li>Carga parcial progresiva</li>
+              </ul>
+              <div class="milestone-aside">
+                <img class="info-img small" src="img/elevacion-pierna-recta.png" alt="Paciente realizando ejercicio de elevaci&oacute;n de pierna recta en rehabilitaci&oacute;n postoperatoria" />
+                <p class="info-img-caption">Elevaci&oacute;n de pierna recta</p>
+              </div>
+            </div>
           </div>
           <div class="milestone">
             <div class="milestone-label">6 semanas &ndash; 3 meses</div>
-            <ul>
-              <li>Retirada de muletas y ortesis (seg&uacute;n indicaci&oacute;n)</li>
-              <li>Flexi&oacute;n hasta 120&deg;</li>
-              <li>Bicicleta est&aacute;tica</li>
-              <li>Fortalecimiento muscular progresivo</li>
-              <li>Inicio de ejercicios de propiocepci&oacute;n</li>
-            </ul>
+            <div class="milestone-content">
+              <ul>
+                <li>Retirada de muletas y ortesis (seg&uacute;n indicaci&oacute;n)</li>
+                <li>Flexi&oacute;n hasta 120&deg;</li>
+                <li>Bicicleta est&aacute;tica</li>
+                <li>Fortalecimiento muscular progresivo</li>
+                <li>Inicio de ejercicios de propiocepci&oacute;n</li>
+              </ul>
+              <div class="milestone-aside">
+                <img class="info-img small" src="img/bicicleta.png" alt="Paciente pedaleando en bicicleta est&aacute;tica durante rehabilitaci&oacute;n de rodilla" />
+                <p class="info-img-caption">Bicicleta est&aacute;tica</p>
+              </div>
+            </div>
           </div>
           <div class="milestone">
             <div class="milestone-label">3 &ndash; 6 meses</div>
@@ -1010,13 +1070,6 @@
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
           <div class="faq-answer">Depende del lado operado. Si es rodilla izquierda con coche autom&aacute;tico, habitualmente a las 2&ndash;3 semanas. Si es rodilla derecha, generalmente a las 4&ndash;6 semanas, cuando puedas frenar con seguridad y sin dolor.</div>
-        </details>
-        <details class="faq-item">
-          <summary>
-            <span class="faq-q">&iquest;Necesitar&eacute; ortesis?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="faq-answer">S&iacute;, habitualmente durante las primeras 4&ndash;6 semanas. La ortesis protege el injerto durante la fase inicial de cicatrizaci&oacute;n. Tu cirujano te indicar&aacute; cu&aacute;ndo retirarla.</div>
         </details>
         <details class="faq-item">
           <summary>
