@@ -818,10 +818,53 @@
     }
     footer .sig { font-weight: 600; color: var(--ink); margin-top: 4px; }
 
+    /* ── SECTION IMAGES ── */
+    .info-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      margin: 20px auto;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .info-img.small { max-width: 280px; }
+    .info-img.medium { max-width: 420px; }
+    .info-img-caption {
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: -12px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .phase-card-layout {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .phase-card-content { flex: 1; min-width: 0; }
+    .phase-img-aside {
+      flex-shrink: 0;
+      text-align: center;
+      width: 200px;
+    }
+    .phase-img-aside .info-img {
+      margin: 0 auto 6px;
+      max-width: 100%;
+    }
+    .phase-img-aside .info-img-caption {
+      margin: 0;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       header { padding: 40px 24px 36px; }
       header::before, header::after { display: none; }
+      .info-img.small, .info-img.medium { max-width: 100%; }
+      .phase-card-layout { flex-direction: column; }
+      .phase-img-aside { width: 100%; }
       .back-home { padding: 4px 8px; font-size: 10px; top: 10px; left: 10px; }
 .section-nav { padding: 10px 16px; }
       main { padding: 24px 16px 60px; }
@@ -970,15 +1013,23 @@
         <div class="phase-card">
           <div class="phase-label">Fase 2 &middot; Semanas 1 &ndash; 2</div>
           <div class="phase-title">Recuperar movilidad y patr&oacute;n de marcha</div>
-          <p><strong>Carga:</strong> Retirada progresiva de muletas cuando la marcha sea normal (sin cojear).</p>
-          <p><strong>Objetivos:</strong></p>
-          <ul>
-            <li>Rango de movimiento completo (0&deg; extensi&oacute;n &ndash; flexi&oacute;n m&aacute;xima)</li>
-            <li>Bicicleta est&aacute;tica sin resistencia</li>
-            <li>Ejercicios de equilibrio y propiocepci&oacute;n b&aacute;sica</li>
-            <li>Electroestimulaci&oacute;n (NMES) del cu&aacute;driceps si hay d&eacute;ficit de activaci&oacute;n</li>
-            <li>Sentadillas parciales con apoyo (0&ndash;45&deg;)</li>
-          </ul>
+          <div class="phase-card-layout">
+            <div class="phase-card-content">
+              <p><strong>Carga:</strong> Retirada progresiva de muletas cuando la marcha sea normal (sin cojear).</p>
+              <p><strong>Objetivos:</strong></p>
+              <ul>
+                <li>Rango de movimiento completo (0&deg; extensi&oacute;n &ndash; flexi&oacute;n m&aacute;xima)</li>
+                <li>Bicicleta est&aacute;tica sin resistencia</li>
+                <li>Ejercicios de equilibrio y propiocepci&oacute;n b&aacute;sica</li>
+                <li>Electroestimulaci&oacute;n (NMES) del cu&aacute;driceps si hay d&eacute;ficit de activaci&oacute;n</li>
+                <li>Sentadillas parciales con apoyo (0&ndash;45&deg;)</li>
+              </ul>
+            </div>
+            <div class="phase-img-aside">
+              <img class="info-img" src="img/bicicleta.png" alt="Ejercicio en bicicleta est&aacute;tica sin resistencia" />
+              <span class="info-img-caption">Bicicleta est&aacute;tica sin resistencia</span>
+            </div>
+          </div>
           <span class="phase-goal">&#10003; Meta: rango de movimiento completo, sin derrame</span>
         </div>
 
@@ -1077,16 +1128,24 @@
         <div class="phase-card">
           <div class="phase-label">Fase 2 &middot; Semanas 3 &ndash; 6</div>
           <div class="phase-title">Ganar movilidad y comenzar la carga</div>
-          <p><strong>Carga:</strong> Aumento progresivo del apoyo seg&uacute;n tolerancia. Objetivo: carga completa al final de esta fase.</p>
-          <p><strong>Movilidad:</strong> Progresi&oacute;n gradual hasta 120&deg; de flexi&oacute;n.</p>
-          <p><strong>Ejercicios:</strong></p>
-          <ul>
-            <li>Bicicleta est&aacute;tica (sill&iacute;n alto, sin resistencia)</li>
-            <li>Ejercicios de equilibrio b&aacute;sicos</li>
-            <li>Sentadillas m&iacute;ni (0&ndash;30&deg;) con apoyo</li>
-            <li>Ejercicios en piscina (si la herida est&aacute; cerrada)</li>
-            <li>Estiramiento suave de isquiotibiales y gemelos</li>
-          </ul>
+          <div class="phase-card-layout">
+            <div class="phase-card-content">
+              <p><strong>Carga:</strong> Aumento progresivo del apoyo seg&uacute;n tolerancia. Objetivo: carga completa al final de esta fase.</p>
+              <p><strong>Movilidad:</strong> Progresi&oacute;n gradual hasta 120&deg; de flexi&oacute;n.</p>
+              <p><strong>Ejercicios:</strong></p>
+              <ul>
+                <li>Bicicleta est&aacute;tica (sill&iacute;n alto, sin resistencia)</li>
+                <li>Ejercicios de equilibrio b&aacute;sicos</li>
+                <li>Sentadillas m&iacute;ni (0&ndash;30&deg;) con apoyo</li>
+                <li>Ejercicios en piscina (si la herida est&aacute; cerrada)</li>
+                <li>Estiramiento suave de isquiotibiales y gemelos</li>
+              </ul>
+            </div>
+            <div class="phase-img-aside">
+              <img class="info-img" src="img/bicicleta.png" alt="Ejercicio en bicicleta est&aacute;tica con sill&iacute;n alto" />
+              <span class="info-img-caption">Bicicleta est&aacute;tica (sill&iacute;n alto, sin resistencia)</span>
+            </div>
+          </div>
           <span class="phase-goal">&#10003; Meta: carga completa, 120&deg; flexi&oacute;n, retirada de muletas</span>
         </div>
 
