@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ligamento Cruzado Anterior &middot; Informaci&oacute;n para Pacientes</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <meta name="description" content="Guía completa para pacientes: reconstrucción del ligamento cruzado anterior (LCA), tipos de injerto, recuperación y rehabilitación." />
+  <meta name="theme-color" id="meta-theme" content="#0f172a" />
+  <meta property="og:title" content="Ligamento Cruzado Anterior · Dr Martín Antúnez" />
+  <meta property="og:description" content="Guía completa para pacientes: reconstrucción del ligamento cruzado anterior (LCA), tipos de injerto, recuperación y rehabilitación." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jmacot.github.io/pacientes/lca-info.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #e8edf4;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --ink-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 20px rgba(26,26,26,0.08);
+      --shadow-hover: 0 8px 40px rgba(26,26,26,0.14);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --c-rodilla: #0ea5e9;
+      --c-rodilla-light: #e0f2fe;
+      --c-rodilla-dark: #0369a1;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --amber: #d97706;
+      --amber-light: #fef3c7;
+    }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 56px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -50px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
+      filter: blur(40px);
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: 20%;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.10) 0%, transparent 70%);
+      filter: blur(40px);
+    }
+.back-home {
+      position: absolute; top: 16px; left: 16px;
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      padding: 6px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+      transition: border-color 0.2s, color 0.2s, background 0.2s; z-index: 1;
+    }
+    .back-home:hover { border-color: rgba(255,255,255,0.5); color: white; background: rgba(255,255,255,0.12); }
+
+    .header-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    header p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      max-width: 520px;
+      position: relative;
+    }
+
+/* ── SECTION NAV ── */
+    .section-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg);
+      padding: 12px 32px;
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .section-nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+
+.nav-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .nav-pills::-webkit-scrollbar { display: none; }
+
+    .nav-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-pill:hover { border-color: var(--c-rodilla); color: var(--c-rodilla); }
+    .nav-pill.active { background: var(--c-rodilla); border-color: var(--c-rodilla); color: white; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 32px 80px;
+    }
+
+    /* ── ACCORDION SECTIONS ── */
+    .info-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .info-section:hover { box-shadow: var(--shadow-hover); }
+
+    .info-section summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      list-style: none;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .info-section summary::-webkit-details-marker { display: none; }
+    .info-section summary:hover { background: rgba(14, 165, 233, 0.04); }
+
+.info-icon {
+      font-size: 22px;
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--c-rodilla-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ink);
+      flex: 1;
+    }
+
+    .info-chevron {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      color: var(--ink-muted);
+    }
+    .info-section[open] .info-chevron { transform: rotate(180deg); }
+
+    .info-body {
+      padding: 0 24px 28px;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--ink-muted);
+    }
+    .info-body p { margin-bottom: 14px; }
+    .info-body strong { color: var(--ink); }
+    .info-body ul, .info-body ol { margin: 12px 0; padding-left: 20px; }
+    .info-body li { margin-bottom: 8px; }
+    .info-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 24px 0 12px;
+    }
+    .info-body h3:first-child { margin-top: 0; }
+
+    /* ── SECTION IMAGES ── */
+    .info-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      margin: 20px auto;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .info-img.small { max-width: 280px; }
+    .info-img.medium { max-width: 420px; }
+    .info-img-caption {
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: -12px;
+      margin-bottom: 16px;
+    }
+    .img-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: stretch;
+      margin: 20px 0;
+    }
+    .img-row .img-col {
+      text-align: center;
+      flex: 1 1 0;
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+    }
+    .img-row .img-col .info-img {
+      margin: 0 auto 6px;
+      flex: 1;
+      object-fit: contain;
+    }
+    .img-row .img-col .info-img-caption { margin: 0 0 4px; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 36px;
+      margin: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 13px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: var(--border);
+      border-radius: 1px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -36px; top: 3px;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--c-rodilla);
+      border: 3px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--c-rodilla);
+    }
+    .timeline-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 4px;
+    }
+    .timeline-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+    }
+
+    /* ── STEPS (heparina) ── */
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: step;
+      margin: 16px 0;
+    }
+    .steps-list li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 44px;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .steps-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 0;
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: var(--c-rodilla-light);
+      color: var(--c-rodilla);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── MILESTONE CARDS ── */
+    .milestones {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .milestone {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      border-left: 4px solid var(--c-rodilla);
+    }
+    .milestone:nth-child(2) { border-left-color: #38bdf8; }
+    .milestone:nth-child(3) { border-left-color: #7dd3fc; }
+    .milestone:nth-child(4) { border-left-color: #bae6fd; }
+    .milestone-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 8px;
+    }
+    .milestone ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .milestone li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+    .milestone li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--c-rodilla);
+      opacity: 0.5;
+    }
+
+    /* ── COMPARE TABLE ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+    }
+    .compare-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .compare-table th:first-child { background: var(--c-rodilla-light); color: var(--c-rodilla); }
+    .compare-table th:last-child { background: var(--green-light); color: var(--green); }
+    .compare-table td {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      border-top: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .compare-table td:first-child {
+      color: var(--ink-muted);
+      font-style: italic;
+      width: 40%;
+    }
+    .compare-table td:last-child { color: var(--ink); }
+    .compare-table tr:nth-child(even) td { background: rgba(14,165,233,0.02); }
+
+/* Mobile: table as stacked cards */
+    .compare-mobile { display: none; margin: 20px 0; }
+    .compare-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 10px;
+    }
+    .compare-expect {
+      font-size: 13px;
+      color: var(--ink-muted);
+      font-style: italic;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-reality {
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* ── NUMBERED LIST (10 cosas) ── */
+    .numbered-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: item;
+      margin: 16px 0;
+    }
+    .numbered-list li {
+      counter-increment: item;
+      position: relative;
+      padding: 14px 16px 14px 52px;
+      margin-bottom: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .numbered-list li::before {
+      content: counter(item);
+      position: absolute;
+      left: 14px; top: 14px;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: var(--c-rodilla);
+      color: white;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 20px 0;
+      border-left: 4px solid;
+    }
+    .callout-danger {
+      background: var(--red-light);
+      border-left-color: var(--red);
+    }
+    .callout-danger .callout-title { color: var(--red); }
+    .callout-info {
+      background: var(--c-rodilla-light);
+      border-left-color: var(--c-rodilla);
+    }
+    .callout-info .callout-title { color: var(--c-rodilla); }
+    .callout-amber {
+      background: var(--amber-light);
+      border-left-color: var(--amber);
+    }
+    .callout-amber .callout-title { color: var(--amber); }
+    .callout-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .callout p { font-size: 14px; line-height: 1.65; color: var(--ink); }
+    .callout ul { margin: 8px 0 0; padding-left: 18px; }
+    .callout li { font-size: 14px; line-height: 1.65; color: var(--ink); margin-bottom: 4px; }
+
+    /* ── ACTIVITIES (recommended vs avoid) ── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .activities-col {
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+    .activities-col.do { background: var(--green-light); border-color: rgba(22,163,74,0.2); }
+    .activities-col.avoid { background: var(--red-light); border-color: rgba(220,38,38,0.2); }
+    .activities-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .activities-col.do .activities-label { color: var(--green); }
+    .activities-col.avoid .activities-label { color: var(--red); }
+    .activities-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .activities-col li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink);
+      padding: 3px 0 3px 18px;
+      position: relative;
+    }
+    .activities-col.do li::before { content: '\2713'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .activities-col.avoid li::before { content: '\2717'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+
+    /* ── FAQ ── */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      transition: background 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: rgba(14,165,233,0.04); }
+    .faq-item summary .faq-q { flex: 1; }
+    .faq-item summary .faq-chevron {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      color: var(--ink-muted);
+    }
+    .faq-item[open] summary .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      padding: 0 18px 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--ink-muted);
+    }
+
+    /* ── FINAL CALLOUT ── */
+    .final-callout {
+      background: linear-gradient(135deg, var(--c-rodilla-light) 0%, rgba(14,165,233,0.08) 100%);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 32px 0 0;
+      text-align: center;
+    }
+    .final-callout h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .final-callout p {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border);
+    }
+    footer .sig { font-weight: 600; color: var(--ink); margin-top: 4px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      header { padding: 40px 24px 36px; }
+      header::before, header::after { display: none; }
+      .img-row { flex-direction: column; align-items: center; }
+      .img-row .img-col { max-width: 100%; }
+      .back-home { padding: 4px 8px; font-size: 10px; top: 10px; left: 10px; }
+.section-nav { padding: 10px 16px; }
+      main { padding: 24px 16px 60px; }
+      .info-section summary { padding: 16px 18px; gap: 10px; }
+      .info-icon { width: 34px; height: 34px; font-size: 18px; border-radius: 8px; }
+      .info-title { font-size: 1rem; }
+      .info-body { padding: 0 18px 22px; font-size: 14px; }
+      .milestones { grid-template-columns: 1fr; }
+      .compare-table { display: none; }
+      .compare-mobile { display: block; }
+      .activities-grid { grid-template-columns: 1fr; }
+      .numbered-list li { padding-left: 46px; }
+      .final-callout { padding: 22px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="back-home" href="lca.html" title="Volver a LCA">&larr; Volver</a>
+    <div class="header-label">Gu&iacute;a del paciente</div>
+    <h1>Ligamento Cruzado<br><em>Anterior</em></h1>
+    <p>Reconstrucci&oacute;n quir&uacute;rgica del LCA: tipos de injerto, qu&eacute; esperar de la cirug&iacute;a y tu recuperaci&oacute;n paso a paso.</p>
+  </header>
+
+  <!-- SECTION NAV -->
+  <nav class="section-nav" id="section-nav" aria-label="Secciones de la gu&iacute;a">
+    <div class="nav-pills">
+      <button class="nav-pill active" data-target="sec-intro">Introducci&oacute;n</button>
+      <button class="nav-pill" data-target="sec-hospital">Hospital</button>
+      <button class="nav-pill" data-target="sec-heparina">Heparina</button>
+      <button class="nav-pill" data-target="sec-recuperacion">Recuperaci&oacute;n</button>
+      <button class="nav-pill" data-target="sec-expectativas">Expectativas</button>
+      <button class="nav-pill" data-target="sec-10cosas">10 claves</button>
+      <button class="nav-pill" data-target="sec-alarma">Alarma</button>
+      <button class="nav-pill" data-target="sec-faq">FAQ</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- 1. INTRODUCCIÓN -->
+    <details class="info-section" id="sec-intro" open>
+      <summary>
+        <span class="info-icon">&#129513;</span>
+        <span class="info-title">Introducci&oacute;n</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>El ligamento cruzado anterior (LCA) es uno de los cuatro ligamentos principales de la rodilla. Su funci&oacute;n es <strong>proporcionar estabilidad rotacional</strong> y evitar que la tibia se desplace hacia delante respecto al f&eacute;mur. Es esencial para actividades que implican cambios de direcci&oacute;n, giros y saltos.</p>
+
+        <h3>&iquest;C&oacute;mo se lesiona?</h3>
+        <p>La rotura del LCA se produce habitualmente durante movimientos de <strong>pivotaje o torsi&oacute;n</strong> de la rodilla, frecuentes en deportes como f&uacute;tbol, baloncesto o esqu&iacute;. Puede ocurrir por contacto (una entrada o choque) o sin contacto (un giro brusco con el pie fijo en el suelo). En el momento de la lesi&oacute;n, muchos pacientes refieren un &laquo;chasquido&raquo; y una hinchaz&oacute;n inmediata de la rodilla.</p>
+
+        <h3>La cirug&iacute;a</h3>
+        <p>La reconstrucci&oacute;n del LCA es una intervenci&oacute;n <strong>artrosc&oacute;pica</strong> que consiste en sustituir el ligamento roto por un injerto (tejido que act&uacute;a como nuevo ligamento). La cirug&iacute;a dura aproximadamente <strong>1 hora</strong> y se realiza habitualmente de forma ambulatoria o con una noche de ingreso.</p>
+
+        <h3>Tipos de injerto</h3>
+        <ul>
+          <li><strong>Tend&oacute;n rotuliano (hueso-tend&oacute;n-hueso / HTH):</strong> Considerado el est&aacute;ndar de referencia. Utiliza el tercio central del tend&oacute;n rotuliano con bloques &oacute;seos en cada extremo. Ofrece una fijaci&oacute;n muy s&oacute;lida. Puede causar dolor anterior de rodilla en algunos casos.</li>
+          <li><strong>Isquiotibiales (semitendinoso &plusmn; gr&aacute;cilis):</strong> Menor dolor anterior de rodilla que el HTH. Incisi&oacute;n m&aacute;s peque&ntilde;a. Es una de las opciones m&aacute;s utilizadas en la actualidad.</li>
+          <li><strong>Tend&oacute;n cuadricipital:</strong> Tendencia creciente en los &uacute;ltimos a&ntilde;os. Injerto resistente con menor dolor en la zona donante que el HTH.</li>
+          <li><strong>Aloinjerto (donante):</strong> No genera molestias en la zona donante. Se utiliza principalmente en cirug&iacute;as de revisi&oacute;n o lesiones multiligamentarias. Su integraci&oacute;n biol&oacute;gica es algo m&aacute;s lenta.</li>
+        </ul>
+
+        <div class="activities-grid">
+          <div class="activities-col do">
+            <div class="activities-label">Actividades recomendadas</div>
+            <ul>
+              <li>Caminar</li>
+              <li>Nadar</li>
+              <li>Bicicleta est&aacute;tica</li>
+              <li>Senderismo suave</li>
+              <li>Yoga</li>
+              <li>Pilates</li>
+            </ul>
+          </div>
+          <div class="activities-col avoid">
+            <div class="activities-label">Actividades a evitar</div>
+            <ul>
+              <li>F&uacute;tbol de competici&oacute;n (primeros 9 meses)</li>
+              <li>Deportes de pivotaje sin rehabilitaci&oacute;n completa</li>
+              <li>Saltar sin control</li>
+              <li>Esquiar antes de 6 meses</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-amber">
+          <div class="callout-title">Importante</div>
+          <p>La elecci&oacute;n del tipo de injerto depende de factores como tu edad, nivel de actividad deportiva, anatom&iacute;a y preferencias. Tu cirujano te recomendar&aacute; la opci&oacute;n m&aacute;s adecuada para tu caso.</p>
+        </div>
+
+        <h3>Posibles complicaciones</h3>
+        <p>Si bien la tasa de &eacute;xito de la reconstrucci&oacute;n del LCA es alta, como en cualquier intervenci&oacute;n quir&uacute;rgica pueden presentarse complicaciones:</p>
+        <ul>
+          <li><strong>Infecci&oacute;n:</strong> Poco frecuente (inferior al 1%).</li>
+          <li><strong>Trombosis venosa profunda:</strong> Poco frecuente, se previene con medicaci&oacute;n y movilizaci&oacute;n precoz.</li>
+          <li><strong>Rigidez articular:</strong> Se previene con una rehabilitaci&oacute;n adecuada y precoz.</li>
+          <li><strong>Dolor en la zona donante del injerto:</strong> Habitualmente temporal, mejora con el tiempo.</li>
+          <li><strong>Re-rotura del injerto:</strong> Entre el 5 y el 10% en los primeros 2 a&ntilde;os. La rehabilitaci&oacute;n completa reduce este riesgo.</li>
+          <li><strong>Lesi&oacute;n del ligamento contralateral:</strong> Posible, especialmente si se vuelve al deporte sin una preparaci&oacute;n adecuada.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- 2. ESTANCIA HOSPITALARIA -->
+    <details class="info-section" id="sec-hospital">
+      <summary>
+        <span class="info-icon">&#127973;</span>
+        <span class="info-title">Estancia hospitalaria</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">D&iacute;a de la intervenci&oacute;n</div>
+            <div class="timeline-text">Ingresar&aacute;s en ayunas. La cirug&iacute;a artrosc&oacute;pica dura aproximadamente 1 hora. Se realiza con anestesia raqu&iacute;dea o general. Tras la intervenci&oacute;n, pasar&aacute;s a la sala de recuperaci&oacute;n. Se te colocar&aacute; una ortesis de rodilla.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">1er d&iacute;a postoperatorio</div>
+            <div class="timeline-text">Inicio de ejercicios isom&eacute;tricos de cu&aacute;driceps y elevaci&oacute;n de pierna recta. Marcha con muletas y ortesis. Crioterapia (aplicaci&oacute;n de fr&iacute;o) para controlar la hinchaz&oacute;n.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Alta</div>
+            <div class="timeline-text">Habitualmente al d&iacute;a siguiente de la cirug&iacute;a. Recibir&aacute;s instrucciones de rehabilitaci&oacute;n, medicaci&oacute;n y citas de seguimiento.</div>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <h3>Tratamiento al alta</h3>
+        <p>Se te pautar&aacute; <strong>analg&eacute;sicos y antiinflamatorios</strong>, tratamiento anticoagulante (habitualmente heparina durante 15&ndash;30 d&iacute;as seg&uacute;n restricci&oacute;n de carga) y crioterapia domiciliaria.</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Calendario de revisiones</div>
+          <p>A las 2 semanas (retirada de puntos), al mes, a los 3 y 6 meses, y al a&ntilde;o.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- 3. HEPARINA -->
+    <details class="info-section" id="sec-heparina">
+      <summary>
+        <span class="info-icon">&#128137;</span>
+        <span class="info-title">Administraci&oacute;n de heparina</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>La heparina se aplica por v&iacute;a subcut&aacute;nea, preferentemente en el abdomen o la parte externa del muslo. Sigue estos pasos:</p>
+
+        <img class="info-img small" src="img/heparina-inyeccion.jpg" alt="Paciente administr&aacute;ndose una inyecci&oacute;n subcut&aacute;nea de heparina en el abdomen" />
+        <p class="info-img-caption">Administraci&oacute;n subcut&aacute;nea de heparina</p>
+        <ol class="steps-list">
+          <li>L&aacute;vate las manos antes y despu&eacute;s de la inyecci&oacute;n.</li>
+          <li>Limpia la piel con una gasa con alcohol.</li>
+          <li>Pellizca la piel e introduce la aguja en &aacute;ngulo recto (90&deg;).</li>
+          <li>Inyecta lentamente y <strong>no masajees</strong> tras la aplicaci&oacute;n.</li>
+          <li>Alterna los lados cada d&iacute;a.</li>
+        </ol>
+
+        <p>La duraci&oacute;n del tratamiento es habitualmente de <strong>15 a 30 d&iacute;as</strong>, dependiendo de la restricci&oacute;n de carga y las indicaciones de tu cirujano.</p>
+
+        <div class="callout callout-amber">
+          <div class="callout-title">Atenci&oacute;n</div>
+          <p>Si aparecen hematomas grandes, sangrado inusual o dolor persistente en la zona de punci&oacute;n, contacta con tu m&eacute;dico.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- 4. RECUPERACIÓN MES A MES -->
+    <details class="info-section" id="sec-recuperacion">
+      <summary>
+        <span class="info-icon">&#128200;</span>
+        <span class="info-title">Recuperaci&oacute;n mes a mes</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <div class="milestones">
+          <div class="milestone">
+            <div class="milestone-label">0 &ndash; 6 semanas</div>
+            <ul>
+              <li>Control de inflamaci&oacute;n y dolor</li>
+              <li>Recuperar la extensi&oacute;n completa de la rodilla</li>
+              <li>Flexi&oacute;n progresiva hasta 90&deg;</li>
+              <li>Marcha con muletas y ortesis</li>
+              <li>Ejercicios isom&eacute;tricos de cu&aacute;driceps</li>
+              <li>Carga parcial progresiva</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">6 semanas &ndash; 3 meses</div>
+            <ul>
+              <li>Retirada de muletas y ortesis (seg&uacute;n indicaci&oacute;n)</li>
+              <li>Flexi&oacute;n hasta 120&deg;</li>
+              <li>Bicicleta est&aacute;tica</li>
+              <li>Fortalecimiento muscular progresivo</li>
+              <li>Inicio de ejercicios de propiocepci&oacute;n</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">3 &ndash; 6 meses</div>
+            <ul>
+              <li>Carrera suave en l&iacute;nea recta (a partir del 4.&ordm; mes si hay buena fuerza)</li>
+              <li>Fortalecimiento avanzado</li>
+              <li>Ejercicios funcionales</li>
+              <li>Nataci&oacute;n libre</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">6 &ndash; 12 meses</div>
+            <ul>
+              <li>Retorno progresivo al deporte (tras superar test funcionales)</li>
+              <li>El injerto alcanza su maduraci&oacute;n biol&oacute;gica</li>
+              <li>Trabajo de agilidad y cambios de direcci&oacute;n</li>
+              <li>Deportes de competici&oacute;n habitualmente a partir del 9.&ordm;&ndash;12.&ordm; mes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 5. EXPECTATIVAS VS REALIDAD -->
+    <details class="info-section" id="sec-expectativas">
+      <summary>
+        <span class="info-icon">&#128202;</span>
+        <span class="info-title">Expectativas vs. Realidad</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <!-- Desktop table -->
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Lo que muchos esperan</th>
+              <th>La realidad cl&iacute;nica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&laquo;Volver&eacute; al deporte en 3 meses.&raquo;</td>
+              <td>La reconstrucci&oacute;n de LCA requiere entre 6 y 12 meses de rehabilitaci&oacute;n. El retorno prematuro al deporte es el principal factor de riesgo de re-rotura.</td>
+            </tr>
+            <tr>
+              <td>&laquo;El injerto es m&aacute;s d&eacute;bil que el ligamento original.&raquo;</td>
+              <td>Un injerto bien integrado tiene una resistencia similar al LCA nativo. La clave es respetar los tiempos de maduraci&oacute;n biol&oacute;gica.</td>
+            </tr>
+            <tr>
+              <td>&laquo;Si me opero, ya no se me volver&aacute; a romper.&raquo;</td>
+              <td>La tasa de re-rotura es del 5&ndash;10% en los primeros 2 a&ntilde;os. La rehabilitaci&oacute;n completa y los programas de prevenci&oacute;n reducen este riesgo.</td>
+            </tr>
+            <tr>
+              <td>&laquo;La rodilla quedar&aacute; igual que antes.&raquo;</td>
+              <td>La mayor&iacute;a de pacientes recuperan una funci&oacute;n excelente, pero pueden persistir peque&ntilde;as diferencias en la sensaci&oacute;n articular (propiocepci&oacute;n).</td>
+            </tr>
+            <tr>
+              <td>&laquo;Solo necesito operar y la rodilla se cura sola.&raquo;</td>
+              <td>La cirug&iacute;a es solo el primer paso. Sin rehabilitaci&oacute;n adecuada, el resultado ser&aacute; inferior independientemente de la t&eacute;cnica quir&uacute;rgica.</td>
+            </tr>
+            <tr>
+              <td>&laquo;No podr&eacute; volver a hacer deporte.&raquo;</td>
+              <td>M&aacute;s del 80% de los pacientes vuelven a practicar deporte. Con buena rehabilitaci&oacute;n, muchos retornan a su nivel previo.</td>
+            </tr>
+            <tr>
+              <td>&laquo;La rehabilitaci&oacute;n es solo ir al fisioterapeuta.&raquo;</td>
+              <td>Gran parte del trabajo se hace en casa. La constancia con los ejercicios domiciliarios es tan importante como las sesiones de fisioterapia.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Mobile cards -->
+        <div class="compare-mobile">
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;Volver&eacute; al deporte en 3 meses.&raquo;</div>
+            <div class="compare-reality">La reconstrucci&oacute;n de LCA requiere entre 6 y 12 meses de rehabilitaci&oacute;n. El retorno prematuro al deporte es el principal factor de riesgo de re-rotura.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;El injerto es m&aacute;s d&eacute;bil que el ligamento original.&raquo;</div>
+            <div class="compare-reality">Un injerto bien integrado tiene una resistencia similar al LCA nativo. La clave es respetar los tiempos de maduraci&oacute;n biol&oacute;gica.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;Si me opero, ya no se me volver&aacute; a romper.&raquo;</div>
+            <div class="compare-reality">La tasa de re-rotura es del 5&ndash;10% en los primeros 2 a&ntilde;os. La rehabilitaci&oacute;n completa y los programas de prevenci&oacute;n reducen este riesgo.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;La rodilla quedar&aacute; igual que antes.&raquo;</div>
+            <div class="compare-reality">La mayor&iacute;a de pacientes recuperan una funci&oacute;n excelente, pero pueden persistir peque&ntilde;as diferencias en la sensaci&oacute;n articular (propiocepci&oacute;n).</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;Solo necesito operar y la rodilla se cura sola.&raquo;</div>
+            <div class="compare-reality">La cirug&iacute;a es solo el primer paso. Sin rehabilitaci&oacute;n adecuada, el resultado ser&aacute; inferior independientemente de la t&eacute;cnica quir&uacute;rgica.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;No podr&eacute; volver a hacer deporte.&raquo;</div>
+            <div class="compare-reality">M&aacute;s del 80% de los pacientes vuelven a practicar deporte. Con buena rehabilitaci&oacute;n, muchos retornan a su nivel previo.</div>
+          </div>
+          <div class="compare-item">
+            <div class="compare-expect">&laquo;La rehabilitaci&oacute;n es solo ir al fisioterapeuta.&raquo;</div>
+            <div class="compare-reality">Gran parte del trabajo se hace en casa. La constancia con los ejercicios domiciliarios es tan importante como las sesiones de fisioterapia.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 6. 10 COSAS QUE DEBES SABER -->
+    <details class="info-section" id="sec-10cosas">
+      <summary>
+        <span class="info-icon">&#128172;</span>
+        <span class="info-title">10 cosas que debes saber</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <ol class="numbered-list">
+          <li>La reconstrucci&oacute;n del LCA es una de las cirug&iacute;as m&aacute;s frecuentes en traumatolog&iacute;a deportiva, con excelentes resultados a largo plazo.</li>
+          <li>El injerto necesita tiempo para integrarse en tu rodilla. <strong>Respetar los plazos</strong> es fundamental para evitar complicaciones.</li>
+          <li>La extensi&oacute;n completa de la rodilla (poder estirarla del todo) es el primer objetivo de la rehabilitaci&oacute;n. No la descuides.</li>
+          <li>La fuerza del cu&aacute;driceps es el factor m&aacute;s importante para un buen resultado funcional. <strong>Trab&aacute;jalo desde el primer d&iacute;a.</strong></li>
+          <li>El hielo es tu mejor aliado durante las primeras semanas. Apl&iacute;calo 15&ndash;20 minutos cada 2&ndash;3 horas.</li>
+          <li>No compares tu evoluci&oacute;n con la de otros pacientes. Cada rodilla tiene su ritmo.</li>
+          <li>La vuelta al deporte debe ser progresiva y guiada por criterios funcionales, no solo por el tiempo transcurrido.</li>
+          <li>Los programas de prevenci&oacute;n de lesiones (FIFA 11+, ejercicios neuromusculares) reducen el riesgo de nueva lesi&oacute;n hasta un 50%.</li>
+          <li>Es normal sentir inseguridad al volver al deporte. La confianza se reconstruye de forma gradual, igual que el ligamento.</li>
+          <li><strong>Tu cirujano y tu fisioterapeuta son un equipo.</strong> Mant&eacute;n una comunicaci&oacute;n abierta con ambos durante todo el proceso.</li>
+        </ol>
+      </div>
+    </details>
+
+    <!-- 7. SIGNOS DE ALARMA -->
+    <details class="info-section" id="sec-alarma">
+      <summary>
+        <span class="info-icon">&#9888;&#65039;</span>
+        <span class="info-title">Signos de alarma</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>Durante tu recuperaci&oacute;n, contacta con tu cirujano o <strong>acude a urgencias</strong> si aparecen:</p>
+        <div class="callout callout-danger">
+          <div class="callout-title">Acude a urgencias</div>
+          <ul>
+            <li>Fiebre superior a 38 &deg;C que persiste m&aacute;s de 24 horas.</li>
+            <li>Enrojecimiento, calor o secreci&oacute;n en las heridas quir&uacute;rgicas.</li>
+            <li>Hinchaz&oacute;n brusca y dolor intenso en el gemelo (posible trombosis).</li>
+            <li>Dolor tor&aacute;cico, dificultad para respirar o palpitaciones.</li>
+            <li>Bloqueo articular (no poder mover la rodilla).</li>
+            <li>P&eacute;rdida de sensibilidad o cambio de color en el pie.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <!-- 8. FAQ -->
+    <details class="info-section" id="sec-faq">
+      <summary>
+        <span class="info-icon">&#10067;</span>
+        <span class="info-title">Preguntas frecuentes</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Cu&aacute;ndo puedo conducir?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Depende del lado operado. Si es rodilla izquierda con coche autom&aacute;tico, habitualmente a las 2&ndash;3 semanas. Si es rodilla derecha, generalmente a las 4&ndash;6 semanas, cuando puedas frenar con seguridad y sin dolor.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Necesitar&eacute; ortesis?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">S&iacute;, habitualmente durante las primeras 4&ndash;6 semanas. La ortesis protege el injerto durante la fase inicial de cicatrizaci&oacute;n. Tu cirujano te indicar&aacute; cu&aacute;ndo retirarla.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Cu&aacute;ntas sesiones de fisioterapia necesitar&eacute;?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">La rehabilitaci&oacute;n suele prolongarse 6&ndash;9 meses, con frecuencia decreciente. Las primeras semanas son m&aacute;s intensivas (3&ndash;4 sesiones/semana), reduci&eacute;ndose progresivamente a medida que ganas autonom&iacute;a. Gran parte del trabajo se hace en casa.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Puedo nadar?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">S&iacute;, una vez que las heridas est&eacute;n completamente cerradas (habitualmente a las 3&ndash;4 semanas). Comienza con piernas de braza suave y progresa gradualmente. La piscina es un excelente entorno para la rehabilitaci&oacute;n.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Volver&eacute; a jugar al f&uacute;tbol / hacer deporte?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">M&aacute;s del 80% de los pacientes operados retornan al deporte. El retorno se basa en criterios funcionales (fuerza, estabilidad, agilidad), no solo en el tiempo transcurrido. Habitualmente entre 9 y 12 meses.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Qu&eacute; pasa si no me opero?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Depende de tu nivel de actividad. Sin LCA, la rodilla puede ser inestable durante actividades de pivotaje. En pacientes j&oacute;venes y deportistas, la reconstrucci&oacute;n es la opci&oacute;n recomendada para prevenir lesiones meniscales y cartilaginosas secundarias.</div>
+        </details>
+      </div>
+    </details>
+
+    <!-- FINAL CALLOUT -->
+    <div class="final-callout">
+      <h3>Recuerda</h3>
+      <p>La reconstrucci&oacute;n del LCA es un proceso que requiere <strong>tiempo, constancia y paciencia</strong>. Conf&iacute;a en el proceso, sigue las indicaciones de tu cirujano y fisioterapeuta, y no precipites la vuelta al deporte. Tu rodilla te lo agradecer&aacute;.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Esta informaci&oacute;n es orientativa. Sigue siempre las indicaciones de tu cirujano.</p>
+    <p class="sig">Dr. Mart&iacute;n Ant&uacute;nez &middot; Cirug&iacute;a Ortop&eacute;dica y Traumatolog&iacute;a &middot; Especialista en Rodilla</p>
+  </footer>
+
+  <script>
+    // ─────────────────────────────────────────────
+    //  SECTION NAV — scroll to + open
+    // ─────────────────────────────────────────────
+    document.querySelectorAll('.nav-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var targetId = this.dataset.target;
+        var section = document.getElementById(targetId);
+        if (!section) return;
+
+        // Open the details element
+        section.open = true;
+
+        // Scroll into view
+        var navHeight = document.getElementById('section-nav').offsetHeight;
+        var top = section.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+
+        // Update active pill
+        document.querySelectorAll('.nav-pill').forEach(function(p) { p.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+
+    // ─────────────────────────────────────────────
+    //  SCROLL SPY — highlight active pill
+    // ─────────────────────────────────────────────
+    var sections = document.querySelectorAll('.info-section');
+    var pills = document.querySelectorAll('.nav-pill');
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          pills.forEach(function(p) {
+            p.classList.toggle('active', p.dataset.target === id);
+          });
+          // Scroll pill into view in nav
+          var activePill = document.querySelector('.nav-pill[data-target="' + id + '"]');
+          if (activePill) {
+            activePill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function(sec) { observer.observe(sec); });
+
+    // ─────────────────────────────────────────────
+    //  NAV SHADOW ON SCROLL
+    // ─────────────────────────────────────────────
+    var navEl = document.getElementById('section-nav');
+    window.addEventListener('scroll', function() {
+      navEl.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // ─────────────────────────────────────────────
+    //  LOCALHOST DETECTION
+    // ─────────────────────────────────────────────
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+      document.querySelectorAll('a[href^="https://jmacot.github.io"]').forEach(function(a) {
+        a.removeAttribute('href');
+        a.style.opacity = '0.4';
+        a.style.pointerEvents = 'none';
+      });
+    }
+  </script>
+</body>
+</html>
