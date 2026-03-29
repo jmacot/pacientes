@@ -248,6 +248,26 @@
       margin-top: -12px;
       margin-bottom: 16px;
     }
+    .img-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: stretch;
+      margin: 20px 0;
+    }
+    .img-row .img-col {
+      text-align: center;
+      flex: 1 1 0;
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+    }
+    .img-row .img-col .info-img {
+      margin: 0 auto 6px;
+      flex: 1;
+      object-fit: contain;
+    }
+    .img-row .img-col .info-img-caption { margin: 0 0 4px; }
 
     /* ── DIVIDER ── */
     .section-divider {
@@ -332,7 +352,7 @@
     /* ── MILESTONE CARDS ── */
     .milestones {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: 1fr;
       gap: 12px;
       margin: 20px 0;
     }
@@ -614,6 +634,8 @@
     @media (max-width: 600px) {
       header { padding: 40px 24px 36px; }
       header::before, header::after { display: none; }
+      .img-row { flex-direction: column; align-items: center; }
+      .img-row .img-col { max-width: 100%; }
       .back-home { padding: 4px 8px; font-size: 10px; top: 10px; left: 10px; }
 .section-nav { padding: 10px 16px; }
       main { padding: 24px 16px 60px; }
@@ -683,11 +705,16 @@
           <li><strong>Pr&oacute;tesis unicompartimentales:</strong> Solo reemplazan el compartimento interno o externo. Se utilizan en casos seleccionados con artrosis localizada.</li>
         </ul>
 
-        <img class="info-img small" src="img/ptr-implante.jpg" alt="Componentes de una pr&oacute;tesis total de rodilla: pieza femoral y platillo tibial" />
-        <p class="info-img-caption">Componentes de una pr&oacute;tesis total de rodilla</p>
-
-        <img class="info-img small" src="img/unicompartimental.png" alt="Pr&oacute;tesis unicompartimental de rodilla: reemplazo de un solo compartimento" />
-        <p class="info-img-caption">Pr&oacute;tesis unicompartimental de rodilla</p>
+        <div class="img-row">
+          <div class="img-col">
+            <img class="info-img" src="img/ptr-implante.jpg" alt="Componentes de una pr&oacute;tesis total de rodilla: pieza femoral y platillo tibial" style="object-fit: cover; object-position: center 40%; aspect-ratio: 1 / 1;" />
+            <p class="info-img-caption">Pr&oacute;tesis total de rodilla</p>
+          </div>
+          <div class="img-col">
+            <img class="info-img" src="img/unicompartimental.png" alt="Pr&oacute;tesis unicompartimental de rodilla: reemplazo de un solo compartimento" />
+            <p class="info-img-caption">Pr&oacute;tesis unicompartimental</p>
+          </div>
+        </div>
 
         <div class="callout callout-info">
           <div class="callout-title">Participaci&oacute;n activa</div>
