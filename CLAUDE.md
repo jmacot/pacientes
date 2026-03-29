@@ -23,18 +23,21 @@ ptr-info.html       ← Guía PTR: información y expectativas
 meniscos.html       ← Hub Meniscos: 2 subcards (info + rehab)
 meniscos-info.html  ← Guía Meniscos: información y expectativas
 meniscos-rehab.html ← Guía Meniscos: rehabilitación postoperatoria
+infiltraciones.html ← Guía Infiltraciones: comparativa corticoides/HA/PRP (enlace directo, sin hub)
 img/                ← Imágenes de las guías
 ```
 
 ### Arquitectura de navegación — REGLA CRÍTICA
 
-Cada patología sigue una estructura de **3 niveles**:
+**Patologías quirúrgicas** siguen una estructura de **3 niveles**:
 
 1. **`index.html`** — 1 sola card por patología (ej. "Lesiones Meniscales") que enlaza al hub
 2. **`{patologia}.html`** (hub) — Página intermedia con subcards: Información + Rehabilitación. Sigue la estructura exacta de `ptr.html`
 3. **`{patologia}-info.html`** y **`{patologia}-rehab.html`** — Páginas de contenido
 
 **Nunca** poner cards de info y rehab directamente en index.html. Siempre usar el hub intermedio.
+
+**Guías de tratamiento** (ej. infiltraciones) usan **enlace directo** desde index.html → `{tratamiento}.html`. No necesitan hub intermedio porque son una sola página sin componente de rehabilitación.
 
 ### Landing page (`index.html`)
 

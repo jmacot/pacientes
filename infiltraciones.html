@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infiltraciones de Rodilla &middot; Informaci&oacute;n para Pacientes</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <meta name="description" content="Guía comparativa para pacientes: corticoides, ácido hialurónico y PRP. Evidencia actualizada, indicaciones y qué esperar de cada infiltración." />
+  <meta name="theme-color" id="meta-theme" content="#0f172a" />
+  <meta property="og:title" content="Infiltraciones de Rodilla · Dr Martín Antúnez" />
+  <meta property="og:description" content="Guía comparativa para pacientes: corticoides, ácido hialurónico y PRP. Evidencia actualizada y qué esperar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jmacot.github.io/pacientes/infiltraciones.html" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #e8edf4;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --ink-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 20px rgba(26,26,26,0.08);
+      --shadow-hover: 0 8px 40px rgba(26,26,26,0.14);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --c-rodilla: #0ea5e9;
+      --c-rodilla-light: #e0f2fe;
+      --c-rodilla-dark: #0369a1;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --amber: #d97706;
+      --amber-light: #fef3c7;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 56px 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -50px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
+      filter: blur(40px);
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: 20%;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.10) 0%, transparent 70%);
+      filter: blur(40px);
+    }
+    .back-home {
+      position: absolute; top: 16px; left: 16px;
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      padding: 6px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+      transition: border-color 0.2s, color 0.2s, background 0.2s; z-index: 1;
+    }
+    .back-home:hover { border-color: rgba(255,255,255,0.5); color: white; background: rgba(255,255,255,0.12); }
+
+    .header-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    header p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      max-width: 520px;
+      position: relative;
+    }
+
+    /* ── SECTION NAV ── */
+    .section-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg);
+      padding: 12px 32px;
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .section-nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+
+    .nav-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .nav-pills::-webkit-scrollbar { display: none; }
+
+    .nav-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-pill:hover { border-color: var(--c-rodilla); color: var(--c-rodilla); }
+    .nav-pill.active { background: var(--c-rodilla); border-color: var(--c-rodilla); color: white; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 32px 80px;
+    }
+
+    /* ── ACCORDION SECTIONS ── */
+    .info-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .info-section:hover { box-shadow: var(--shadow-hover); }
+
+    .info-section summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      list-style: none;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .info-section summary::-webkit-details-marker { display: none; }
+    .info-section summary:hover { background: rgba(14, 165, 233, 0.04); }
+
+    .info-icon {
+      font-size: 22px;
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--c-rodilla-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ink);
+      flex: 1;
+    }
+
+    .info-chevron {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      color: var(--ink-muted);
+    }
+    .info-section[open] .info-chevron { transform: rotate(180deg); }
+
+    .info-body {
+      padding: 0 24px 28px;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--ink-muted);
+    }
+    .info-body p { margin-bottom: 14px; }
+    .info-body strong { color: var(--ink); }
+    .info-body ul, .info-body ol { margin: 12px 0; padding-left: 20px; }
+    .info-body li { margin-bottom: 8px; }
+    .info-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 24px 0 12px;
+    }
+    .info-body h3:first-child { margin-top: 0; }
+
+    /* ── SECTION IMAGES ── */
+    .info-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      margin: 20px auto;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .info-img.small { max-width: 280px; }
+    .info-img.medium { max-width: 420px; }
+    .info-img-caption {
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: -12px;
+      margin-bottom: 16px;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 20px 0;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 36px;
+      margin: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 13px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: var(--border);
+      border-radius: 1px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -36px; top: 3px;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--c-rodilla);
+      border: 3px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--c-rodilla);
+    }
+    .timeline-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 4px;
+    }
+    .timeline-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+    }
+
+    /* ── STEPS ── */
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: step;
+      margin: 16px 0;
+    }
+    .steps-list li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 44px;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .steps-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 0;
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      background: var(--c-rodilla-light);
+      color: var(--c-rodilla);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── MILESTONE CARDS ── */
+    .milestones {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .milestone {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      border-left: 4px solid var(--c-rodilla);
+    }
+    .milestone:nth-child(2) { border-left-color: #38bdf8; }
+    .milestone:nth-child(3) { border-left-color: #7dd3fc; }
+    .milestone-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 8px;
+    }
+    .milestone ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .milestone li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+    .milestone li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--c-rodilla);
+      opacity: 0.5;
+    }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 20px 0;
+      border-left: 4px solid;
+    }
+    .callout-danger {
+      background: var(--red-light);
+      border-left-color: var(--red);
+    }
+    .callout-danger .callout-title { color: var(--red); }
+    .callout-info {
+      background: var(--c-rodilla-light);
+      border-left-color: var(--c-rodilla);
+    }
+    .callout-info .callout-title { color: var(--c-rodilla); }
+    .callout-amber {
+      background: var(--amber-light);
+      border-left-color: var(--amber);
+    }
+    .callout-amber .callout-title { color: var(--amber); }
+    .callout-green {
+      background: var(--green-light);
+      border-left-color: var(--green);
+    }
+    .callout-green .callout-title { color: var(--green); }
+    .callout-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .callout p { font-size: 14px; line-height: 1.65; color: var(--ink); }
+    .callout ul { margin: 8px 0 0; padding-left: 18px; }
+    .callout li { font-size: 14px; line-height: 1.65; color: var(--ink); margin-bottom: 4px; }
+
+    /* ── ACTIVITIES (do/avoid) ── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .activities-col {
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+    .activities-col.do { background: var(--green-light); border-color: rgba(22,163,74,0.2); }
+    .activities-col.avoid { background: var(--red-light); border-color: rgba(220,38,38,0.2); }
+    .activities-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .activities-col.do .activities-label { color: var(--green); }
+    .activities-col.avoid .activities-label { color: var(--red); }
+    .activities-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .activities-col li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink);
+      padding: 3px 0 3px 18px;
+      position: relative;
+    }
+    .activities-col.do li::before { content: '\2713'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .activities-col.avoid li::before { content: '\2717'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+
+    /* ── TREATMENT COMPARE TABLE ── */
+    .treatment-compare {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+    }
+    .treatment-compare th {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 14px;
+      text-align: center;
+      background: var(--bg);
+      color: var(--ink-muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .treatment-compare th:first-child { text-align: left; width: 22%; }
+    .treatment-compare td {
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.5;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      vertical-align: top;
+    }
+    .treatment-compare td:first-child {
+      text-align: left;
+      color: var(--ink);
+      font-weight: 500;
+      font-size: 12.5px;
+    }
+    .treatment-compare tr:nth-child(even) td { background: rgba(14,165,233,0.02); }
+    .treatment-compare .winner {
+      background: var(--green-light) !important;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    /* Mobile: stacked cards for treatment compare */
+    .treatment-compare-mobile { display: none; margin: 20px 0; }
+    .tc-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 10px;
+    }
+    .tc-card-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--c-rodilla);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tc-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 13px;
+    }
+    .tc-label { color: var(--ink-muted); }
+    .tc-value { color: var(--ink); font-weight: 500; text-align: right; }
+    .tc-value.winner { color: var(--green); font-weight: 600; }
+
+    /* ── EVIDENCE BADGE ── */
+    .evidence-badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .evidence-badge.grade-a { background: var(--green-light); color: var(--green); }
+    .evidence-badge.moderate { background: var(--c-rodilla-light); color: var(--c-rodilla); }
+    .evidence-badge.limited { background: var(--amber-light); color: var(--amber); }
+    .evidence-badge.against { background: var(--red-light); color: var(--red); }
+
+    /* ── REFERENCE LIST ── */
+    .ref-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: ref;
+      margin: 16px 0;
+    }
+    .ref-list li {
+      counter-increment: ref;
+      position: relative;
+      padding: 10px 14px 10px 42px;
+      margin-bottom: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+    .ref-list li::before {
+      content: counter(ref);
+      position: absolute;
+      left: 12px; top: 10px;
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      background: var(--c-rodilla-light);
+      color: var(--c-rodilla);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ref-list a {
+      color: var(--c-rodilla);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .ref-list a:hover { text-decoration: underline; }
+    .ref-journal {
+      font-style: italic;
+      color: var(--ink-muted);
+    }
+
+    /* ── FAQ ── */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      transition: background 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: rgba(14,165,233,0.04); }
+    .faq-item summary .faq-q { flex: 1; }
+    .faq-item summary .faq-chevron {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      color: var(--ink-muted);
+    }
+    .faq-item[open] summary .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      padding: 0 18px 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--ink-muted);
+    }
+
+    /* ── FINAL CALLOUT ── */
+    .final-callout {
+      background: linear-gradient(135deg, var(--c-rodilla-light) 0%, rgba(14,165,233,0.08) 100%);
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin: 32px 0 0;
+      text-align: center;
+    }
+    .final-callout h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .final-callout p {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border);
+    }
+    footer .sig { font-weight: 600; color: var(--ink); margin-top: 4px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      header { padding: 40px 24px 36px; }
+      header::before, header::after { display: none; }
+      .back-home { padding: 4px 8px; font-size: 10px; top: 10px; left: 10px; }
+      .section-nav { padding: 10px 16px; }
+      main { padding: 24px 16px 60px; }
+      .info-section summary { padding: 16px 18px; gap: 10px; }
+      .info-icon { width: 34px; height: 34px; font-size: 18px; border-radius: 8px; }
+      .info-title { font-size: 1rem; }
+      .info-body { padding: 0 18px 22px; font-size: 14px; }
+      .milestones { grid-template-columns: 1fr; }
+      .treatment-compare { display: none; }
+      .treatment-compare-mobile { display: block; }
+      .activities-grid { grid-template-columns: 1fr; }
+      .final-callout { padding: 22px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="back-home" href="index.html" title="Volver al portal">&larr; Portal</a>
+    <div class="header-label">Gu&iacute;a del paciente</div>
+    <h1>Infiltraciones<br><em>de Rodilla</em></h1>
+    <p>Corticoides, &aacute;cido hialur&oacute;nico y PRP: qu&eacute; dice la evidencia cient&iacute;fica y c&oacute;mo elegir la mejor opci&oacute;n para tu rodilla.</p>
+  </header>
+
+  <!-- SECTION NAV -->
+  <nav class="section-nav" id="section-nav" aria-label="Secciones de la gu&iacute;a">
+    <div class="nav-pills">
+      <button class="nav-pill active" data-target="sec-intro">Introducci&oacute;n</button>
+      <button class="nav-pill" data-target="sec-corticoides">Corticoides</button>
+      <button class="nav-pill" data-target="sec-hialuronico">&Aacute;c. Hialur&oacute;nico</button>
+      <button class="nav-pill" data-target="sec-prp">PRP</button>
+      <button class="nav-pill" data-target="sec-comparativa">Comparativa</button>
+      <button class="nav-pill" data-target="sec-procedimiento">Procedimiento</button>
+      <button class="nav-pill" data-target="sec-faq">FAQ</button>
+      <button class="nav-pill" data-target="sec-biblio">Bibliograf&iacute;a</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 1. INTRODUCCIÓN                            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <details class="info-section" id="sec-intro" open>
+      <summary>
+        <span class="info-icon">&#128137;</span>
+        <span class="info-title">Introducci&oacute;n</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <h3>&iquest;Qu&eacute; es una infiltraci&oacute;n?</h3>
+        <p>Una infiltraci&oacute;n es una <strong>inyecci&oacute;n directa dentro de la articulaci&oacute;n</strong> de la rodilla. Se realiza en consulta, sin necesidad de quir&oacute;fano, y su objetivo es aliviar el dolor y mejorar la funci&oacute;n articular.</p>
+        <p>Es uno de los tratamientos m&aacute;s frecuentes en consulta de traumatolog&iacute;a, especialmente en pacientes con <strong>artrosis de rodilla</strong> (desgaste del cart&iacute;lago) que a&uacute;n no necesitan cirug&iacute;a o que buscan retrasar una pr&oacute;tesis.</p>
+
+        <!-- PLACEHOLDER: img/infiltracion-rodilla.jpg -->
+
+        <h3>La analog&iacute;a del motor</h3>
+        <p>Piensa en tu rodilla artr&oacute;sica como un <strong>motor con desgaste</strong>. El cart&iacute;lago (el &laquo;lubricante natural&raquo;) se ha ido deteriorando, las superficies rozan m&aacute;s de lo debido y eso genera inflamaci&oacute;n y dolor. Ante esta situaci&oacute;n, existen tres enfoques distintos:</p>
+        <ul>
+          <li><strong>Corticoides:</strong> Como usar un <strong>extintor</strong>. Apaga el fuego (la inflamaci&oacute;n) de forma r&aacute;pida y eficaz, pero no repara los da&ntilde;os que el incendio ya caus&oacute;.</li>
+          <li><strong>&Aacute;cido hialur&oacute;nico:</strong> Como echar <strong>aceite a un motor</strong>. Reduce la fricci&oacute;n y el ruido del d&iacute;a a d&iacute;a, pero no repara las piezas desgastadas.</li>
+          <li><strong>PRP (Plasma Rico en Plaquetas):</strong> Como enviar un <strong>equipo de reparaci&oacute;n</strong> fabricado a partir de tu propia sangre. No reconstruye lo destruido, pero puede mejorar el entorno articular y frenar el deterioro.</li>
+        </ul>
+        <p><strong>Ninguna infiltraci&oacute;n sustituye una rodilla nueva.</strong> Pero bien indicada, puede aliviar s&iacute;ntomas, ganar tiempo y mejorar la calidad de vida durante meses.</p>
+
+        <h3>&iquest;Cu&aacute;ndo est&aacute;n indicadas?</h3>
+        <ul>
+          <li>Artrosis de rodilla <strong>leve a moderada</strong> (grados I a III de Kellgren-Lawrence)</li>
+          <li>Cuando el tratamiento b&aacute;sico (ejercicio, antiinflamatorios, p&eacute;rdida de peso) <strong>no es suficiente</strong></li>
+          <li>Como puente antes de una cirug&iacute;a o en pacientes que no son candidatos quir&uacute;rgicos</li>
+          <li>Para controlar episodios de dolor agudo (en el caso de los corticoides)</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Lo primero es lo primero</div>
+          <p>Las gu&iacute;as cl&iacute;nicas internacionales (AAOS, OARSI, ESSKA) coinciden: antes de cualquier infiltraci&oacute;n, el pilar del tratamiento es el <strong>ejercicio f&iacute;sico regular</strong>, el <strong>control del peso</strong> y los <strong>antiinflamatorios t&oacute;picos u orales</strong>. Las infiltraciones complementan, no sustituyen.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 2. CORTICOIDES                             -->
+    <!-- ═══════════════════════════════════════════ -->
+    <details class="info-section" id="sec-corticoides">
+      <summary>
+        <span class="info-icon">&#129519;</span>
+        <span class="info-title">Corticoides</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p><span class="evidence-badge moderate">Evidencia moderada</span></p>
+        <h3>El extintor de la inflamaci&oacute;n</h3>
+        <p>Los corticoides intraarticulares (como la triamcinolona o la betametasona) son <strong>potentes antiinflamatorios</strong>. Su efecto es r&aacute;pido: en 24&ndash;48 horas notar&aacute;s una reducci&oacute;n clara del dolor y la hinchaz&oacute;n.</p>
+        <p>Sin embargo, su acci&oacute;n es <strong>temporal</strong>. Es el extintor: apaga el fuego de forma eficaz pero no repara lo que ya se quem&oacute;.</p>
+
+        <h3>&iquest;Qu&eacute; dice la evidencia?</h3>
+        <ul>
+          <li><strong>Duraci&oacute;n del efecto:</strong> Entre 2 y 6 semanas. Tras ese periodo, el dolor tiende a regresar progresivamente.</li>
+          <li><strong>Eficacia a largo plazo:</strong> En los estudios comparativos m&aacute;s recientes, los corticoides ocupan la &uacute;ltima posici&oacute;n en eficacia a partir de los 6 meses (SUCRA 15 sobre 100, seg&uacute;n el metaan&aacute;lisis en red de Jawanda et al. 2024, publicado en <em>Arthroscopy</em>).</li>
+          <li><strong>Recomendaci&oacute;n de las gu&iacute;as:</strong> La AAOS y la mayor&iacute;a de sociedades los recomiendan solo para <strong>alivio a corto plazo</strong>, no como tratamiento cr&oacute;nico.</li>
+        </ul>
+
+        <h3>Ventajas</h3>
+        <ul>
+          <li>Alivio r&aacute;pido del dolor (horas/d&iacute;as)</li>
+          <li>Coste bajo</li>
+          <li>Cubierto habitualmente por las compa&ntilde;&iacute;as aseguradoras</li>
+          <li>&Uacute;til para crisis agudas de dolor (antes de un viaje, un evento importante)</li>
+        </ul>
+
+        <h3>Limitaciones</h3>
+        <ul>
+          <li>Efecto muy limitado en el tiempo (semanas, no meses)</li>
+          <li>No modifica el curso de la artrosis</li>
+          <li>Mayor tasa de efectos adversos locales respecto a otras opciones (11% seg&uacute;n el metaan&aacute;lisis de seguridad de la ESSKA, 2025)</li>
+        </ul>
+
+        <div class="callout callout-amber">
+          <div class="callout-title">&iquest;Da&ntilde;an el cart&iacute;lago?</div>
+          <p>Un estudio publicado en <em>JAMA</em> (McAlindon et al. 2017) mostr&oacute; que las infiltraciones repetidas de corticoides cada 3 meses durante 2 a&ntilde;os se asociaron a una p&eacute;rdida ligeramente mayor de cart&iacute;lago en resonancia magn&eacute;tica. La relevancia cl&iacute;nica de esta diferencia es debatida entre expertos, pero por este motivo se recomienda <strong>no abusar de las infiltraciones repetidas</strong> de corticoides y espaciarlas al menos 3&ndash;4 meses.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Res&uacute;men</div>
+          <p>Los corticoides son una herramienta &uacute;til para el <strong>rescate r&aacute;pido del dolor</strong>, especialmente en crisis inflamatorias agudas. No son la mejor opci&oacute;n para el manejo a medio o largo plazo.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 3. ÁCIDO HIALURÓNICO                       -->
+    <!-- ═══════════════════════════════════════════ -->
+    <details class="info-section" id="sec-hialuronico">
+      <summary>
+        <span class="info-icon">&#129531;</span>
+        <span class="info-title">&Aacute;cido Hialur&oacute;nico</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p><span class="evidence-badge limited">Evidencia contradictoria</span></p>
+        <h3>El lubricante articular</h3>
+        <p>El &aacute;cido hialur&oacute;nico (AH) es una sustancia que tu rodilla produce de forma natural. En la artrosis, su concentraci&oacute;n y calidad disminuyen. La infiltraci&oacute;n de AH (tambi&eacute;n llamada <strong>viscosuplementaci&oacute;n</strong>) pretende restaurar esa lubricaci&oacute;n perdida.</p>
+        <p>Es el <strong>aceite para el motor</strong>: reduce la fricci&oacute;n y permite que las superficies se deslicen con menos resistencia, pero no repara las piezas desgastadas.</p>
+
+        <h3>&iquest;Qu&eacute; dice la evidencia?</h3>
+        <ul>
+          <li><strong>Duraci&oacute;n del efecto:</strong> Entre 3 y 6 meses, superior a los corticoides.</li>
+          <li><strong>Eficacia:</strong> Mejora modesta respecto al placebo. En los rankings de eficacia, ocupa una posici&oacute;n intermedia (SUCRA 53 sobre 100).</li>
+          <li><strong>Seguridad:</strong> Buen perfil. Tiene la tasa de infecci&oacute;n m&aacute;s baja de las tres opciones (0,1%) y no genera preocupaciones sobre el cart&iacute;lago.</li>
+        </ul>
+
+        <h3>La pol&eacute;mica de las gu&iacute;as</h3>
+        <p>El &aacute;cido hialur&oacute;nico es probablemente la infiltraci&oacute;n m&aacute;s <strong>controvertida</strong> en la literatura m&eacute;dica actual. Las principales sociedades cient&iacute;ficas no se ponen de acuerdo:</p>
+        <ul>
+          <li><strong>AAOS (americana):</strong> Recomienda <strong>en contra</strong> de su uso rutinario</li>
+          <li><strong>OARSI (internacional):</strong> Recomendaci&oacute;n condicional <strong>a favor</strong></li>
+          <li><strong>ESCEO (europea):</strong> Recomendaci&oacute;n <strong>a favor</strong></li>
+        </ul>
+        <p>Este desacuerdo refleja que, aunque puede ayudar a algunos pacientes, los estudios no demuestran un beneficio consistente que supere claramente el efecto placebo en la poblaci&oacute;n general.</p>
+
+        <h3>Ventajas</h3>
+        <ul>
+          <li>Duraci&oacute;n superior a los corticoides (meses vs. semanas)</li>
+          <li>Muy buen perfil de seguridad</li>
+          <li>Sin riesgo de da&ntilde;o al cart&iacute;lago</li>
+          <li>Puede repetirse cada 6&ndash;12 meses</li>
+        </ul>
+
+        <h3>Limitaciones</h3>
+        <ul>
+          <li>Mejora modesta respecto al placebo</li>
+          <li>Eficacia cuestionada por varias gu&iacute;as cl&iacute;nicas de referencia</li>
+          <li><strong>No cubierto por la mayor&iacute;a de compa&ntilde;&iacute;as aseguradoras</strong> &mdash; se abona de forma privada</li>
+          <li>Puede requerir varias sesiones (seg&uacute;n el preparado: 1, 3 o 5 inyecciones)</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Res&uacute;men</div>
+          <p>El &aacute;cido hialur&oacute;nico es una opci&oacute;n segura con un efecto de duraci&oacute;n intermedia. Sin embargo, su eficacia ha sido cuestionada por parte de la comunidad cient&iacute;fica y no est&aacute; cubierto por las aseguradoras. Si vas a abonar un tratamiento de tu bolsillo, conviene conocer todas las opciones antes de decidir.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 4. PRP                                     -->
+    <!-- ═══════════════════════════════════════════ -->
+    <details class="info-section" id="sec-prp">
+      <summary>
+        <span class="info-icon">&#129656;</span>
+        <span class="info-title">PRP &mdash; Plasma Rico en Plaquetas</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p><span class="evidence-badge grade-a">ESSKA 2024 &mdash; Grado A</span></p>
+
+        <h3>Tu propio equipo de reparaci&oacute;n</h3>
+        <p>El PRP es un concentrado obtenido a partir de <strong>tu propia sangre</strong>. Se extrae una peque&ntilde;a muestra, se centrifuga para separar sus componentes, y se obtiene un plasma enriquecido en plaquetas que contiene <strong>factores de crecimiento</strong> &mdash; las mismas se&ntilde;ales que tu cuerpo utiliza de forma natural para reparar tejidos.</p>
+        <p>No es magia ni terapia de c&eacute;lulas madre. Es biolog&iacute;a aplicada: enviar un equipo de reparaci&oacute;n concentrado a una zona que lo necesita.</p>
+
+        <!-- PLACEHOLDER: img/prp-centrifugado.jpg -->
+
+        <h3>&iquest;C&oacute;mo funciona?</h3>
+        <p>Las plaquetas contienen gr&aacute;nulos con factores de crecimiento (PDGF, TGF-&beta;, VEGF, IGF-1) que al liberarse dentro de la articulaci&oacute;n:</p>
+        <ul>
+          <li><strong>Modulan la inflamaci&oacute;n</strong> &mdash; reducen las mol&eacute;culas inflamatorias sin los efectos secundarios de los corticoides</li>
+          <li><strong>Estimulan la reparaci&oacute;n</strong> &mdash; promueven la s&iacute;ntesis de col&aacute;geno y proteoglicanos (componentes del cart&iacute;lago)</li>
+          <li><strong>Mejoran el entorno articular</strong> &mdash; favorecen un ambiente biol&oacute;gico m&aacute;s saludable para el cart&iacute;lago que a&uacute;n queda</li>
+        </ul>
+        <p>Importante: el PRP <strong>no regenera cart&iacute;lago destruido</strong>. Lo que hace es mejorar las condiciones para que lo que queda funcione mejor y se deteriore m&aacute;s lentamente.</p>
+
+        <h3>No todos los PRP son iguales</h3>
+        <p>Uno de los problemas hist&oacute;ricos del PRP es que se ha tratado como un producto &uacute;nico cuando en realidad hay diferencias importantes en c&oacute;mo se prepara:</p>
+        <ul>
+          <li><strong>Bajo en leuc&oacute;citos (LP-PRP):</strong> El m&aacute;s adecuado para inyecci&oacute;n dentro de la articulaci&oacute;n. Los leuc&oacute;citos (gl&oacute;bulos blancos) pueden provocar inflamaci&oacute;n adicional, que es precisamente lo que queremos evitar.</li>
+          <li><strong>Concentraci&oacute;n &oacute;ptima:</strong> 3&ndash;5 veces la concentraci&oacute;n basal de plaquetas. M&aacute;s no es mejor &mdash; una concentraci&oacute;n excesiva puede incluso ser contraproducente.</li>
+          <li><strong>No activado:</strong> Para uso intraarticular, se prefiere sin activar para que la liberaci&oacute;n de factores sea progresiva y no genere un pico inflamatorio.</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Dato importante</div>
+          <p>La calidad del PRP depende del sistema de preparaci&oacute;n y del protocolo utilizado. No todos los PRP del mercado son equivalentes. Es recomendable que lo realice un profesional con experiencia en ortobiolog&iacute;a.</p>
+        </div>
+
+        <h3>&iquest;Qu&eacute; dice la evidencia?</h3>
+        <p>El PRP ha experimentado un avance notable en los &uacute;ltimos a&ntilde;os. Los datos m&aacute;s recientes y de mayor calidad lo sit&uacute;an como la <strong>opci&oacute;n con mejor evidencia</strong> a medio y largo plazo:</p>
+        <ul>
+          <li><strong>Duraci&oacute;n del efecto:</strong> Entre 6 y 12 meses o m&aacute;s. Es la opci&oacute;n m&aacute;s duradera de las tres.</li>
+          <li><strong>Eficacia:</strong> Ocupa la primera posici&oacute;n en los rankings de eficacia (SUCRA 91,5 sobre 100) seg&uacute;n el mayor metaan&aacute;lisis en red publicado (Jawanda et al. 2024, 48 estudios, 9.338 rodillas).</li>
+          <li><strong>Seguridad:</strong> La tasa de eventos adversos m&aacute;s baja de las tres opciones (8,7% frente a 10,5% del hialur&oacute;nico y 11% de los corticoides), seg&uacute;n el metaan&aacute;lisis de seguridad de la ESSKA de 2025 con m&aacute;s de 76.000 pacientes.</li>
+          <li><strong>Recomendaciones:</strong> En 2024, la ESSKA (la sociedad europea de referencia en cirug&iacute;a de rodilla) emiti&oacute; una recomendaci&oacute;n de <strong>Grado A</strong> a favor del PRP en artrosis de rodilla grados I a III, a trav&eacute;s de sus consensos ESSKA-ORBIT y ESSKA-ICRS.</li>
+        </ul>
+
+        <h3>Ventajas</h3>
+        <ul>
+          <li>Mayor duraci&oacute;n del efecto (6&ndash;12+ meses)</li>
+          <li>Mejor perfil de seguridad de las tres opciones</li>
+          <li>Producto aut&oacute;logo (de tu propia sangre) &mdash; sin riesgo de rechazo ni alergia</li>
+          <li>No da&ntilde;a el cart&iacute;lago</li>
+          <li>Respaldado por el consenso europeo m&aacute;s reciente (ESSKA 2024)</li>
+        </ul>
+
+        <h3>Limitaciones</h3>
+        <ul>
+          <li><strong>No cubierto por las compa&ntilde;&iacute;as aseguradoras</strong> &mdash; se abona de forma privada, al igual que el &aacute;cido hialur&oacute;nico</li>
+          <li>No est&aacute; indicado en artrosis avanzada (grado IV): cuando el cart&iacute;lago ha desaparecido pr&aacute;cticamente por completo, no hay tejido viable que mejorar</li>
+          <li>La calidad del producto var&iacute;a seg&uacute;n el sistema de preparaci&oacute;n utilizado</li>
+          <li>Algunas gu&iacute;as americanas a&uacute;n no lo incluyen en sus recomendaciones principales (AAOS 2022: evidencia &laquo;inconsistente&raquo;), aunque los estudios publicados desde entonces han aportado datos m&aacute;s s&oacute;lidos</li>
+        </ul>
+
+        <div class="callout callout-green">
+          <div class="callout-title">Res&uacute;men</div>
+          <p>El PRP es actualmente la infiltraci&oacute;n con <strong>mejor evidencia cient&iacute;fica</strong> a medio y largo plazo para la artrosis de rodilla leve a moderada. Es seguro, aut&oacute;logo y respaldado por las principales sociedades europeas. Su principal barrera es que, al igual que el &aacute;cido hialur&oacute;nico, no est&aacute; cubierto por la mayor&iacute;a de seguros m&eacute;dicos.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 5. COMPARATIVA                             -->
+    <!-- ═══════════════════════════════════════════ -->
+    <details class="info-section" id="sec-comparativa">
+      <summary>
+        <span class="info-icon">&#128202;</span>
+        <span class="info-title">Comparativa</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <h3>Las tres opciones frente a frente</h3>
+        <p>Esta tabla resume los datos de los metaan&aacute;lisis y consensos m&aacute;s recientes (2024&ndash;2025). Los valores en verde indican la mejor opci&oacute;n en cada categor&iacute;a.</p>
+
+        <!-- Desktop table -->
+        <table class="treatment-compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Corticoides</th>
+              <th>&Aacute;c. Hialur&oacute;nico</th>
+              <th>PRP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Duraci&oacute;n del efecto</td>
+              <td>2&ndash;6 semanas</td>
+              <td>3&ndash;6 meses</td>
+              <td class="winner">6&ndash;12+ meses</td>
+            </tr>
+            <tr>
+              <td>Eficacia (SUCRA)</td>
+              <td>15 / 100</td>
+              <td>53 / 100</td>
+              <td class="winner">91,5 / 100</td>
+            </tr>
+            <tr>
+              <td>Eventos adversos</td>
+              <td>11,0%</td>
+              <td>10,5%</td>
+              <td class="winner">8,7%</td>
+            </tr>
+            <tr>
+              <td>Riesgo para el cart&iacute;lago</td>
+              <td>Posible con uso repetido</td>
+              <td>No descrito</td>
+              <td class="winner">No descrito</td>
+            </tr>
+            <tr>
+              <td>Cobertura seguro</td>
+              <td class="winner">S&iacute;</td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>ESSKA 2024</td>
+              <td>Solo corto plazo</td>
+              <td>Sin consenso</td>
+              <td class="winner">Grado A</td>
+            </tr>
+            <tr>
+              <td>Mejor para&hellip;</td>
+              <td>Crisis aguda de dolor</td>
+              <td>Mantenimiento suave</td>
+              <td class="winner">Tratamiento a medio-largo plazo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Mobile: stacked cards -->
+        <div class="treatment-compare-mobile">
+          <div class="tc-card">
+            <div class="tc-card-title">Corticoides</div>
+            <div class="tc-row"><span class="tc-label">Duraci&oacute;n</span><span class="tc-value">2&ndash;6 semanas</span></div>
+            <div class="tc-row"><span class="tc-label">Eficacia (SUCRA)</span><span class="tc-value">15 / 100</span></div>
+            <div class="tc-row"><span class="tc-label">Eventos adversos</span><span class="tc-value">11,0%</span></div>
+            <div class="tc-row"><span class="tc-label">Cobertura seguro</span><span class="tc-value winner">S&iacute;</span></div>
+            <div class="tc-row"><span class="tc-label">ESSKA 2024</span><span class="tc-value">Solo corto plazo</span></div>
+            <div class="tc-row"><span class="tc-label">Mejor para</span><span class="tc-value">Crisis aguda</span></div>
+          </div>
+          <div class="tc-card">
+            <div class="tc-card-title">&Aacute;cido Hialur&oacute;nico</div>
+            <div class="tc-row"><span class="tc-label">Duraci&oacute;n</span><span class="tc-value">3&ndash;6 meses</span></div>
+            <div class="tc-row"><span class="tc-label">Eficacia (SUCRA)</span><span class="tc-value">53 / 100</span></div>
+            <div class="tc-row"><span class="tc-label">Eventos adversos</span><span class="tc-value">10,5%</span></div>
+            <div class="tc-row"><span class="tc-label">Cobertura seguro</span><span class="tc-value">No</span></div>
+            <div class="tc-row"><span class="tc-label">ESSKA 2024</span><span class="tc-value">Sin consenso</span></div>
+            <div class="tc-row"><span class="tc-label">Mejor para</span><span class="tc-value">Mantenimiento suave</span></div>
+          </div>
+          <div class="tc-card" style="border-color: rgba(22,163,74,0.3); border-width: 2px;">
+            <div class="tc-card-title" style="color: var(--green);">PRP &mdash; Plasma Rico en Plaquetas</div>
+            <div class="tc-row"><span class="tc-label">Duraci&oacute;n</span><span class="tc-value winner">6&ndash;12+ meses</span></div>
+            <div class="tc-row"><span class="tc-label">Eficacia (SUCRA)</span><span class="tc-value winner">91,5 / 100</span></div>
+            <div class="tc-row"><span class="tc-label">Eventos adversos</span><span class="tc-value winner">8,7%</span></div>
+            <div class="tc-row"><span class="tc-label">Cobertura seguro</span><span class="tc-value">No</span></div>
+            <div class="tc-row"><span class="tc-label">ESSKA 2024</span><span class="tc-value winner">Grado A</span></div>
+            <div class="tc-row"><span class="tc-label">Mejor para</span><span class="tc-value winner">Medio-largo plazo</span></div>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <h3>&iquest;Cu&aacute;l es para m&iacute;?</h3>
+
+        <div class="milestones">
+          <div class="milestone">
+            <div class="milestone-label">Necesito alivio r&aacute;pido para un dolor agudo</div>
+            <ul>
+              <li><strong>Corticoides.</strong> Efecto en horas. Ideal para crisis puntuales, eventos o como puente antes de otra intervenci&oacute;n. Cubierto por seguro.</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">Busco un tratamiento de fondo, con la mejor evidencia</div>
+            <ul>
+              <li><strong>PRP.</strong> La opci&oacute;n con mayor duraci&oacute;n, mejor eficacia a medio-largo plazo y mejor perfil de seguridad. Si vas a invertir de tu bolsillo, la evidencia respalda esta opci&oacute;n por encima de las dem&aacute;s.</li>
+            </ul>
+          </div>
+          <div class="milestone">
+            <div class="milestone-label">Mi artrosis es avanzada (grado IV)</div>
+            <ul>
+              <li><strong>Corticoides para rescate del dolor.</strong> Ni el PRP ni el hialur&oacute;nico han demostrado beneficio en artrosis terminal. La opci&oacute;n definitiva en estos casos suele ser la cirug&iacute;a (pr&oacute;tesis de rodilla).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Un matiz importante sobre el coste</div>
+          <p>Tanto el &aacute;cido hialur&oacute;nico como el PRP se abonan de forma privada (las compa&ntilde;&iacute;as no los cubren). Si ambas opciones suponen un gasto del bolsillo del paciente, merece la pena conocer que la evidencia cient&iacute;fica actual es significativamente <strong>m&aacute;s favorable para el PRP</strong> en pr&aacute;cticamente todos los par&aacute;metros estudiados.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 6. EL PROCEDIMIENTO                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <details class="info-section" id="sec-procedimiento">
+      <summary>
+        <span class="info-icon">&#127973;</span>
+        <span class="info-title">El procedimiento</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <h3>&iquest;C&oacute;mo se realiza una infiltraci&oacute;n?</h3>
+        <p>Todas las infiltraciones se realizan en <strong>consulta</strong>, sin anestesia general ni quir&oacute;fano. El procedimiento dura entre 5 y 15 minutos seg&uacute;n el tipo.</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Antes</div>
+            <div class="timeline-text">No requiere ayuno ni preparaci&oacute;n especial. Si tomas anticoagulantes, cons&uacute;ltalo previamente con tu cirujano. Ven con ropa c&oacute;moda que permita acceder f&aacute;cilmente a la rodilla. En el caso del PRP, se te extraer&aacute; primero una muestra de sangre del brazo (como en un an&aacute;lisis normal).</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Durante</div>
+            <div class="timeline-text">Se limpia la zona con antis&eacute;ptico. Se realiza la inyecci&oacute;n en la articulaci&oacute;n de la rodilla, generalmente por la parte externa o interna. La molestia es breve y tolerable (similar a un an&aacute;lisis de sangre). En el caso del PRP, antes de la inyecci&oacute;n se centrifuga la muestra de sangre durante unos minutos para obtener el concentrado.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">Despu&eacute;s</div>
+            <div class="timeline-text">Puedes irte a casa por tu propio pie. Se recomienda reposo relativo las primeras 24&ndash;48 horas y evitar ejercicio intenso los primeros 2&ndash;3 d&iacute;as. La mayor&iacute;a de pacientes retoman su actividad normal al d&iacute;a siguiente.</div>
+          </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <h3>Despu&eacute;s de la infiltraci&oacute;n</h3>
+
+        <div class="activities-grid">
+          <div class="activities-col do">
+            <div class="activities-label">Qu&eacute; hacer</div>
+            <ul>
+              <li>Aplicar fr&iacute;o local 15&ndash;20 minutos si hay molestia</li>
+              <li>Caminar con normalidad</li>
+              <li>Tomar paracetamol si tienes dolor leve</li>
+              <li>Retomar actividad normal en 24&ndash;48 horas</li>
+              <li>Hidratar bien la zona de punci&oacute;n</li>
+            </ul>
+          </div>
+          <div class="activities-col avoid">
+            <div class="activities-label">Qu&eacute; evitar</div>
+            <ul>
+              <li>Ejercicio intenso las primeras 48 horas</li>
+              <li>Sumergir la rodilla en piscina/ba&ntilde;era 24h</li>
+              <li>Masajear la zona de punci&oacute;n</li>
+              <li>Tomar antiinflamatorios (AINEs) tras PRP</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-amber">
+          <div class="callout-title">&iquest;Por qu&eacute; no antiinflamatorios tras el PRP?</div>
+          <p>Los antiinflamatorios (ibuprofeno, naproxeno, etc.) pueden bloquear parte del efecto biol&oacute;gico del PRP, que act&uacute;a precisamente modulando la inflamaci&oacute;n. Si necesitas analg&eacute;sico, usa <strong>paracetamol</strong>. Consulta siempre con tu cirujano.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 7. PREGUNTAS FRECUENTES                    -->
+    <!-- ═══════════════════════════════════════════ -->
+    <details class="info-section" id="sec-faq">
+      <summary>
+        <span class="info-icon">&#10067;</span>
+        <span class="info-title">Preguntas frecuentes</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Duele la infiltraci&oacute;n?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">La molestia es similar a un pinchazo para un an&aacute;lisis de sangre. Dura unos segundos. Algunos pacientes notan una leve presi&oacute;n al inyectar el l&iacute;quido. Es perfectamente tolerable y no requiere anestesia.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Cu&aacute;ntas sesiones necesito?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Depende del tipo. <strong>Corticoides:</strong> habitualmente 1 sola infiltraci&oacute;n, repetible cada 3&ndash;4 meses si es necesario. <strong>&Aacute;cido hialur&oacute;nico:</strong> entre 1 y 5 sesiones seg&uacute;n el preparado. <strong>PRP:</strong> generalmente 1&ndash;3 sesiones separadas por 2&ndash;4 semanas. Tu cirujano te indicar&aacute; el protocolo m&aacute;s adecuado.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Puedo conducir despu&eacute;s?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">S&iacute;, en la mayor&iacute;a de los casos. Puedes sentir una leve molestia o pesadez las primeras horas, pero no impide la conducci&oacute;n. Si te sientes inseguro, espera unas horas.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Lo cubre mi seguro m&eacute;dico?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Los <strong>corticoides</strong> s&iacute; est&aacute;n cubiertos habitualmente por las compa&ntilde;&iacute;as aseguradoras. El <strong>&aacute;cido hialur&oacute;nico</strong> y el <strong>PRP</strong> no est&aacute;n cubiertos por la mayor&iacute;a de seguros y se abonan de forma privada. Ambos suponen un gasto similar de bolsillo para el paciente.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Se pueden combinar distintas infiltraciones?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">S&iacute;. Es frecuente utilizar primero un corticoide para controlar una crisis aguda de dolor e inflamaci&oacute;n, y posteriormente iniciar un protocolo de PRP para el manejo a medio-largo plazo. Tu cirujano adaptar&aacute; la estrategia a tu caso.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Funciona en artrosis avanzada?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">En artrosis avanzada (grado IV), las infiltraciones tienen un efecto muy limitado. Los corticoides pueden ofrecer alivio puntual, pero ni el PRP ni el hialur&oacute;nico han demostrado beneficio significativo cuando el cart&iacute;lago ha desaparecido pr&aacute;cticamente por completo. En estos casos, la opci&oacute;n m&aacute;s efectiva suele ser la cirug&iacute;a (pr&oacute;tesis de rodilla).</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Hay alg&uacute;n efecto secundario?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Los efectos secundarios son poco frecuentes y generalmente leves: dolor local, enrojecimiento o hinchaz&oacute;n pasajera en las primeras 24&ndash;48 horas. La infecci&oacute;n es muy rara (&lt;0,1%). Los corticoides pueden provocar subida puntual de glucemia en diab&eacute;ticos. El PRP tiene el mejor perfil de seguridad al ser un producto de tu propia sangre.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Puedo hacer vida normal despu&eacute;s?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">S&iacute;. La mayor&iacute;a de pacientes retoman su rutina habitual al d&iacute;a siguiente. Solo se recomienda evitar ejercicio intenso las primeras 48 horas.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Cu&aacute;l me recomienda mi cirujano?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">La recomendaci&oacute;n depende de tu caso concreto: grado de artrosis, s&iacute;ntomas, edad y expectativas. Para la artrosis leve a moderada, la evidencia cient&iacute;fica m&aacute;s reciente respalda al PRP como la opci&oacute;n m&aacute;s eficaz y segura a medio-largo plazo. Para crisis puntuales de dolor, los corticoides siguen siendo &uacute;tiles. Lo importante es que la decisi&oacute;n sea informada y compartida entre t&uacute; y tu cirujano.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="faq-q">&iquest;Las infiltraciones retrasan la necesidad de pr&oacute;tesis?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">En algunos pacientes, s&iacute;. Las infiltraciones pueden mejorar los s&iacute;ntomas lo suficiente como para ganar meses o a&ntilde;os antes de necesitar cirug&iacute;a. Un estudio nacional ingl&eacute;s de 2025 no encontr&oacute; que los corticoides aumentaran el riesgo de necesitar una pr&oacute;tesis antes. Sin embargo, las infiltraciones no detienen la progresi&oacute;n de la artrosis.</div>
+        </details>
+
+      </div>
+    </details>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- 8. BIBLIOGRAFÍA                            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <details class="info-section" id="sec-biblio">
+      <summary>
+        <span class="info-icon">&#128218;</span>
+        <span class="info-title">Bibliograf&iacute;a</span>
+        <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <div class="info-body">
+        <p>Esta gu&iacute;a est&aacute; basada en los siguientes art&iacute;culos cient&iacute;ficos y consensos de sociedades m&eacute;dicas:</p>
+
+        <ol class="ref-list">
+          <li>Jawanda H, et al. Platelet-Rich Plasma Is the Most Efficacious Injection Therapy for Knee Osteoarthritis: A Network Meta-analysis. <span class="ref-journal">Arthroscopy.</span> 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/38331363/" target="_blank" rel="noopener">PMID: 38331363</a></li>
+          <li>Bensa A, et al. Corticosteroids, hyaluronic acid, and platelet-rich plasma in the treatment of knee osteoarthritis. <span class="ref-journal">EFORT Open Rev.</span> 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/39222336/" target="_blank" rel="noopener">PMID: 39222336</a></li>
+          <li>Bensa A, et al. Safety of intra-articular injections in knee osteoarthritis: a meta-analysis of 76,061 patients (ESSKA). <span class="ref-journal">KSSTA.</span> 2025. <a href="https://pubmed.ncbi.nlm.nih.gov/41451630/" target="_blank" rel="noopener">PMID: 41451630</a></li>
+          <li>Kon E, et al. ESSKA-ICRS consensus on the use of PRP for knee cartilage pathology. <span class="ref-journal">KSSTA.</span> 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/38961773/" target="_blank" rel="noopener">PMID: 38961773</a></li>
+          <li>Laver L, et al. ESSKA-ORBIT consensus: PRP in knee osteoarthritis &mdash; Grade A recommendation. <span class="ref-journal">KSSTA.</span> 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/38436492/" target="_blank" rel="noopener">PMID: 38436492</a></li>
+          <li>McAlindon TE, et al. Effect of Intra-articular Triamcinolone vs Saline on Knee Cartilage Volume and Pain in Patients With Knee Osteoarthritis: A Randomized Clinical Trial. <span class="ref-journal">JAMA.</span> 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/28510679/" target="_blank" rel="noopener">PMID: 28510679</a></li>
+          <li>Hawley S, et al. Intra-articular corticosteroid injections and knee replacement risk: a national cohort study. <span class="ref-journal">BMC Medicine.</span> 2025. <a href="https://pubmed.ncbi.nlm.nih.gov/40189536/" target="_blank" rel="noopener">PMID: 40189536</a></li>
+          <li>Hohmann E, et al. Platelet concentration matters: a meta-analysis of PRP for knee osteoarthritis. <span class="ref-journal">Knee Surg Sports Traumatol Arthrosc.</span> 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/38604391/" target="_blank" rel="noopener">PMID: 38604391</a></li>
+          <li>AAOS Clinical Practice Guideline: Management of Osteoarthritis of the Knee (3rd Ed). <span class="ref-journal">J Am Acad Orthop Surg.</span> 2022. <a href="https://pubmed.ncbi.nlm.nih.gov/35383651/" target="_blank" rel="noopener">PMID: 35383651</a></li>
+        </ol>
+
+        <div class="callout callout-info">
+          <div class="callout-title">Nota sobre la evidencia</div>
+          <p>La medicina evoluciona constantemente. Esta gu&iacute;a ha sido elaborada con la mejor evidencia disponible a fecha de 2025. Las gu&iacute;as cl&iacute;nicas americanas (AAOS) se publicaron en 2022 y est&aacute;n pendientes de actualizaci&oacute;n con los datos m&aacute;s recientes sobre PRP. Los consensos europeos (ESSKA 2024) incorporan los estudios m&aacute;s actualizados.</p>
+        </div>
+      </div>
+    </details>
+
+    <!-- FINAL CALLOUT -->
+    <div class="final-callout">
+      <h3>Tu decisi&oacute;n, informada</h3>
+      <p>Una buena infiltraci&oacute;n empieza por una buena indicaci&oacute;n. El objetivo de esta gu&iacute;a es que dispongas de informaci&oacute;n <strong>veraz y actualizada</strong> para tomar una decisi&oacute;n junto a tu cirujano, sabiendo qu&eacute; esperar de cada opci&oacute;n.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Esta informaci&oacute;n es orientativa y basada en la evidencia cient&iacute;fica disponible. Sigue siempre las indicaciones de tu cirujano.</p>
+    <p class="sig">Dr. Mart&iacute;n Ant&uacute;nez &middot; Cirug&iacute;a Ortop&eacute;dica y Traumatolog&iacute;a &middot; Especialista en Rodilla</p>
+  </footer>
+
+  <script>
+    // ─────────────────────────────────────────────
+    //  SECTION NAV — scroll to + open
+    // ─────────────────────────────────────────────
+    document.querySelectorAll('.nav-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var targetId = this.dataset.target;
+        var section = document.getElementById(targetId);
+        if (!section) return;
+
+        // Open the details element
+        section.open = true;
+
+        // Scroll into view
+        var navHeight = document.getElementById('section-nav').offsetHeight;
+        var top = section.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+
+        // Update active pill
+        document.querySelectorAll('.nav-pill').forEach(function(p) { p.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+
+    // ─────────────────────────────────────────────
+    //  SCROLL SPY — highlight active pill
+    // ─────────────────────────────────────────────
+    var sections = document.querySelectorAll('.info-section');
+    var pills = document.querySelectorAll('.nav-pill');
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          pills.forEach(function(p) {
+            p.classList.toggle('active', p.dataset.target === id);
+          });
+          // Scroll pill into view in nav
+          var activePill = document.querySelector('.nav-pill[data-target="' + id + '"]');
+          if (activePill) {
+            activePill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(function(sec) { observer.observe(sec); });
+
+    // ─────────────────────────────────────────────
+    //  NAV SHADOW ON SCROLL
+    // ─────────────────────────────────────────────
+    var navEl = document.getElementById('section-nav');
+    window.addEventListener('scroll', function() {
+      navEl.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // ─────────────────────────────────────────────
+    //  LOCALHOST DETECTION
+    // ─────────────────────────────────────────────
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+      document.querySelectorAll('a[href^="https://jmacot.github.io"]').forEach(function(a) {
+        a.removeAttribute('href');
+        a.style.opacity = '0.4';
+        a.style.pointerEvents = 'none';
+      });
+    }
+  </script>
+</body>
+</html>
