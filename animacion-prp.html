@@ -299,6 +299,11 @@
 let running = false;
 const $ = id => document.getElementById(id);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+function scrollCard(id) {
+  if (window.innerWidth <= 860) {
+    setTimeout(() => $(id).scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  }
+}
 
 function msg(t, hl) {
   $('status').textContent = t;
@@ -317,7 +322,7 @@ async function go() {
   $('ci3').classList.remove('spin');
   await sleep(400);
 
-  $('c1').classList.add('show');
+  $('c1').classList.add('show'); scrollCard('c1');
   msg('Se extrae una muestra de sangre del brazo', true);
   await sleep(2500);
 
@@ -325,7 +330,7 @@ async function go() {
   msg('La sangre se recoge en un tubo especial…', true);
   await sleep(1600);
 
-  $('c2').classList.add('show');
+  $('c2').classList.add('show'); scrollCard('c2');
   msg('La muestra de sangre está lista', true);
   await sleep(2000);
 
@@ -333,7 +338,7 @@ async function go() {
   msg('Se introduce en la centrifugadora…', true);
   await sleep(1600);
 
-  $('c3').classList.add('show');
+  $('c3').classList.add('show'); scrollCard('c3');
   $('ci3').classList.add('spin');
   msg('La centrifugadora separa las plaquetas del resto de la sangre', true);
   await sleep(4500);
@@ -345,7 +350,7 @@ async function go() {
   $('ap3').classList.add('on'); $('at3').classList.add('on');
   await sleep(1400);
 
-  $('c4').classList.add('show');
+  $('c4').classList.add('show'); scrollCard('c4');
   msg('El PRP está listo para ser aplicado en la zona a tratar', true);
   await sleep(3000);
 

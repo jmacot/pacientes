@@ -183,15 +183,16 @@
     .info-section summary:hover { background: rgba(14, 165, 233, 0.04); }
 
     .info-icon {
-      font-size: 22px;
       width: 40px; height: 40px;
       border-radius: 10px;
       background: var(--c-rodilla-light);
+      color: var(--c-rodilla);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
+    .info-icon svg { width: 20px; height: 20px; }
 
     .info-title {
       font-family: 'DM Serif Display', serif;
@@ -715,7 +716,8 @@
       .section-nav { padding: 10px 16px; }
       main { padding: 24px 16px 60px; }
       .info-section summary { padding: 16px 18px; gap: 10px; }
-      .info-icon { width: 34px; height: 34px; font-size: 18px; border-radius: 8px; }
+      .info-icon { width: 34px; height: 34px; border-radius: 8px; }
+      .info-icon svg { width: 17px; height: 17px; }
       .info-title { font-size: 1rem; }
       .info-body { padding: 0 18px 22px; font-size: 14px; }
       .milestones { grid-template-columns: 1fr; }
@@ -763,7 +765,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <details class="info-section" id="sec-intro" open>
       <summary>
-        <span class="info-icon">&#128137;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4"/><path d="m17 7-9 9"/><path d="M3 21 9 15"/><path d="m3 21 1-4 4-1"/><path d="m14.5 5.5-4 4"/><path d="m10 10 5 5"/></svg></span>
         <span class="info-title">Introducci&oacute;n</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -803,7 +805,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <details class="info-section" id="sec-corticoides">
       <summary>
-        <span class="info-icon">&#129519;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
         <span class="info-title">Corticoides</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -852,7 +854,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <details class="info-section" id="sec-hialuronico">
       <summary>
-        <span class="info-icon">&#129531;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg></span>
         <span class="info-title">&Aacute;cido Hialur&oacute;nico</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -906,7 +908,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <details class="info-section" id="sec-prp">
       <summary>
-        <span class="info-icon">&#129656;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span>
         <span class="info-title">PRP &mdash; Plasma Rico en Plaquetas</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -996,7 +998,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <details class="info-section" id="sec-comparativa">
       <summary>
-        <span class="info-icon">&#128202;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></span>
         <span class="info-title">Comparativa</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1128,7 +1130,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <details class="info-section" id="sec-procedimiento">
       <summary>
-        <span class="info-icon">&#127973;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span>
         <span class="info-title">El procedimiento</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1192,7 +1194,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <details class="info-section" id="sec-faq">
       <summary>
-        <span class="info-icon">&#10067;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
         <span class="info-title">Preguntas frecuentes</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1286,7 +1288,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <details class="info-section" id="sec-biblio">
       <summary>
-        <span class="info-icon">&#128218;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
         <span class="info-title">Bibliograf&iacute;a</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>

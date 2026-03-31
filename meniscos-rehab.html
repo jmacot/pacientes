@@ -183,15 +183,16 @@
     .info-section summary:hover { background: rgba(14, 165, 233, 0.04); }
 
 .info-icon {
-      font-size: 22px;
       width: 40px; height: 40px;
       border-radius: 10px;
       background: var(--c-rodilla-light);
+      color: var(--c-rodilla);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
+    .info-icon svg { width: 20px; height: 20px; }
 
     .info-title {
       font-family: 'DM Serif Display', serif;
@@ -869,7 +870,8 @@
 .section-nav { padding: 10px 16px; }
       main { padding: 24px 16px 60px; }
       .info-section summary { padding: 16px 18px; gap: 10px; }
-      .info-icon { width: 34px; height: 34px; font-size: 18px; border-radius: 8px; }
+      .info-icon { width: 34px; height: 34px; border-radius: 8px; }
+      .info-icon svg { width: 17px; height: 17px; }
       .info-title { font-size: 1rem; }
       .info-body { padding: 0 18px 22px; font-size: 14px; }
       .milestones { grid-template-columns: 1fr; }
@@ -919,7 +921,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <details class="info-section" id="sec-intro" open>
       <summary>
-        <span class="info-icon">&#129513;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
         <span class="info-title">Introducci&oacute;n</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -989,7 +991,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <details class="info-section protocol-hidden" id="sec-meniscectomia" data-for="meniscectomia">
       <summary>
-        <span class="info-icon">&#127973;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span>
         <span class="info-title">Protocolo: Meniscectom&iacute;a parcial</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1076,7 +1078,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <details class="info-section protocol-hidden" id="sec-sutura" data-for="sutura">
       <summary>
-        <span class="info-icon">&#128137;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4"/><path d="m17 7-9 9"/><path d="M3 21 9 15"/><path d="m3 21 1-4 4-1"/><path d="m14.5 5.5-4 4"/><path d="m10 10 5 5"/></svg></span>
         <span class="info-title">Protocolo: Sutura meniscal y reinserci&oacute;n de ra&iacute;z</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1244,7 +1246,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <details class="info-section protocol-hidden" id="sec-recuperacion" data-for="shared">
       <summary>
-        <span class="info-icon">&#128200;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
         <span class="info-title">Recuperaci&oacute;n: hitos por cirug&iacute;a</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1332,7 +1334,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <details class="info-section protocol-hidden" id="sec-deporte" data-for="shared">
       <summary>
-        <span class="info-icon">&#128202;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></span>
         <span class="info-title">Retorno al deporte</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1389,7 +1391,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <details class="info-section protocol-hidden" id="sec-claves" data-for="shared">
       <summary>
-        <span class="info-icon">&#128172;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
         <span class="info-title">8 claves de la rehabilitaci&oacute;n</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1412,7 +1414,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <details class="info-section protocol-hidden" id="sec-alarma" data-for="shared">
       <summary>
-        <span class="info-icon">&#9888;&#65039;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
         <span class="info-title">Signos de alarma</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
@@ -1447,7 +1449,7 @@
     <!-- ══════════════════════════════════════════════ -->
     <details class="info-section protocol-hidden" id="sec-faq" data-for="shared">
       <summary>
-        <span class="info-icon">&#10067;</span>
+        <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
         <span class="info-title">Preguntas frecuentes</span>
         <svg class="info-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </summary>
