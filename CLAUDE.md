@@ -93,7 +93,22 @@ img/                ← Imágenes de las guías
 3. **Misma navegación:** Pills sticky con los mismos nombres de sección
 4. **Datos médicos concordantes:** Si una guía de información menciona un plazo (ej. "conducir a las 6 semanas"), la guía de rehabilitación correspondiente debe decir lo mismo. **Nunca publicar datos contradictorios entre la página de información y la de rehabilitación**
 5. **Tono consistente:** Tutear al paciente, frases cortas, bullet points, negrita para lo importante
-6. **Imágenes:** Todas las guías deben tener al menos 1-2 imágenes ilustrativas. Formato `.jpg` o `.png`, guardadas en `img/` con nombre descriptivo (`{patologia}-{descripcion}.jpg`)
+6. **Imágenes:** Todas las guías deben tener al menos 1-2 imágenes ilustrativas. Formato `.jpg` o `.png`, guardadas en `img/` con nombre descriptivo (`{patologia}-{descripcion}.jpg`). Usar clases `.info-img`, `.info-img.medium` (max 420px) o `.info-img.small` (max 280px) — ambas usan `min(Xpx, 100%)` para no desbordar en móvil.
+
+   **Recorte de márgenes blancos** — antes de añadir una imagen, eliminar los márgenes en blanco con Pillow:
+
+   ```python
+   from PIL import Image, ImageChops
+   img = Image.open('img/nombre.png')
+   bg = Image.new('RGB', img.size, (255, 255, 255))
+   bbox = ImageChops.difference(img.convert('RGB'), bg).getbbox()
+   if bbox:
+       pad = 40
+       bbox = (max(0,bbox[0]-pad), max(0,bbox[1]-pad), min(img.width,bbox[2]+pad), min(img.height,bbox[3]+pad))
+       img.crop(bbox).save('img/nombre.png', optimize=True)
+   ```
+
+   Si el fondo no es blanco puro (el bbox devuelve el tamaño completo), la imagen ya está bien recortada — no hace falta procesarla.
 8. **Imágenes en milestone cards (Recuperación):** Cuando una milestone card incluye una imagen ilustrativa, usar layout `milestone-content` (flex horizontal) con la imagen en un `milestone-aside` a la derecha del texto (width: 300px, max-width: 300px). En móvil (`max-width: 600px`) se apilan verticalmente. **Nunca** apilar la imagen debajo del texto en desktop — queda demasiado espacio en blanco y alarga innecesariamente la card
 7. **Durabilidad/pronóstico:** Siempre usar un tono realista pero positivo. No dar por hecho resultados negativos. Ejemplo: "La mayoría duran más de 20 años" en vez de "Duran 15-20 años"
 
