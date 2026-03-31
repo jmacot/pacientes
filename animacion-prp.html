@@ -113,6 +113,7 @@
     padding: 6px;
   }
 
+  .card-wide { width: 240px; }
   .card-wide .card-img {
     width: 220px;
     height: 150px;
@@ -223,10 +224,10 @@
   }
 
   @media (max-width: 860px) {
-    .flow { flex-direction: column; gap: 0.3rem; }
+    .flow { flex-direction: column; gap: 0.3rem; align-items: center; padding: 1rem 1.5rem 1.5rem; }
     .arrow { transform: rotate(90deg); width: 40px; height: 45px; padding-top: 0; }
-    .card { width: auto; }
-    .card-wide .card-img { width: 240px; height: 160px; }
+    .card { width: auto; align-self: center; }
+    .card-wide .card-img { width: min(240px, 100%); height: 160px; }
   }
 </style>
 </head>
