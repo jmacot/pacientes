@@ -542,6 +542,24 @@
     .evidence-badge.limited { background: var(--amber-light); color: var(--amber); }
     .evidence-badge.against { background: var(--red-light); color: var(--red); }
 
+    /* ── PRP ANIMATION IFRAME ── */
+    .prp-anim-wrap {
+      margin: 20px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #f7f5f0;
+    }
+    .prp-anim-frame {
+      display: block;
+      width: 100%;
+      height: 440px;
+      border: none;
+    }
+    @media (max-width: 600px) {
+      .prp-anim-frame { height: 520px; }
+    }
+
     /* ── REFERENCE LIST ── */
     .ref-list {
       list-style: none;
@@ -865,7 +883,9 @@
         <p>El PRP es un concentrado obtenido a partir de <strong>tu propia sangre</strong>. Se extrae una peque&ntilde;a muestra, se centrifuga para separar sus componentes, y se obtiene un plasma enriquecido en plaquetas que contiene <strong>factores de crecimiento</strong> &mdash; las mismas se&ntilde;ales que tu cuerpo utiliza de forma natural para reparar tejidos.</p>
         <p>No es magia ni terapia de c&eacute;lulas madre. Es biolog&iacute;a aplicada: enviar un equipo de reparaci&oacute;n concentrado a una zona que lo necesita.</p>
 
-        <!-- PLACEHOLDER: img/prp-centrifugado.jpg -->
+        <div class="prp-anim-wrap">
+          <iframe src="animacion-prp.html" title="Animación: cómo se obtiene el PRP" class="prp-anim-frame" scrolling="no" frameborder="0" loading="lazy"></iframe>
+        </div>
 
         <h3>&iquest;C&oacute;mo funciona?</h3>
         <p>Las plaquetas contienen gr&aacute;nulos con factores de crecimiento (PDGF, TGF-&beta;, VEGF, IGF-1) que al liberarse dentro de la articulaci&oacute;n:</p>
