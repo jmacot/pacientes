@@ -542,22 +542,56 @@
     .evidence-badge.limited { background: var(--amber-light); color: var(--amber); }
     .evidence-badge.against { background: var(--red-light); color: var(--red); }
 
-    /* ── PRP ANIMATION IFRAME ── */
-    .prp-anim-wrap {
-      margin: 20px 0;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #f7f5f0;
+    /* ── PRP ANIMATION TRIGGER + MODAL ── */
+    .prp-anim-trigger {
+      display: flex; align-items: center; gap: 16px;
+      background: #f7f5f0; border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 22px;
+      cursor: pointer; margin: 20px 0;
+      transition: box-shadow 0.25s, transform 0.25s;
+      text-align: left; width: 100%; font-family: inherit;
     }
-    .prp-anim-frame {
-      display: block;
-      width: 100%;
-      height: 440px;
-      border: none;
+    .prp-anim-trigger:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .prp-play-btn {
+      flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%;
+      background: var(--c-rodilla); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(14,165,233,0.35);
+      transition: transform 0.2s;
     }
+    .prp-anim-trigger:hover .prp-play-btn { transform: scale(1.08); }
+    .prp-play-btn svg { width: 22px; height: 22px; margin-left: 3px; fill: white; }
+    .prp-anim-label { display: flex; flex-direction: column; gap: 3px; }
+    .prp-anim-badge {
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-rodilla);
+    }
+    .prp-anim-label strong { font-size: 15px; color: var(--ink); font-family: 'DM Serif Display', serif; }
+    .prp-anim-label span { font-size: 12px; color: var(--ink-muted); }
+
+    .prp-modal {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.72);
+      z-index: 9000; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .prp-modal.open { opacity: 1; pointer-events: auto; }
+    .prp-modal-inner {
+      position: relative;
+      width: min(980px, 96vw); height: min(700px, 92vh);
+      background: #f7f5f0; border-radius: 16px; overflow: hidden;
+      transform: scale(0.94); transition: transform 0.3s;
+    }
+    .prp-modal.open .prp-modal-inner { transform: scale(1); }
+    .prp-modal-close {
+      position: absolute; top: 10px; right: 12px;
+      background: rgba(0,0,0,0.18); border: none; color: #333;
+      font-size: 20px; width: 34px; height: 34px; border-radius: 50%;
+      cursor: pointer; z-index: 1; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .prp-modal-close:hover { background: rgba(0,0,0,0.3); }
+    .prp-modal-frame { width: 100%; height: 100%; border: none; display: block; }
     @media (max-width: 600px) {
-      .prp-anim-frame { height: 520px; }
+      .prp-modal-inner { width: 100%; height: 100%; border-radius: 0; }
     }
 
     /* ── REFERENCE LIST ── */
@@ -883,8 +917,22 @@
         <p>El PRP es un concentrado obtenido a partir de <strong>tu propia sangre</strong>. Se extrae una peque&ntilde;a muestra, se centrifuga para separar sus componentes, y se obtiene un plasma enriquecido en plaquetas que contiene <strong>factores de crecimiento</strong> &mdash; las mismas se&ntilde;ales que tu cuerpo utiliza de forma natural para reparar tejidos.</p>
         <p>No es magia ni terapia de c&eacute;lulas madre. Es biolog&iacute;a aplicada: enviar un equipo de reparaci&oacute;n concentrado a una zona que lo necesita.</p>
 
-        <div class="prp-anim-wrap">
-          <iframe src="animacion-prp.html" title="Animación: cómo se obtiene el PRP" class="prp-anim-frame" scrolling="no" frameborder="0" loading="lazy"></iframe>
+        <button class="prp-anim-trigger" id="btn-prp-anim" aria-haspopup="dialog">
+          <div class="prp-play-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="prp-anim-label">
+            <span class="prp-anim-badge">Animaci&oacute;n interactiva</span>
+            <strong>&iquest;C&oacute;mo se obtiene el PRP?</strong>
+            <span>Extracci&oacute;n &rarr; Centrifugaci&oacute;n &rarr; Aplicaci&oacute;n</span>
+          </div>
+        </button>
+
+        <div id="modal-prp" class="prp-modal" role="dialog" aria-modal="true" aria-label="Animación PRP">
+          <div class="prp-modal-inner">
+            <button class="prp-modal-close" id="btn-close-prp" aria-label="Cerrar">&times;</button>
+            <iframe src="animacion-prp.html" title="Animación: cómo se obtiene el PRP" class="prp-modal-frame" frameborder="0"></iframe>
+          </div>
         </div>
 
         <h3>&iquest;C&oacute;mo funciona?</h3>
@@ -1334,6 +1382,20 @@
     window.addEventListener('scroll', function() {
       navEl.classList.toggle('scrolled', window.scrollY > 10);
     }, { passive: true });
+
+    // ─────────────────────────────────────────────
+    //  PRP ANIMATION MODAL
+    // ─────────────────────────────────────────────
+    (function() {
+      var modal = document.getElementById('modal-prp');
+      var btnOpen = document.getElementById('btn-prp-anim');
+      var btnClose = document.getElementById('btn-close-prp');
+      if (!modal) return;
+      btnOpen.addEventListener('click', function() { modal.classList.add('open'); });
+      btnClose.addEventListener('click', function() { modal.classList.remove('open'); });
+      modal.addEventListener('click', function(e) { if (e.target === modal) modal.classList.remove('open'); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') modal.classList.remove('open'); });
+    })();
 
     // ─────────────────────────────────────────────
     //  LOCALHOST DETECTION
