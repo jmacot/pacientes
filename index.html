@@ -223,16 +223,6 @@
       border-radius: var(--radius) var(--radius) 0 0;
     }
 
-    .card-icon {
-      width: 56px; height: 56px;
-      border-radius: 14px;
-      background: var(--card-icon-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-    }
-
     .card-meta {
       display: flex;
       align-items: center;
@@ -264,7 +254,7 @@
 
     .card:hover .card-arrow {
       background: var(--card-accent);
-      border-color: var(--card-accent);
+      border-
       color: white;
       transform: translateX(3px) scale(1.1);
     }
@@ -302,25 +292,21 @@
     /* ── VARIANTES POR ZONA ── */
     .card[data-tag="rodilla"] {
       --card-accent: var(--c-rodilla);
-      --card-icon-bg: var(--c-rodilla-light);
       --card-tag-color: var(--c-rodilla);
       --card-tag-bg: var(--c-rodilla-light);
     }
     .card[data-tag="cadera"] {
       --card-accent: var(--c-cadera);
-      --card-icon-bg: var(--c-cadera-light);
       --card-tag-color: var(--c-cadera);
       --card-tag-bg: var(--c-cadera-light);
     }
     .card[data-tag="hombro"] {
       --card-accent: var(--c-hombro);
-      --card-icon-bg: var(--c-hombro-light);
       --card-tag-color: var(--c-hombro);
       --card-tag-bg: var(--c-hombro-light);
     }
     .card[data-tag="columna"] {
       --card-accent: var(--c-columna);
-      --card-icon-bg: var(--c-columna-light);
       --card-tag-color: var(--c-columna);
       --card-tag-bg: var(--c-columna-light);
     }
@@ -334,7 +320,6 @@
       pointer-events: none;
       opacity: 0.6;
       --card-accent: transparent;
-      --card-icon-bg: var(--c-general-light);
       --card-tag-color: var(--ink-muted);
       --card-tag-bg: var(--c-general-light);
     }
@@ -615,7 +600,6 @@ main { padding: 40px 20px 60px; }
       .filters { gap: 6px; }
       .filter-btn { font-size: 10px; padding: 6px 12px; }
       .card { padding: 24px; }
-      .card-icon { width: 48px; height: 48px; font-size: 22px; }
       .about-card { flex-direction: column; align-items: center; text-align: center; padding: 24px; gap: 16px; }
       .about-avatar { width: 64px; height: 64px; font-size: 1.1rem; }
       .about-tags, .about-highlights { justify-content: center; }
@@ -655,7 +639,6 @@ main { padding: 40px 20px 60px; }
       <!-- Prótesis de Rodilla -->
       <a class="card" data-tag="rodilla" href="ptr.html">
         <div class="card-meta">
-          <div class="card-icon">&#129461;</div>
           <div class="card-arrow">&rarr;</div>
         </div>
         <div>
@@ -672,7 +655,6 @@ main { padding: 40px 20px 60px; }
       <!-- Lesiones Meniscales -->
       <a class="card" data-tag="rodilla" href="meniscos.html">
         <div class="card-meta">
-          <div class="card-icon">&#129471;</div>
           <div class="card-arrow">&rarr;</div>
         </div>
         <div>
@@ -689,7 +671,6 @@ main { padding: 40px 20px 60px; }
       <!-- Ligamento Cruzado Anterior -->
       <a class="card" data-tag="rodilla" href="lca.html">
         <div class="card-meta">
-          <div class="card-icon">&#129516;</div>
           <div class="card-arrow">&rarr;</div>
         </div>
         <div>
@@ -706,7 +687,6 @@ main { padding: 40px 20px 60px; }
       <!-- Infiltraciones de Rodilla -->
       <a class="card" data-tag="rodilla" href="infiltraciones.html">
         <div class="card-meta">
-          <div class="card-icon">&#128137;</div>
           <div class="card-arrow">&rarr;</div>
         </div>
         <div>
@@ -723,7 +703,6 @@ main { padding: 40px 20px 60px; }
       <!-- PLACEHOLDER -->
       <div class="card placeholder" data-tag="none">
         <div class="card-meta">
-          <div class="card-icon">&#65291;</div>
         </div>
         <div>
           <h2>M&aacute;s gu&iacute;as pr&oacute;ximamente</h2>
