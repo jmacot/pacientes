@@ -829,8 +829,8 @@
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
     }
-    .info-img.small { max-width: 280px; }
-    .info-img.medium { max-width: 420px; }
+    .info-img.small { max-width: min(280px, 100%); }
+    .info-img.medium { max-width: min(420px, 100%); }
     .info-img-caption {
       text-align: center;
       font-family: 'DM Mono', monospace;
