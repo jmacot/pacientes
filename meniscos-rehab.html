@@ -13,6 +13,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jmacot.github.io/pacientes/meniscos-rehab.html" />
   <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://jmacot.github.io/pacientes/icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -25,6 +26,7 @@
       --border: #e2e8f0;
       --shadow: 0 2px 20px rgba(26,26,26,0.08);
       --shadow-hover: 0 8px 40px rgba(26,26,26,0.14);
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       --radius: 20px;
       --radius-sm: 12px;
       --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -40,6 +42,7 @@
     }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -137,7 +140,7 @@
       font-size: 10px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 6px 14px;
+      padding: 12px 16px;
       border-radius: 999px;
       border: 1.5px solid var(--border);
       background: transparent;
@@ -813,7 +816,8 @@
     footer {
       text-align: center;
       padding: 32px;
-      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
       color: var(--ink-muted);
       border-top: 1px solid var(--border);
     }
@@ -889,9 +893,22 @@
         transition-duration: 0.01ms !important;
       }
     }
+
+    .skip-link {
+      position: absolute; top: -100px; left: 16px;
+      background: var(--ink); color: var(--bg);
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 14px; font-weight: 500; z-index: 1000;
+      text-decoration: none; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 16px; }
+
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; }
   </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
 
   <header>
     <a class="back-home" href="meniscos.html" title="Volver a Meniscos">&larr; Volver</a>
@@ -914,7 +931,7 @@
     </div>
   </nav>
 
-  <main>
+  <main id="main">
 
     <!-- ══════════════════════════════════════════════ -->
     <!-- 1. INTRODUCCIÓN                                -->
@@ -971,13 +988,13 @@
       <div class="protocol-selector-title">&iquest;Qu&eacute; cirug&iacute;a te han realizado?</div>
       <div class="protocol-selector-sub">Selecciona para ver el protocolo adaptado a tu caso</div>
       <div class="protocol-choices">
-        <div class="protocol-choice" data-protocol="meniscectomia" onclick="selectProtocol('meniscectomia')">
+        <div class="protocol-choice" data-protocol="meniscectomia" role="button" tabindex="0" onclick="selectProtocol('meniscectomia')">
           <div class="protocol-choice-icon">&#9986;</div>
           <div class="protocol-choice-label">Meniscectom&iacute;a parcial</div>
           <div class="protocol-choice-desc">Me han retirado la parte da&ntilde;ada del menisco</div>
           <span class="protocol-choice-tag">Recuperaci&oacute;n r&aacute;pida</span>
         </div>
-        <div class="protocol-choice" data-protocol="sutura" onclick="selectProtocol('sutura')">
+        <div class="protocol-choice" data-protocol="sutura" role="button" tabindex="0" onclick="selectProtocol('sutura')">
           <div class="protocol-choice-icon">&#129657;</div>
           <div class="protocol-choice-label">Sutura o reinserci&oacute;n</div>
           <div class="protocol-choice-desc">Me han reparado o reinsertado el menisco</div>
@@ -1540,6 +1557,16 @@
     //  PROTOCOL SELECTOR
     // ─────────────────────────────────────────────
     var currentProtocol = null;
+
+    // Keyboard accessibility for protocol choices
+    document.querySelectorAll('.protocol-choice').forEach(function(el) {
+      el.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
 
     function selectProtocol(protocol) {
       currentProtocol = protocol;
