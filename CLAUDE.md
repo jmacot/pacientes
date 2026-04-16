@@ -17,15 +17,47 @@
 ## 2. Estructura del portal
 
 ```
-index.html          ← Landing page: 1 card por patología + "Quién soy"
-ptr.html            ← Hub PTR: 2 subcards (info + rehab)
-ptr-info.html       ← Guía PTR: información y expectativas
-meniscos.html       ← Hub Meniscos: 2 subcards (info + rehab)
-meniscos-info.html  ← Guía Meniscos: información y expectativas
-meniscos-rehab.html ← Guía Meniscos: rehabilitación postoperatoria
-infiltraciones.html ← Guía Infiltraciones: comparativa corticoides/HA/PRP (enlace directo, sin hub)
-img/                ← Imágenes de las guías
+index.html           ← Landing page: 1 card por patología + "Quién soy"
+
+ptr.html             ← Hub PTR
+ptr-info.html        ← Guía PTR: información y expectativas
+                       (pendiente: ptr-rehab.html)
+
+meniscos.html        ← Hub Meniscos
+meniscos-info.html   ← Guía Meniscos: información y expectativas
+meniscos-rehab.html  ← Guía Meniscos: rehabilitación postoperatoria
+
+lca.html             ← Hub LCA
+lca-info.html        ← Guía LCA: información y expectativas
+                       (pendiente: lca-rehab.html)
+
+infiltraciones.html  ← Guía tratamiento: corticoides / HA / PRP (enlace directo, sin hub)
+animacion-prp.html   ← Animación interactiva SVG embebida como iframe/modal desde infiltraciones.html
+
+icon.svg             ← Favicon + apple-touch-icon + og:image (compartido por todas las páginas)
+CLAUDE.md, README.md, .gitignore
+
+img/                 ← Imágenes organizadas por patología (ver abajo)
+qr/                  ← Códigos QR (pacientes, ptr) en PNG + SVG
+.claude/             ← Configuración local de Claude Code (launch.json, settings)
 ```
+
+### Organización de `img/`
+
+Las imágenes están separadas por patología para que sea fácil localizarlas y asociarlas con sus guías:
+
+```
+img/
+├── logos/          ← Logos institucionales (vithas, osten…)
+├── compartidas/    ← Imágenes multi-guía (heparina, rodillera, artroscopia, bicicleta, elevación pierna recta)
+├── ptr/            ← Específicas de PTR (antes/después, implante, unicompartimental)
+├── meniscos/       ← Específicas de meniscos (lesiones, raíz, vascularización)
+├── lca/            ← Específicas de LCA (mecanismo lesión, plastia, injertos)
+├── infiltraciones/ ← Específicas de infiltraciones (corticoide, hialurónico)
+└── _archivo/       ← Imágenes no utilizadas (base para futuros retoques o eliminación)
+```
+
+**Regla:** al añadir una imagen nueva, colócala en la subcarpeta de la patología a la que pertenece. Si la imagen puede reutilizarse en más de una guía (p. ej. un ejercicio de rehabilitación, una inyección), va en `compartidas/`. Actualiza el `src` de los HTML con la ruta completa: `img/{subcarpeta}/{nombre}.png`.
 
 ### Arquitectura de navegación — REGLA CRÍTICA
 
@@ -93,24 +125,25 @@ img/                ← Imágenes de las guías
 3. **Misma navegación:** Pills sticky con los mismos nombres de sección
 4. **Datos médicos concordantes:** Si una guía de información menciona un plazo (ej. "conducir a las 6 semanas"), la guía de rehabilitación correspondiente debe decir lo mismo. **Nunca publicar datos contradictorios entre la página de información y la de rehabilitación**
 5. **Tono consistente:** Tutear al paciente, frases cortas, bullet points, negrita para lo importante
-6. **Imágenes:** Todas las guías deben tener al menos 1-2 imágenes ilustrativas. Formato `.jpg` o `.png`, guardadas en `img/` con nombre descriptivo (`{patologia}-{descripcion}.jpg`). Usar clases `.info-img`, `.info-img.medium` (max 420px) o `.info-img.small` (max 280px) — ambas usan `min(Xpx, 100%)` para no desbordar en móvil.
+6. **Imágenes:** Todas las guías deben tener al menos 1-2 imágenes ilustrativas. Formato `.jpg` o `.png`, guardadas en la subcarpeta correspondiente de `img/` (ver sección 2). Nombre descriptivo sin prefijo de patología (la subcarpeta ya identifica la patología): `img/ptr/antes-despues.jpg` en vez de `img/ptr-antes-despues.jpg`. Usar clases `.info-img`, `.info-img.medium` (max 420px) o `.info-img.small` (max 280px) — ambas usan `min(Xpx, 100%)` para no desbordar en móvil.
 
    **Recorte de márgenes blancos** — antes de añadir una imagen, eliminar los márgenes en blanco con Pillow:
 
    ```python
    from PIL import Image, ImageChops
-   img = Image.open('img/nombre.png')
+   ruta = 'img/{subcarpeta}/nombre.png'
+   img = Image.open(ruta)
    bg = Image.new('RGB', img.size, (255, 255, 255))
    bbox = ImageChops.difference(img.convert('RGB'), bg).getbbox()
    if bbox:
        pad = 40
        bbox = (max(0,bbox[0]-pad), max(0,bbox[1]-pad), min(img.width,bbox[2]+pad), min(img.height,bbox[3]+pad))
-       img.crop(bbox).save('img/nombre.png', optimize=True)
+       img.crop(bbox).save(ruta, optimize=True)
    ```
 
    Si el fondo no es blanco puro (el bbox devuelve el tamaño completo), la imagen ya está bien recortada — no hace falta procesarla.
-8. **Imágenes en milestone cards (Recuperación):** Cuando una milestone card incluye una imagen ilustrativa, usar layout `milestone-content` (flex horizontal) con la imagen en un `milestone-aside` a la derecha del texto (width: 300px, max-width: 300px). En móvil (`max-width: 600px`) se apilan verticalmente. **Nunca** apilar la imagen debajo del texto en desktop — queda demasiado espacio en blanco y alarga innecesariamente la card
-7. **Durabilidad/pronóstico:** Siempre usar un tono realista pero positivo. No dar por hecho resultados negativos. Ejemplo: "La mayoría duran más de 20 años" en vez de "Duran 15-20 años"
+7. **Imágenes en milestone cards (Recuperación):** Cuando una milestone card incluye una imagen ilustrativa, usar layout `milestone-content` (flex horizontal) con la imagen en un `milestone-aside` a la derecha del texto (width: 300px, max-width: 300px). En móvil (`max-width: 600px`) se apilan verticalmente. **Nunca** apilar la imagen debajo del texto en desktop — queda demasiado espacio en blanco y alarga innecesariamente la card
+8. **Durabilidad/pronóstico:** Siempre usar un tono realista pero positivo. No dar por hecho resultados negativos. Ejemplo: "La mayoría duran más de 20 años" en vez de "Duran 15-20 años"
 
 ---
 
@@ -127,14 +160,18 @@ img/                ← Imágenes de las guías
 
 ## 5. Checklist para nueva patología
 
-Al crear una nueva guía (ej. `lca-info.html`):
+Al crear una nueva guía (ej. `osteotomias.html` + `osteotomias-info.html` + `osteotomias-rehab.html`):
 
-- [ ] Crear archivo `{patologia}-info.html` copiando estructura de `ptr-info.html`
-- [ ] Adaptar contenido de las 8 secciones obligatorias
-- [ ] Verificar coherencia con la guía de rehabilitación correspondiente
-- [ ] Añadir imágenes en `img/` (mínimo 1)
-- [ ] Añadir 2 cards en `index.html` (Información + Rehabilitación)
-- [ ] Verificar filtro por zona anatómica
-- [ ] Verificar dark mode y responsive
-- [ ] Verificar navegación pills y scroll spy
+- [ ] Crear el **hub** `{patologia}.html` copiando estructura de `ptr.html` (header + 2 subcards)
+- [ ] Crear `{patologia}-info.html` copiando estructura de `ptr-info.html`
+- [ ] Crear `{patologia}-rehab.html` cuando haya material de rehabilitación
+- [ ] Adaptar contenido de las 8 secciones obligatorias de la guía de información
+- [ ] Crear subcarpeta `img/{patologia}/` y añadir imágenes propias (mínimo 1)
+- [ ] Reutilizar imágenes de `img/compartidas/` si aplica (heparina, rodillera, artroscopia, bicicleta…)
+- [ ] Añadir **1 card** en `index.html` que enlace al hub (no cards directas info/rehab)
+- [ ] Asignar filtro por zona anatómica correspondiente
+- [ ] Verificar responsive (móvil/tablet/desktop)
+- [ ] Verificar navegación pills sticky + scroll spy
 - [ ] Comprobar que no hay datos contradictorios con otras guías
+
+> **Nota:** el portal **no tiene dark mode** ni sky toggle (decisión del autor para mantener una única identidad visual clara). No añadirlo.
