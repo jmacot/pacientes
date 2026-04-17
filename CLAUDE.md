@@ -11,6 +11,9 @@
 - **Público objetivo:** Pacientes (no profesionales médicos). Lenguaje claro, cercano, sin tecnicismos innecesarios
 - **Propósito:** Elemento diferenciador — ofrecer información personalizada que otros cirujanos no proporcionan
 - **Sistema de diseño:** Sistema A (Editorial) del CLAUDE.md principal de COT
+- **Paleta de colores:** namespace anatómico propio (`--c-rodilla`, `--c-cadera`, `--c-hombro`, `--c-columna`). Diverge a propósito de la convención por producto del resto del ecosistema COT (`--c-quirofano`, `--c-pacientes`, etc.) porque el portal se organiza por zona anatómica, no por tipo de herramienta
+- **Fondo:** mesh gradient animado (5 orbs con blur 80px) idéntico al de `jmacot.github.io` para que el portal se sienta como extensión natural del hub. Solo en `index.html`; los hubs y guías mantienen fondo sólido para no distraer
+- **Sistema de sombras:** doble capa (`0 4px 6px -1px + 0 2px 4px -2px`) siguiendo STYLE-GUIDE.md del ecosistema COT (no usar sombra de capa única)
 
 ---
 
