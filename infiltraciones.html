@@ -165,15 +165,21 @@
       details.faq-item summary { font-size: 10.5pt !important; font-weight: 600; color: #0f172a !important; cursor: default !important; padding: 2pt 0 !important; }
 
       /* Contenedores largos: permitir partir */
-      .treatment-compare, .treatment-compare-mobile, .numbered-list, .steps-list { break-inside: auto; page-break-inside: auto; }
+      .treatment-compare, .treatment-compare-mobile, .numbered-list, .steps-list,
+      .milestones, .timeline, .activities-grid, .ref-list { break-inside: auto; page-break-inside: auto; }
       /* Elementos cortos: no partir */
       .callout, .callout-info, .callout-amber, .callout-green, .callout-danger,
       .faq-item, .tc-card, .tc-row, .info-img, figure, img,
-      .evidence-badge { break-inside: avoid; page-break-inside: avoid; }
+      .evidence-badge, .milestone, .timeline-item, .activities-col,
+      .final-callout { break-inside: avoid; page-break-inside: avoid; }
+      .ref-list > li { break-inside: avoid; page-break-inside: avoid; margin-bottom: 3pt !important; }
       table { break-inside: auto; page-break-inside: auto; }
       tr { break-inside: avoid; page-break-inside: avoid; }
       .numbered-list > li, .steps-list > li { break-inside: avoid; page-break-inside: avoid; }
       h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
+      .callout-title, .tc-card-title, .milestone-label, .timeline-label,
+      .activities-label { page-break-after: avoid; break-after: avoid; }
+      .section-divider { margin: 4pt 0 !important; border: none !important; border-top: 0.5pt solid #cbd5e1 !important; }
 
       img { max-width: 100% !important; max-height: 50mm !important; }
       a { color: inherit !important; text-decoration: none !important; }
