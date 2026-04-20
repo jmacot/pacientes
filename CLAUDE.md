@@ -106,17 +106,88 @@ img/
   - El paciente guarda el PDF desde el diálogo del navegador
   - CSS `@media print` dedicado: A4 con márgenes, header en blanco, sin nav/pills/footer/botones, `page-break-inside: avoid` por sección, imágenes limitadas a 70mm de alto
 
-### Páginas de consulta (`consulta/{patologia}.html`)
+### Páginas de consulta (`consulta/{patologia}.html`) — estilo canónico
 
-Slideshow horizontal pensado para explicar la patología en consulta (no es contenido principal del portal, pero está enlazada desde el hub):
+Slideshow horizontal pensado para explicar la patología durante la consulta (no es contenido principal del portal, pero está enlazado desde el hub). **Este estilo está validado y debe preservarse en futuras patologías** — copiar la estructura de `consulta/meniscos.html` íntegramente y adaptar solo el contenido.
 
-- Layout: sidebar de navegación + main con diapositivas a pantalla completa
-- 5 diapositivas por patología (meniscos actual): anatomía, vascularización, función, tipos de rotura, opciones de tratamiento
-- Tratamiento con tabs: conservador / quirúrgico opción A / quirúrgico opción B
-- **Lightbox** al pulsar imágenes (fondo blanco con padding para imágenes con transparencia)
-- **Modal embebido** con iframe a `../animacion-prp.html` (carga diferida `data-src`)
-- Atajos de teclado: ←/→ navegar, espacio avanzar, F pantalla completa, H ocultar sidebar, 1-9 salto directo
-- Imágenes zoom-in con `.media img`; excluir con `:not(.prp-launcher-img)` los botones que abren otros modales
+**Fuentes:** DM Serif Display (títulos) + DM Sans (texto) — Sistema A editorial, más sobrio que los hubs.
+
+**Paleta:**
+```css
+--bg: #fafaf7;           /* off-white cálido, no blanco puro */
+--surface: #ffffff;      /* cards */
+--surface-2: #f1ede4;    /* surfaces secundarias (números nav, tags) */
+--sidebar: #f4f1ea;      /* sidebar cream */
+--ink: #0f172a;          /* texto principal slate-900 */
+--ink-muted: #64748b;    /* texto secundario slate-500 */
+--border: rgba(15,23,42,0.08);
+--accent: #0ea5e9;       /* sky-500 */
+--accent-light: #38bdf8; /* sky-400 */
+--radius: 18px;
+```
+
+**Layout global:** `body { display: flex; height: 100vh; overflow: hidden }` — el slideshow es una SPA de pantalla completa, no scrollable.
+
+- **Sidebar izquierda** (`width: 280px`, `background: var(--sidebar)`): branding + back link + `<nav>` con botones numerados + botones de acción (pantalla completa, ocultar menú) anclados al fondo con `margin-top: auto`
+- **Main** (`flex: 1`): diapositivas stacked con `position: relative`, una visible a la vez mediante `.slide.active { display: flex }`
+- **Footer** (`padding: 20px 80px`, `backdrop-filter: blur(8px)`): progress bar de puntos clicables + contador `01 / 05` + flechas circulares
+
+**Estructura de cada diapositiva:**
+
+```html
+<section class="slide" data-title="Anatomía">
+  <div class="slide-header">
+    <span class="slide-number">01</span>        <!-- DM Serif 56px accent -->
+    <h2 class="slide-title">Anatomía del menisco</h2>  <!-- DM Serif 44px -->
+  </div>
+  <div class="slide-body">                       <!-- grid 1fr 1.2fr -->
+    <div class="media">
+      <img src="..." alt="..." />                <!-- zoom-in → lightbox -->
+      <p class="media-caption">Opcional</p>
+    </div>
+    <div class="content">
+      <p class="lead">Frase de entrada 22px weight 300.</p>
+      <ul>
+        <li><strong>Concepto:</strong> explicación.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+```
+
+**Reglas visuales clave:**
+
+- **`slide-number`** en DM Serif 56px accent sky — ancla visual en cada diapositiva
+- **`slide-title`** en DM Serif 44px weight 400 — serif humanista, nunca bold
+- **`.media`** — card blanca con `border-radius: 18px`, `padding: 24px`, `min-height: 420px`, sombra sutil. Icono `⤢` aparece en hover bottom-right (indica zoom disponible)
+- **`.content .lead`** — primer párrafo weight 300 en 22px, establece el tono conversacional
+- **Listas (`.content li`)** — sin bullets nativos; punto sky 6×6px con `li::before`, gap 14px, tamaño 17px
+- **Tabs de tratamiento** — pills rounded (`border-radius: 12px`). Activa: fondo `var(--accent)` + color blanco; inactiva: superficie con hover a ink
+- **`.treatment-box`** — card blanca con `padding: 36px`; variante `.highlight` con borde accent y glow sky
+- **`.treatment-box.highlight .tag`** — microtype DM Mono-style en caps, color ink-muted, sin bg
+
+**Componentes específicos:**
+
+- **`.media-stack` / `.stack-row`** — apilar múltiples imágenes verticalmente en una sola `.media`; `.stack-row` para 2–3 imágenes en fila con figcaption
+- **`.media-conservador`** — variante compacta para tab conservador: sentadilla (180px máx) arriba + row 3-col con infiltraciones + lanzador PRP (150px máx cada uno). Todo visible sin scroll
+- **`.sequence`** — bloque antes→después con dos `<figure>` + flecha sky entre ambos. Variante `.sequence-single` para imágenes tipo secuencia (A–D) en una única fila
+- **`.prp-launcher`** — `<button>` con imagen arriba + badge circular play sky abajo + label minúsculo ("PRP"). Al pulsar abre modal con iframe lazy-loaded (`data-src` → `src`)
+- **Lightbox** (`.lightbox`): overlay slate-900 92% con imagen sobre fondo **blanco** (`background: #fff; padding: 24px; border-radius: 12px`) — obligatorio para imágenes con transparencia como hialurónico
+
+**Interacción:**
+
+- Atajos de teclado: `←/→` navegar, `espacio` avanzar, `F` pantalla completa, `H` ocultar sidebar, `1-9` salto directo, `Esc` cerrar modal/lightbox
+- Touch swipe horizontal (60px threshold, ratio 1.5:1 respecto vertical) para móvil
+- Binding de lightbox: `document.querySelectorAll('.media img:not(.prp-launcher-img), .sequence figure img')` — excluir explícitamente imágenes dentro de botones que abren otros modales
+- Carga diferida de iframes pesados: `data-src` en HTML, asignar a `src` solo en `openModal()`
+
+**Responsive:**
+
+- `@media (max-width: 1200px)` — sidebar 220px, slide padding 40px/48px, grids colapsan a 1 columna, títulos a 32px/40px
+- `@media (max-width: 700px)` — sidebar a top (stack vertical), `body.sidebar-collapsed aside { display: none }`, footer 14px/24px
+- Sequence arrows rotan 90° en móvil (`transform: rotate(90deg)`)
+
+**No incluir** en las páginas de consulta: dark mode, sky toggle, mesh gradient de fondo, animaciones fadeInUp de cards — se busca un ambiente quieto y legible, no "producto web".
 
 ---
 
