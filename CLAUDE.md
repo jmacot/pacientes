@@ -22,20 +22,21 @@
 ```
 index.html           ← Landing page: 1 card por patología + "Quién soy"
 
-ptr.html             ← Hub PTR
+ptr.html             ← Hub PTR (solo card Información; rehab eliminada)
 ptr-info.html        ← Guía PTR: información y expectativas
-                       (pendiente: ptr-rehab.html)
 
-meniscos.html        ← Hub Meniscos
+meniscos.html        ← Hub Meniscos (card Información + card Consulta guiada)
 meniscos-info.html   ← Guía Meniscos: información y expectativas
-meniscos-rehab.html  ← Guía Meniscos: rehabilitación postoperatoria
 
 lca.html             ← Hub LCA
 lca-info.html        ← Guía LCA: información y expectativas
-                       (pendiente: lca-rehab.html)
 
 infiltraciones.html  ← Guía tratamiento: corticoides / HA / PRP (enlace directo, sin hub)
-animacion-prp.html   ← Animación interactiva SVG embebida como iframe/modal desde infiltraciones.html
+animacion-prp.html   ← Animación interactiva SVG embebida como iframe/modal (desde infiltraciones.html y consulta/meniscos.html)
+
+consulta/            ← Herramientas de apoyo en consulta (slideshow con sidebar + lightbox)
+  ├── meniscos.html  ← Explicación visual paso a paso para consulta de meniscos
+  └── ptr.html       ← (placeholder pendiente de contenido)
 
 icon.svg             ← Favicon + apple-touch-icon + og:image (compartido por todas las páginas)
 CLAUDE.md, README.md, .gitignore
@@ -67,12 +68,17 @@ img/
 **Patologías quirúrgicas** siguen una estructura de **3 niveles**:
 
 1. **`index.html`** — 1 sola card por patología (ej. "Lesiones Meniscales") que enlaza al hub
-2. **`{patologia}.html`** (hub) — Página intermedia con subcards: Información + Rehabilitación. Sigue la estructura exacta de `ptr.html`
-3. **`{patologia}-info.html`** y **`{patologia}-rehab.html`** — Páginas de contenido
+2. **`{patologia}.html`** (hub) — Página intermedia con subcards. Sigue la estructura exacta de `ptr.html` / `meniscos.html`
+3. **`{patologia}-info.html`** — Página de contenido (información y expectativas)
 
-**Nunca** poner cards de info y rehab directamente en index.html. Siempre usar el hub intermedio.
+**Nunca** poner cards directamente en index.html. Siempre usar el hub intermedio.
 
 **Guías de tratamiento** (ej. infiltraciones) usan **enlace directo** desde index.html → `{tratamiento}.html`. No necesitan hub intermedio porque son una sola página sin componente de rehabilitación.
+
+**Cards del hub — regla actual:** las cards de rehabilitación se han eliminado (el contenido de rehab vive en `rehabilitacion-cot`, no en este portal). Cards permitidas en hubs:
+
+- **Información y Expectativas** → `{patologia}-info.html` (obligatoria)
+- **Consulta guiada** → `consulta/{patologia}.html` (opcional; solo si existe la slideshow para esa patología)
 
 ### Landing page (`index.html`)
 
@@ -95,6 +101,22 @@ img/
 - Acordeones `<details>/<summary>` nativos
 - Navegación sticky por pills con scroll spy
 - Primera sección abierta por defecto, resto cerradas
+- **Botón "Descargar PDF"** arriba a la derecha del header (id `printBtn`):
+  - Al pulsar, abre todos los `<details>`, llama a `window.print()` y restaura estado en `afterprint`
+  - El paciente guarda el PDF desde el diálogo del navegador
+  - CSS `@media print` dedicado: A4 con márgenes, header en blanco, sin nav/pills/footer/botones, `page-break-inside: avoid` por sección, imágenes limitadas a 70mm de alto
+
+### Páginas de consulta (`consulta/{patologia}.html`)
+
+Slideshow horizontal pensado para explicar la patología en consulta (no es contenido principal del portal, pero está enlazada desde el hub):
+
+- Layout: sidebar de navegación + main con diapositivas a pantalla completa
+- 5 diapositivas por patología (meniscos actual): anatomía, vascularización, función, tipos de rotura, opciones de tratamiento
+- Tratamiento con tabs: conservador / quirúrgico opción A / quirúrgico opción B
+- **Lightbox** al pulsar imágenes (fondo blanco con padding para imágenes con transparencia)
+- **Modal embebido** con iframe a `../animacion-prp.html` (carga diferida `data-src`)
+- Atajos de teclado: ←/→ navegar, espacio avanzar, F pantalla completa, H ocultar sidebar, 1-9 salto directo
+- Imágenes zoom-in con `.media img`; excluir con `:not(.prp-launcher-img)` los botones que abren otros modales
 
 ---
 

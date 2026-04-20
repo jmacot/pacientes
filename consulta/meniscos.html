@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulta · Meniscos · Dr Martín Antúnez</title>
+  <link rel="icon" type="image/svg+xml" href="../icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fafaf7;
+      --surface: #ffffff;
+      --surface-2: #f1ede4;
+      --sidebar: #f4f1ea;
+      --ink: #0f172a;
+      --ink-muted: #64748b;
+      --border: rgba(15,23,42,0.08);
+      --accent: #0ea5e9;
+      --accent-light: #38bdf8;
+      --shadow-sm: 0 1px 2px rgba(15,23,42,0.04);
+      --shadow: 0 4px 6px -1px rgba(15,23,42,0.06), 0 2px 4px -2px rgba(15,23,42,0.04);
+      --shadow-lg: 0 10px 20px -5px rgba(15,23,42,0.12), 0 4px 8px -4px rgba(15,23,42,0.08);
+      --radius: 18px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      display: flex;
+    }
+
+    aside {
+      width: 280px;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+      transition: margin-left 0.3s ease, width 0.3s ease;
+    }
+    body.sidebar-collapsed aside { margin-left: -280px; }
+    .sidebar-toggle {
+      position: fixed;
+      top: 16px; left: 16px;
+      z-index: 50;
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: none;
+      place-items: center;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 18px;
+    }
+    body.sidebar-collapsed .sidebar-toggle { display: grid; }
+    .sidebar-actions {
+      margin-top: auto;
+      padding-top: 16px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .icon-btn {
+      all: unset;
+      flex: 1;
+      min-width: 0;
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-align: center;
+      cursor: pointer;
+      color: var(--ink-muted);
+      font-size: 12px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .icon-btn:hover { color: var(--ink); background: var(--surface-2); }
+    .icon-btn kbd {
+      font-family: inherit;
+      font-size: 10px;
+      padding: 1px 5px;
+      background: var(--surface-2);
+      border-radius: 4px;
+      color: var(--ink-muted);
+    }
+    .brand { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 4px; }
+    .brand-sub {
+      font-size: 12px; color: var(--ink-muted);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 32px;
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--ink-muted); text-decoration: none;
+      font-size: 13px; padding: 8px 10px; border-radius: 8px;
+      margin-bottom: 20px; transition: all 0.2s;
+    }
+    .back-link:hover { color: var(--ink); background: rgba(15,23,42,0.04); }
+
+    nav button {
+      all: unset;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px; border-radius: 12px; cursor: pointer;
+      font-size: 14px; color: var(--ink-muted); transition: all 0.2s;
+    }
+    nav button:hover { background: rgba(15,23,42,0.04); color: var(--ink); }
+    nav button.active {
+      background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(14,165,233,0.06));
+      color: var(--ink);
+      box-shadow: inset 2px 0 0 var(--accent);
+    }
+    nav button .num {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--surface-2);
+      display: grid; place-items: center;
+      font-size: 12px; font-weight: 500; flex-shrink: 0;
+    }
+    nav button.active .num { background: var(--accent); color: white; }
+
+    main { flex: 1; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+
+    .slide {
+      flex: 1; display: none;
+      padding: 56px 80px; overflow-y: auto;
+      animation: fadeIn 0.35s ease;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-header {
+      display: flex; align-items: baseline; gap: 16px;
+      margin-bottom: 32px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .slide-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 56px; color: var(--accent); line-height: 1;
+    }
+    .slide-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 44px; line-height: 1.1; font-weight: 400;
+    }
+
+    .slide-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .slide-body.single { grid-template-columns: 1fr; }
+
+    .media {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: grid; place-items: center;
+      padding: 24px;
+      min-height: 420px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .media img {
+      max-width: 100%; max-height: 480px;
+      object-fit: contain; border-radius: 12px;
+      cursor: zoom-in; transition: transform 0.2s;
+    }
+    .media img:hover { transform: scale(1.02); }
+    .media::after {
+      content: '⤢';
+      position: absolute;
+      bottom: 12px; right: 12px;
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: rgba(15,23,42,0.7);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .media:hover::after { opacity: 1; }
+    .media-caption {
+      font-size: 13px; color: var(--ink-muted);
+      margin-top: 12px; text-align: center;
+    }
+
+    .content .lead {
+      font-size: 22px; line-height: 1.45;
+      color: var(--ink); margin-bottom: 28px;
+      font-weight: 300;
+    }
+    .content ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .content li {
+      display: flex; gap: 14px; align-items: flex-start;
+      font-size: 17px; line-height: 1.5; color: var(--ink);
+    }
+    .content li::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-top: 10px; flex-shrink: 0;
+    }
+    .content li strong { color: var(--ink); font-weight: 600; }
+
+    /* Tabs (tratamiento) */
+    .tabs {
+      display: flex; gap: 8px;
+      margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .tab {
+      all: unset;
+      padding: 10px 18px;
+      border-radius: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--ink-muted);
+      transition: all 0.2s;
+    }
+    .tab:hover { color: var(--ink); }
+    .tab.active {
+      background: var(--accent); color: white; border-color: var(--accent);
+    }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; animation: fadeIn 0.25s ease; }
+
+    .treatment-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow-sm);
+    }
+    .treatment-box.highlight { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,165,233,0.12), var(--shadow); }
+    .treatment-box .tag {
+      display: inline-block;
+      font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .treatment-box h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px; font-weight: 400; margin-bottom: 14px;
+    }
+    .treatment-box p.desc {
+      font-size: 16px; line-height: 1.55;
+      color: var(--ink-muted); margin-bottom: 18px;
+    }
+    .treatment-box ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .treatment-box li {
+      font-size: 15px; line-height: 1.5;
+      padding-left: 18px; position: relative;
+    }
+    .treatment-box li::before {
+      content: ''; position: absolute;
+      left: 0; top: 8px;
+      width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%;
+    }
+    .treatment-box li strong { font-weight: 600; }
+
+    .treatment-split {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    /* Stack de imágenes dentro de un .media */
+    .media-stack { display: flex; flex-direction: column; gap: 14px; width: 100%; }
+    .media-stack img { max-width: 100%; max-height: 240px; object-fit: contain; border-radius: 12px; cursor: zoom-in; transition: transform 0.2s; }
+    .media-stack img:hover { transform: scale(1.02); }
+    .media-stack .stack-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .media-stack .stack-row figure { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+    .media-stack .stack-row figure img { max-height: 180px; }
+    .media-stack .stack-row figcaption { font-size: 12px; color: var(--ink-muted); }
+
+    /* Secuencia antes → después (asa de cubo) */
+    .sequence {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-top: 28px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    .sequence figure { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+    .sequence figure img { max-width: 100%; max-height: 220px; object-fit: contain; border-radius: 10px; cursor: zoom-in; transition: transform 0.2s; }
+    .sequence figure img:hover { transform: scale(1.02); }
+    .sequence figcaption { font-size: 13px; color: var(--ink-muted); text-align: center; }
+    .sequence-arrow {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      color: var(--accent); font-size: 24px;
+    }
+    .sequence-arrow span { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+    /* Conservador: layout compacto sin scroll */
+    .media-conservador {
+      display: flex; flex-direction: column; gap: 16px;
+      padding: 16px; min-height: 0;
+    }
+    .media-conservador .conservador-ejercicio {
+      max-height: 180px; width: auto; max-width: 100%;
+      object-fit: contain; border-radius: 10px;
+      cursor: zoom-in; transition: transform 0.2s;
+      align-self: center;
+    }
+    .media-conservador .conservador-ejercicio:hover { transform: scale(1.02); }
+    .media-conservador .conservador-row {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px; align-items: end;
+    }
+    .media-conservador .conservador-row figure,
+    .media-conservador .conservador-row .prp-launcher {
+      margin: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .media-conservador .conservador-row figure img,
+    .media-conservador .conservador-row .prp-launcher-img {
+      max-height: 150px; width: auto; max-width: 100%;
+      object-fit: contain; border-radius: 8px;
+      transition: transform 0.2s;
+    }
+    .media-conservador .conservador-row figure img { cursor: zoom-in; }
+    .media-conservador .conservador-row figure img:hover { transform: scale(1.04); }
+    .media-conservador .conservador-row .prp-launcher-img { cursor: pointer; }
+    .media-conservador .conservador-row figcaption,
+    .media-conservador .conservador-row .prp-launcher-label {
+      font-size: 12px; color: var(--ink-muted); text-align: center;
+    }
+
+    /* Botón lanzador de animación PRP (imagen + play) */
+    .prp-launcher {
+      all: unset;
+      cursor: pointer; position: relative;
+      transition: transform 0.2s;
+    }
+    .prp-launcher:hover { transform: translateY(-2px); }
+    .prp-launcher-play {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--accent); color: white;
+      display: grid; place-items: center;
+      box-shadow: 0 3px 10px rgba(14,165,233,0.4);
+      transition: transform 0.2s;
+      margin-top: 2px;
+    }
+    .prp-launcher:hover .prp-launcher-play { transform: scale(1.12); }
+    .prp-launcher-play svg { width: 14px; height: 14px; margin-left: 2px; }
+
+    /* Modal de animación PRP */
+    .prp-modal {
+      position: fixed; inset: 0; background: rgba(15,23,42,0.82);
+      z-index: 9000; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .prp-modal.open { opacity: 1; pointer-events: auto; }
+    .prp-modal-inner {
+      position: relative;
+      width: min(980px, 96vw); height: min(700px, 92vh);
+      background: #f7f5f0; border-radius: 16px; overflow: hidden;
+      transform: scale(0.94); transition: transform 0.3s;
+    }
+    .prp-modal.open .prp-modal-inner { transform: scale(1); }
+    .prp-modal-close {
+      position: absolute; top: 10px; right: 12px;
+      background: rgba(0,0,0,0.18); border: none; color: #333;
+      font-size: 20px; width: 34px; height: 34px; border-radius: 50%;
+      cursor: pointer; z-index: 1; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .prp-modal-close:hover { background: rgba(0,0,0,0.32); }
+    .prp-modal-frame { width: 100%; height: 100%; border: none; display: block; }
+    @media (max-width: 600px) {
+      .prp-modal-inner { width: 100%; height: 100%; border-radius: 0; }
+    }
+
+    .sequence.sequence-single { grid-template-columns: 1fr; margin-top: 18px; }
+    .sequence.sequence-single figure img { max-height: 280px; }
+    @media (max-width: 700px) {
+      .sequence { grid-template-columns: 1fr; }
+      .sequence-arrow { transform: rotate(90deg); margin: 4px 0; }
+    }
+
+    footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 80px;
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px);
+    }
+    .progress { display: flex; gap: 6px; }
+    .progress span {
+      width: 28px; height: 6px;
+      background: var(--surface-2); border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .progress span:hover { transform: scaleY(1.4); }
+    .progress span.done { background: var(--accent); }
+
+    .arrows { display: flex; gap: 12px; }
+    .arrow {
+      all: unset;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: grid; place-items: center;
+      cursor: pointer; color: var(--ink);
+      font-size: 20px; transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .arrow:hover { background: var(--surface-2); transform: scale(1.05); box-shadow: var(--shadow); }
+    .arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    .slide-counter {
+      font-size: 13px; color: var(--ink-muted);
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 1200px) {
+      aside { width: 220px; padding: 24px 14px; }
+      .slide { padding: 40px 48px; }
+      .slide-body, .treatment-split { grid-template-columns: 1fr; gap: 28px; }
+      .slide-title { font-size: 32px; }
+      .slide-number { font-size: 40px; }
+      footer { padding: 16px 48px; }
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(15,23,42,0.92);
+      display: none;
+      align-items: center; justify-content: center;
+      z-index: 100; padding: 40px;
+      cursor: zoom-out;
+      animation: fadeIn 0.2s ease;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain; border-radius: 12px;
+      background: #ffffff;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: grid; place-items: center;
+      cursor: pointer; font-size: 20px;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+    :fullscreen { background: var(--bg); }
+    ::backdrop { background: var(--bg); }
+    html:fullscreen body { width: 100vw; height: 100vh; background: var(--bg); color: var(--ink); }
+    html:fullscreen footer { padding: 16px 48px; }
+    html:fullscreen .slide { padding: 48px 72px; }
+
+    @media (max-width: 700px) {
+      body { flex-direction: column; }
+      aside { width: 100%; }
+      body.sidebar-collapsed aside { margin-left: 0; display: none; }
+      .slide { padding: 32px 24px; }
+      footer { padding: 14px 24px; }
+      .slide-title { font-size: 26px; }
+      .slide-number { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="Mostrar menú">☰</button>
+
+  <aside>
+    <div class="brand">Dr Martín Antúnez</div>
+    <div class="brand-sub">Consulta · Meniscos</div>
+    <a href="../index.html" class="back-link">← Portal pacientes</a>
+    <nav id="nav"></nav>
+    <div class="sidebar-actions">
+      <button class="icon-btn" id="fsBtn" title="Pantalla completa (F)">⛶ <kbd>F</kbd></button>
+      <button class="icon-btn" id="hideBtn" title="Ocultar menú (H)">◧ <kbd>H</kbd></button>
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- 1. ANATOMÍA -->
+    <section class="slide active" data-title="Anatomía">
+      <div class="slide-header">
+        <span class="slide-number">01</span>
+        <h2 class="slide-title">Anatomía del menisco</h2>
+      </div>
+      <div class="slide-body">
+        <div class="media">
+          <div class="media-stack">
+            <img src="../img/meniscos/anatomia.png" alt="Meniscos: forma y vascularización periférica" />
+            <img src="../img/meniscos/anatomia-vista-superior.png" alt="Vista superior de la meseta tibial con ambos meniscos" />
+          </div>
+        </div>
+        <div class="content">
+          <p class="lead">Los meniscos son dos cojines fibrocartilaginosos con forma de media luna situados entre fémur y tibia.</p>
+          <ul>
+            <li><strong>Menisco medial (interno):</strong> más fijo, se lesiona con más frecuencia.</li>
+            <li><strong>Menisco lateral (externo):</strong> más móvil.</li>
+            <li><strong>Raíces:</strong> puntos de anclaje al hueso tibial.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. VASCULARIZACIÓN -->
+    <section class="slide" data-title="Vascularización">
+      <div class="slide-header">
+        <span class="slide-number">02</span>
+        <h2 class="slide-title">Zonas del menisco</h2>
+      </div>
+      <div class="slide-body">
+        <div class="media">
+          <img src="../img/meniscos/vascularizacion-menisco.png" alt="Zonas vasculares del menisco" />
+          <p class="media-caption">Zona roja (periferia) · Zona blanca (centro)</p>
+        </div>
+        <div class="content">
+          <p class="lead">El menisco no tiene riego sanguíneo en toda su extensión. Esto marca si una rotura puede cicatrizar o no.</p>
+          <ul>
+            <li><strong>Zona roja (periferia):</strong> vascularizada, puede cicatrizar → se puede suturar.</li>
+            <li><strong>Zona blanca (centro):</strong> sin riego, no cicatriza → se retira el fragmento.</li>
+            <li><strong>Clave:</strong> la localización de la rotura decide la técnica quirúrgica.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PARA QUÉ SIRVEN -->
+    <section class="slide" data-title="Para qué sirven">
+      <div class="slide-header">
+        <span class="slide-number">03</span>
+        <h2 class="slide-title">Para qué sirven</h2>
+      </div>
+      <div class="slide-body">
+        <div class="media">
+          <img src="../img/meniscos/hoop-stress.png" alt="Distribución de cargas en el menisco (hoop stress)" />
+          <p class="media-caption">Las fibras circulares del menisco convierten la carga axial en tensión circunferencial</p>
+        </div>
+        <div class="content">
+          <p class="lead">El menisco es un amortiguador clave. Sin él, la carga se concentra en un punto y el cartílago se desgasta.</p>
+          <ul>
+            <li><strong>Reparten la carga</strong> entre fémur y tibia.</li>
+            <li><strong>Amortiguan</strong> el impacto al caminar o correr.</li>
+            <li><strong>Estabilizan</strong> la rodilla frente a giros.</li>
+            <li><strong>Protegen el cartílago:</strong> perder menisco acelera la artrosis.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TIPOS DE ROTURA -->
+    <section class="slide" data-title="Tipos de rotura">
+      <div class="slide-header">
+        <span class="slide-number">04</span>
+        <h2 class="slide-title">Tipos de rotura</h2>
+      </div>
+      <div class="slide-body">
+        <div class="media">
+          <img src="../img/meniscos/lesionesmeniscales.png" alt="Tipos de roturas meniscales" />
+          <p class="media-caption">A: asa de cubo · B: pico de loro · C: flap · D: degenerativa · E: horizontal · F: compleja · G: longitudinal · H: radial</p>
+        </div>
+        <div class="content">
+          <p class="lead">El patrón de la rotura decide el tratamiento. No todas las lesiones son iguales ni requieren lo mismo.</p>
+          <ul>
+            <li><strong>Traumáticas:</strong> giro brusco, frecuentes en jóvenes y deportistas.</li>
+            <li><strong>Degenerativas:</strong> desgaste progresivo, típicas después de los 40-50.</li>
+            <li><strong>En asa de cubo:</strong> un fragmento se desplaza y puede bloquear la rodilla.</li>
+            <li><strong>Lesión de raíz:</strong> funcionalmente equivale a perder el menisco.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. OPCIONES DE TRATAMIENTO (tabs: conservador / meniscectomía / sutura) -->
+    <section class="slide" data-title="Opciones de tratamiento">
+      <div class="slide-header">
+        <span class="slide-number">05</span>
+        <h2 class="slide-title">Opciones de tratamiento</h2>
+      </div>
+      <div class="slide-body single">
+        <div class="tabs" data-tabs="tx">
+          <button class="tab active" data-target="tx-0">Conservador</button>
+          <button class="tab" data-target="tx-1">Meniscectomía parcial</button>
+          <button class="tab" data-target="tx-2">Sutura meniscal</button>
+        </div>
+
+        <div class="tab-pane active" id="tx-0">
+          <div class="treatment-split">
+            <div class="media media-conservador">
+              <img class="conservador-ejercicio" src="../img/compartidas/ejercicio-sentadilla.png" alt="Ejercicio de sentadilla para fortalecimiento de cuádriceps y glúteos" />
+              <div class="conservador-row">
+                <figure>
+                  <img src="../img/infiltraciones/corticoid.png" alt="Infiltración de corticoide" />
+                  <figcaption>Corticoide</figcaption>
+                </figure>
+                <figure>
+                  <img src="../img/infiltraciones/hialuronico.png" alt="Infiltración de ácido hialurónico" />
+                  <figcaption>Hialurónico</figcaption>
+                </figure>
+                <button type="button" class="prp-launcher" id="btn-prp-anim" aria-label="Reproducir animación del PRP">
+                  <img src="../img/infiltraciones/prp.png" alt="" class="prp-launcher-img" />
+                  <span class="prp-launcher-play" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+                  </span>
+                  <span class="prp-launcher-label">PRP</span>
+                </button>
+              </div>
+            </div>
+            <div class="treatment-box">
+              <span class="tag">Sin cirugía</span>
+              <h3>Tratamiento conservador</h3>
+              <p class="desc">Primera opción en la mayoría de roturas degenerativas. El consenso ESSKA recomienda probarlo durante 3-6 meses antes de plantear cirugía.</p>
+              <ul>
+                <li><strong>Rehabilitación</strong> y fortalecimiento muscular (cuádriceps, glúteos).</li>
+                <li><strong>Analgesia y antiinflamatorios</strong> durante los brotes de dolor.</li>
+                <li><strong>Infiltraciones</strong> (corticoide, hialurónico, PRP) si procede.</li>
+                <li><strong>Modificación de actividad</strong> temporal.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tx-1">
+          <div class="treatment-split">
+            <div class="media">
+              <img src="../img/compartidas/artroscopiaknee.png" alt="Artroscopia de rodilla" />
+              <p class="media-caption">Artroscopia: 2 incisiones de 5 mm</p>
+            </div>
+            <div class="treatment-box highlight">
+              <span class="tag">Quirúrgico · zona blanca</span>
+              <h3>Meniscectomía parcial</h3>
+              <p class="desc">Se retira únicamente la parte rota del menisco, preservando el máximo tejido sano. Indicada cuando la rotura está en zona sin riego (no cicatriza).</p>
+              <ul>
+                <li><strong>Artroscopia:</strong> 2 incisiones pequeñas, 30-45 minutos.</li>
+                <li><strong>Apoyo inmediato</strong> tras la cirugía.</li>
+                <li><strong>Recuperación rápida:</strong> vida normal en semanas.</li>
+                <li><strong>Indicación:</strong> roturas degenerativas o en zona blanca.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tx-2">
+          <div class="treatment-split">
+            <div class="media">
+              <img src="../img/meniscos/sutura-meniscal.png" alt="Diferentes configuraciones de sutura meniscal" />
+              <p class="media-caption">Configuraciones de sutura: outside-in, inside-out y todo-dentro</p>
+            </div>
+            <div class="treatment-box highlight">
+              <span class="tag">Quirúrgico · zona roja</span>
+              <h3>Sutura meniscal</h3>
+              <p class="desc">Se repara la rotura con puntos preservando el menisco completo. Es la opción preferida siempre que sea técnicamente posible, porque conservar menisco protege el cartílago a largo plazo.</p>
+              <ul>
+                <li><strong>Indicación:</strong> roturas traumáticas en zona vascular (roja).</li>
+                <li><strong>Recuperación más lenta:</strong> 3-6 meses.</li>
+                <li><strong>Restricción inicial</strong> de carga y flexión.</li>
+                <li><strong>Incluye reinserción de raíz</strong> cuando la rotura afecta al anclaje óseo.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sequence">
+            <figure>
+              <img src="../img/meniscos/asa-cubo.png" alt="Rotura meniscal en asa de cubo antes de la reparación" />
+              <figcaption>Antes · rotura en asa de cubo</figcaption>
+            </figure>
+            <div class="sequence-arrow" aria-hidden="true">
+              →
+              <span>sutura</span>
+            </div>
+            <figure>
+              <img src="../img/meniscos/asa-cubo-suturada.png" alt="Asa de cubo tras la sutura meniscal" />
+              <figcaption>Después · menisco reparado</figcaption>
+            </figure>
+          </div>
+
+          <div class="sequence sequence-single">
+            <figure>
+              <img src="../img/meniscos/reinsercion-raiz.png" alt="Secuencia de reinserción de raíz meniscal" />
+              <figcaption>Reinserción de raíz meniscal: paso a paso (A–D)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="progress" id="progress"></div>
+      <div class="slide-counter" id="counter">01 / 05</div>
+      <div class="arrows">
+        <button class="arrow" id="prev" aria-label="Anterior">←</button>
+        <button class="arrow" id="next" aria-label="Siguiente">→</button>
+      </div>
+    </footer>
+
+  </main>
+
+  <div id="modal-prp" class="prp-modal" role="dialog" aria-modal="true" aria-label="Animación PRP">
+    <div class="prp-modal-inner">
+      <button class="prp-modal-close" id="btn-close-prp" aria-label="Cerrar">&times;</button>
+      <iframe id="prp-frame" data-src="../animacion-prp.html" title="Animación: cómo se obtiene el PRP" class="prp-modal-frame" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Imagen ampliada">
+    <button class="lightbox-close" aria-label="Cerrar">✕</button>
+    <img src="" alt="" />
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const nav = document.getElementById('nav');
+    const progress = document.getElementById('progress');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let current = 0;
+
+    slides.forEach((s, i) => {
+      const btn = document.createElement('button');
+      const num = document.createElement('span');
+      num.className = 'num';
+      num.textContent = String(i+1).padStart(2, '0');
+      const label = document.createElement('span');
+      label.textContent = s.dataset.title;
+      btn.appendChild(num);
+      btn.appendChild(label);
+      btn.addEventListener('click', () => go(i));
+      nav.appendChild(btn);
+      const dot = document.createElement('span');
+      dot.addEventListener('click', () => go(i));
+      dot.title = s.dataset.title;
+      progress.appendChild(dot);
+    });
+
+    function go(i) {
+      current = Math.max(0, Math.min(slides.length - 1, i));
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === current));
+      nav.querySelectorAll('button').forEach((b, idx) => b.classList.toggle('active', idx === current));
+      progress.querySelectorAll('span').forEach((d, idx) => d.classList.toggle('done', idx <= current));
+      counter.textContent = `${String(current+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => go(current - 1));
+    nextBtn.addEventListener('click', () => go(current + 1));
+
+    // Tabs
+    function bindLightboxImg(img) {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+      });
+    }
+    document.querySelectorAll('[data-tabs]').forEach(tabGroup => {
+      const buttons = tabGroup.querySelectorAll('.tab');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.dataset.target;
+          const parent = tabGroup.parentElement;
+          parent.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const pane = parent.querySelector('#' + target);
+          if (pane) pane.classList.add('active');
+          btn.blur();
+        });
+      });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    document.querySelectorAll('.media img:not(.prp-launcher-img), .sequence figure img').forEach(bindLightboxImg);
+    const closeLightbox = () => lightbox.classList.remove('active');
+    lightbox.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+
+    // Fullscreen
+    const fsBtn = document.getElementById('fsBtn');
+    fsBtn.addEventListener('click', toggleFullscreen);
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    }
+
+    // Sidebar collapse
+    const hideBtn = document.getElementById('hideBtn');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const toggleSidebar = () => document.body.classList.toggle('sidebar-collapsed');
+    hideBtn.addEventListener('click', toggleSidebar);
+    sidebarToggle.addEventListener('click', toggleSidebar);
+
+    // Modal PRP (carga iframe solo al abrir)
+    const prpModal = document.getElementById('modal-prp');
+    const prpFrame = document.getElementById('prp-frame');
+    const prpOpen = document.getElementById('btn-prp-anim');
+    const prpClose = document.getElementById('btn-close-prp');
+    let prpTrigger = null;
+    function openPrp() {
+      prpTrigger = document.activeElement || prpOpen;
+      if (!prpFrame.src) prpFrame.src = prpFrame.dataset.src;
+      prpModal.classList.add('open');
+      prpClose.focus();
+    }
+    function closePrp() {
+      prpModal.classList.remove('open');
+      if (prpTrigger) prpTrigger.focus();
+    }
+    prpOpen.addEventListener('click', openPrp);
+    prpClose.addEventListener('click', closePrp);
+    prpModal.addEventListener('click', (e) => { if (e.target === prpModal) closePrp(); });
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && prpModal.classList.contains('open')) { closePrp(); return; }
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) { closeLightbox(); return; }
+      if (prpModal.classList.contains('open')) return;
+      if (lightbox.classList.contains('active')) return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowLeft') go(current - 1);
+      else if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(current + 1); }
+      else if (e.key.toLowerCase() === 'f') { e.preventDefault(); toggleFullscreen(); }
+      else if (e.key.toLowerCase() === 'h') { e.preventDefault(); toggleSidebar(); }
+      else if (/^[1-9]$/.test(e.key)) {
+        const n = parseInt(e.key, 10) - 1;
+        if (n < slides.length) go(n);
+      }
+    });
+
+    // Touch swipe
+    let touchX = null, touchY = null;
+    document.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) return;
+      touchX = e.touches[0].clientX;
+      touchY = e.touches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      const dy = e.changedTouches[0].clientY - touchY;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) go(current + 1); else go(current - 1);
+      }
+      touchX = touchY = null;
+    }, { passive: true });
+
+    go(0);
+  </script>
+</body>
+</html>

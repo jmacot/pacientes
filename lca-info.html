@@ -89,6 +89,88 @@
     }
     .back-home:hover { border-color: rgba(255,255,255,0.5); color: white; background: rgba(255,255,255,0.12); }
 
+    /* Botón Descargar PDF */
+    .print-btn {
+      position: absolute; top: 16px; right: 16px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.78); cursor: pointer;
+      padding: 6px 14px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.12);
+      transition: all 0.2s; z-index: 1;
+    }
+    .print-btn:hover { border-color: rgba(255,255,255,0.6); color: white; background: rgba(255,255,255,0.22); }
+    @media (max-width: 600px) {
+      .print-btn { padding: 4px 10px; font-size: 10px; top: 10px; right: 10px; }
+    }
+
+    /* Impresión / Exportar a PDF */
+    @media print {
+      @page { size: A4; margin: 12mm 14mm; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      html, body { background: #ffffff !important; color: #111 !important; margin: 0 !important; padding: 0 !important; }
+      body { font-size: 10.5pt; line-height: 1.4; }
+
+      .back-home, .print-btn, .section-nav, .nav-pills, .skip-link, footer, .info-chevron { display: none !important; }
+
+      header {
+        background: #ffffff !important; color: #0f172a !important;
+        padding: 0 0 6pt !important; margin: 0 0 8pt !important;
+        border-bottom: 1.5pt solid #0f172a;
+        overflow: visible !important; animation: none !important;
+      }
+      header::before, header::after { display: none !important; }
+      header .header-label { color: #64748b !important; font-size: 8pt !important; margin-bottom: 2pt !important; }
+      header h1 { color: #0f172a !important; font-size: 18pt !important; line-height: 1.1 !important; margin: 0 0 2pt !important; }
+      header h1 br { display: none; }
+      header p { color: #334155 !important; max-width: none !important; font-size: 10pt !important; margin: 0 !important; }
+
+      main { max-width: none !important; margin: 0 !important; padding: 4pt 0 0 !important; }
+
+      .info-section, details.info-section {
+        margin: 0 0 6pt !important;
+        border: none !important; border-radius: 0 !important;
+        box-shadow: none !important; background: transparent !important;
+        padding: 0 !important; overflow: visible !important;
+        break-inside: auto; page-break-inside: auto;
+      }
+      .info-section > summary {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 6pt 0 4pt !important;
+        font-size: 13pt !important; font-weight: 600;
+        color: #0f172a !important;
+        border-bottom: 0.8pt solid #94a3b8 !important;
+        padding-bottom: 2pt !important;
+        cursor: default !important;
+        display: flex !important; align-items: center; gap: 6pt;
+        page-break-after: avoid; break-after: avoid;
+      }
+      .info-section > summary::-webkit-details-marker,
+      .info-section > summary::after,
+      .info-section > summary::before { display: none !important; content: none !important; }
+      .info-icon {
+        width: 18pt !important; height: 18pt !important;
+        border-radius: 4pt !important;
+        background: #e0f2fe !important; color: #0284c7 !important;
+        flex-shrink: 0;
+      }
+      .info-icon svg { width: 11pt !important; height: 11pt !important; }
+      .info-title { font-size: 13pt !important; }
+      .info-body { padding: 0 !important; color: #334155 !important; font-size: 10.5pt !important; line-height: 1.45 !important; }
+
+      details[open] > *:not(summary) { display: revert !important; }
+      details.faq-item { margin: 2pt 0 !important; break-inside: avoid; }
+      details.faq-item summary { font-size: 10.5pt !important; font-weight: 600; color: #0f172a !important; cursor: default !important; padding: 2pt 0 !important; }
+
+      .milestone, .milestone-card, .callout, .faq-item, .timeline-item, .compare-table, table, .info-img, figure { break-inside: avoid; page-break-inside: avoid; }
+      h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
+
+      img { max-width: 100% !important; max-height: 50mm !important; }
+      a { color: inherit !important; text-decoration: none !important; }
+      a[href^="http"]::after, a[href^="mailto"]::after { content: "" !important; }
+    }
+
     .header-label {
       font-family: 'DM Mono', monospace;
       font-size: 11px;
@@ -709,6 +791,7 @@
 
   <header>
     <a class="back-home" href="lca.html" title="Volver a LCA">&larr; Volver</a>
+    <button type="button" class="print-btn" id="printBtn" aria-label="Descargar PDF"><span aria-hidden="true">&#x2B07;</span> Descargar PDF</button>
     <div class="header-label">Gu&iacute;a del paciente</div>
     <h1>Ligamento Cruzado<br><em>Anterior</em></h1>
     <p>Reconstrucci&oacute;n quir&uacute;rgica del LCA: tipos de injerto, qu&eacute; esperar de la cirug&iacute;a y tu recuperaci&oacute;n paso a paso.</p>
@@ -1200,6 +1283,26 @@
         a.style.pointerEvents = 'none';
       });
     }
+  </script>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('printBtn');
+      if (!btn) return;
+      var reopened = [];
+      function openAll(){
+        reopened = [];
+        document.querySelectorAll('details:not([open])').forEach(function(d){
+          reopened.push(d); d.open = true;
+        });
+      }
+      function restore(){ reopened.forEach(function(d){ d.open = false; }); reopened = []; }
+      btn.addEventListener('click', function(){
+        openAll();
+        setTimeout(function(){ window.print(); }, 80);
+      });
+      window.addEventListener('afterprint', restore);
+    })();
   </script>
 </body>
 </html>

@@ -75,7 +75,7 @@
     width: 200px;
     opacity: 0.4;
     transform: scale(0.96);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.35s ease, transform 0.35s ease;
   }
   .card.show { opacity: 1; transform: scale(1); }
 
@@ -327,39 +327,39 @@ async function go() {
   ['ap1','ap2','ap3'].forEach(id => $(id).classList.remove('on'));
   ['at1','at2','at3'].forEach(id => $(id).classList.remove('on'));
   $('ci3').classList.remove('spin');
-  await sleep(400);
+  await sleep(250);
 
   $('c1').classList.add('show'); scrollCard('c1');
   msg('Se extrae una muestra de sangre del brazo', true);
-  await sleep(2500);
+  await sleep(1500);
 
   $('ap1').classList.add('on'); $('at1').classList.add('on');
   msg('La sangre se recoge en un tubo especial…', true);
-  await sleep(1600);
+  await sleep(950);
 
   $('c2').classList.add('show'); scrollCard('c2');
   msg('La muestra de sangre está lista', true);
-  await sleep(2000);
+  await sleep(1200);
 
   $('ap2').classList.add('on'); $('at2').classList.add('on');
   msg('Se introduce en la centrifugadora…', true);
-  await sleep(1600);
+  await sleep(950);
 
   $('c3').classList.add('show'); scrollCard('c3');
   $('ci3').classList.add('spin');
   msg('La centrifugadora separa las plaquetas del resto de la sangre', true);
-  await sleep(4500);
+  await sleep(2700);
 
   $('ci3').classList.remove('spin');
   msg('¡Separación completada!', true);
-  await sleep(1200);
+  await sleep(750);
 
   $('ap3').classList.add('on'); $('at3').classList.add('on');
-  await sleep(1400);
+  await sleep(850);
 
   $('c4').classList.add('show'); scrollCard('c4');
   msg('El PRP está listo para ser aplicado en la zona a tratar', true);
-  await sleep(3000);
+  await sleep(1800);
 
   msg('Pulsa de nuevo para repetir la animación');
   $('btn').classList.remove('running');
