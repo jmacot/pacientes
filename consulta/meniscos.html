@@ -403,6 +403,20 @@
 
     .sequence.sequence-single { grid-template-columns: 1fr; margin-top: 18px; }
     .sequence.sequence-single figure img { max-height: 280px; }
+
+    /* Sutura: dos secuencias en fila para evitar scroll */
+    .sequences-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 18px;
+      margin-top: 20px;
+      align-items: stretch;
+    }
+    .sequences-row .sequence { margin-top: 0; padding: 18px; }
+    .sequences-row .sequence.sequence-single { margin-top: 0; }
+    @media (max-width: 1100px) {
+      .sequences-row { grid-template-columns: 1fr; }
+    }
     @media (max-width: 700px) {
       .sequence { grid-template-columns: 1fr; }
       .sequence-arrow { transform: rotate(90deg); margin: 4px 0; }
@@ -699,26 +713,28 @@
             </div>
           </div>
 
-          <div class="sequence">
-            <figure>
-              <img src="../img/meniscos/asa-cubo.png" alt="Rotura meniscal en asa de cubo antes de la reparación" />
-              <figcaption>Antes · rotura en asa de cubo</figcaption>
-            </figure>
-            <div class="sequence-arrow" aria-hidden="true">
-              →
-              <span>sutura</span>
+          <div class="sequences-row">
+            <div class="sequence">
+              <figure>
+                <img src="../img/meniscos/asa-cubo.png" alt="Rotura meniscal en asa de cubo antes de la reparación" />
+                <figcaption>Antes · rotura en asa de cubo</figcaption>
+              </figure>
+              <div class="sequence-arrow" aria-hidden="true">
+                →
+                <span>sutura</span>
+              </div>
+              <figure>
+                <img src="../img/meniscos/asa-cubo-suturada.png" alt="Asa de cubo tras la sutura meniscal" />
+                <figcaption>Después · menisco reparado</figcaption>
+              </figure>
             </div>
-            <figure>
-              <img src="../img/meniscos/asa-cubo-suturada.png" alt="Asa de cubo tras la sutura meniscal" />
-              <figcaption>Después · menisco reparado</figcaption>
-            </figure>
-          </div>
 
-          <div class="sequence sequence-single">
-            <figure>
-              <img src="../img/meniscos/reinsercion-raiz.png" alt="Secuencia de reinserción de raíz meniscal" />
-              <figcaption>Reinserción de raíz meniscal: paso a paso (A–D)</figcaption>
-            </figure>
+            <div class="sequence sequence-single">
+              <figure>
+                <img src="../img/meniscos/reinsercion-raiz.png" alt="Secuencia de reinserción de raíz meniscal" />
+                <figcaption>Reinserción de raíz meniscal: paso a paso (A–D)</figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
