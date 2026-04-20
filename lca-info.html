@@ -106,10 +106,10 @@
 
     /* Impresión / Exportar a PDF */
     @media print {
-      @page { size: A4; margin: 12mm 14mm; }
+      @page { size: A4; margin: 0; }
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      html, body { background: #ffffff !important; color: #111 !important; margin: 0 !important; padding: 0 !important; }
-      body { font-size: 10.5pt; line-height: 1.4; }
+      html, body { background: #ffffff !important; color: #111 !important; margin: 0 !important; }
+      body { font-size: 10.5pt; line-height: 1.4; padding: 12mm 14mm !important; }
 
       .back-home, .print-btn, .section-nav, .nav-pills, .skip-link, footer, .info-chevron { display: none !important; }
 
@@ -121,8 +121,8 @@
       }
       header::before, header::after { display: none !important; }
       header .header-label { color: #64748b !important; font-size: 8pt !important; margin-bottom: 2pt !important; }
-      header h1 { color: #0f172a !important; font-size: 18pt !important; line-height: 1.1 !important; margin: 0 0 2pt !important; }
-      header h1 br { display: none; }
+      header h1 { color: #0f172a !important; font-size: 18pt !important; line-height: 1.15 !important; margin: 0 0 3pt !important; }
+      header h1 em { font-style: italic; }
       header p { color: #334155 !important; max-width: none !important; font-size: 10pt !important; margin: 0 !important; }
 
       main { max-width: none !important; margin: 0 !important; padding: 4pt 0 0 !important; }
