@@ -166,8 +166,11 @@
       details.faq-item { margin: 2pt 0 !important; break-inside: avoid; }
       details.faq-item summary { font-size: 10.5pt !important; font-weight: 600; color: #0f172a !important; cursor: default !important; padding: 2pt 0 !important; }
 
-      /* Elementos que no deben partirse */
-      .milestone, .milestone-card, .callout, .faq-item, .timeline-item, .compare-table, table, .info-img, figure { break-inside: avoid; page-break-inside: avoid; }
+      /* Contenedores largos: permitir partir */
+      .compare-table, .milestones, .activities-grid, .treatment-grid, .img-legend-grid, .numbered-list, .steps-list, .timeline { break-inside: auto; page-break-inside: auto; }
+      /* Elementos cortos: no partir */
+      .milestone, .milestone-card, .milestone-content, .callout, .callout-amber, .callout-danger, .callout-info, .faq-item, .timeline-item, .compare-item, .compare-mobile, .activities-col, .treatment-card, .img-row, .img-col, .final-callout, .info-img, .img-legend, figure, table, img { break-inside: avoid; page-break-inside: avoid; }
+      .numbered-list > li, .steps-list > li { break-inside: avoid; page-break-inside: avoid; }
       h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
 
       img { max-width: 100% !important; max-height: 50mm !important; }
