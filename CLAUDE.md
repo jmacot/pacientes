@@ -57,7 +57,7 @@ img/
 ├── ptr/            ← Específicas de PTR (antes/después, implante, unicompartimental)
 ├── meniscos/       ← Específicas de meniscos (lesiones, raíz, vascularización)
 ├── lca/            ← Específicas de LCA (mecanismo lesión, plastia, injertos)
-├── infiltraciones/ ← Específicas de infiltraciones (corticoide, hialurónico)
+├── infiltraciones/ ← Específicas de infiltraciones (corticoide, hialurónico, prp)
 └── _archivo/       ← Imágenes no utilizadas (base para futuros retoques o eliminación)
 ```
 
@@ -251,6 +251,14 @@ Slideshow horizontal pensado para explicar la patología durante la consulta (no
 - **No usar "siempre" ni "nunca"** en contextos médicos — usar "habitualmente", "en la mayoría de los casos", "puede variar"
 - **Complicaciones:** Mencionar las principales pero en contexto ("si bien la tasa de éxito es alta...")
 - **Recambio protésico:** No dar por hecho. Mensaje: la mayoría duran décadas, el recambio no es lo habitual
+- **Postura editorial pro-PRP en `infiltraciones.html`:** el portal favorece intencionalmente al PRP frente a corticoides y hialurónico, **pero solo con argumentos respaldados por literatura médica de alto nivel**. Nunca afirmar nada que no esté soportado por la base de conocimiento de Obsidian (`🦴COT/wiki/summaries/`). Fuentes nucleares actuales (procesadas en abril 2026):
+  - Jawanda 2024 *Arthroscopy* — network meta-analysis SUCRA
+  - Bensa 2025 *AJSM* — MCID PRP vs placebo + concentración plaquetaria
+  - McAlindon 2017 *JAMA* — condrólisis con triamcinolona repetida
+  - ESSKA-ORBIT 2024 — Grado A para PRP en KL I-III
+  - ESSKA-ICRS 2024 — appropriateness por escenario (PRP no como primera línea ni en KL IV)
+  - ESSKA Orthobiologics 2025 — perfil de seguridad (n=76.061)
+  Si cambias una cifra/cita en el folleto, contrasta primero con `/cot:query` para no introducir afirmaciones sin red.
 
 ---
 
