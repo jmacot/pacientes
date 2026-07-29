@@ -39,7 +39,7 @@ Portal de informacion para pacientes del Dr. Martin Antunez. Guias de rehabilita
 
 ## Funcionalidades
 
-- **Landing con bento grid**, estética unificada con `jmacot.github.io`
+- **Landing con bento grid**, con la estética del sistema editorial de las herramientas COT
 - **Navegacion por patologia**: hub intermedio con subcards de informacion y rehabilitacion
 - **Apartado consulta/** con slideshows visuales para enseñar al paciente en consulta
 - **Acordeones nativos** (`<details>/<summary>`) para organizar el contenido
